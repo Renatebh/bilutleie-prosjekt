@@ -1,5 +1,14 @@
+import GlobalStyle from './globalStyles';
+import Theme from './Theme';
+import Header from './components/header/Header';
+
 function App() {
-  return <h1>Bilutleie</h1>;
+  return (
+    <Theme>
+      <GlobalStyle />
+      <Header>Heading</Header>
+    </Theme>
+  );
 }
 
 export default App;
