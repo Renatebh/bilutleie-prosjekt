@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import HeroBackground from '../../assets/tabea-schimpf-O7WzqmeYoqc-unsplash.jpg';
-import HeroForm from './HeroForm';
+import React from "react";
+import styled from "styled-components";
+import HeroBackground from "../../assets/tabea-schimpf-O7WzqmeYoqc-unsplash.jpg";
+import HeroForm from "./HeroForm";
 
 const HeroContainer = styled.div`
   background-image: url(${HeroBackground});
