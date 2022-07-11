@@ -8,6 +8,7 @@ const theme = {
     black: '#000000',
     white: '#fff',
     linearGrey: 'linear-gradient(#fff, #cbcbcb)',
+    blackTransparent: 'rgba(0, 0, 0, 0.74)',
   },
 
   screenSize: {
