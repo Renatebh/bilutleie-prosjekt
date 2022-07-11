@@ -43,9 +43,14 @@ const LinksWrapper = styled.div`
     font-family: sans-serif;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   li {
     color: ${({ theme }) => theme.colors.white};
     list-style: none;
+    text-decoration: none;
   }
 `;
 
@@ -79,12 +84,21 @@ const Header = () => {
       </LogoWrapper>
       <LinksWrapper>
         <ul>
-          <li>Personbil</li>
-          <li>Varbil</li>
-          <li>Priser</li>
-          <li>Kontakt oss</li>
+          <a href="/">
+            <li>Personbil</li>
+          </a>
+          <a href="/">
+            <li>Varbil</li>
+          </a>
+          <a href="/">
+            <li>Priser</li>
+          </a>
+          <a href="/">
+            <li>Kontakt oss</li>
+          </a>
         </ul>
       </LinksWrapper>
+
       <ContactWrapper>
         <p>
           <PhoneIcon />
