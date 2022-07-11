@@ -62,14 +62,15 @@ const ContactWrapper = styled.div`
     font-weight: bold;
     font-family: sans-serif;
     font-size: 1.8rem;
-  }
-
-  .phone-icon {
-    margin-right: 1rem;
+    cursor: pointer;
   }
 `;
 
-const Header = ({ children }) => {
+const PhoneIcon = styled(FaPhoneAlt)`
+  margin-right: 1rem;
+`;
+
+const Header = () => {
   return (
     <NavBar>
       <LogoWrapper>
@@ -86,7 +87,7 @@ const Header = ({ children }) => {
       </LinksWrapper>
       <ContactWrapper>
         <p>
-          <FaPhoneAlt className='phone-icon' />
+          <PhoneIcon />
           22 00 22 00
         </p>
       </ContactWrapper>

@@ -12,6 +12,9 @@ const HeroContainer = styled.div`
   background-size: cover;
   display: flex;
   align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const HeroSection = () => {
