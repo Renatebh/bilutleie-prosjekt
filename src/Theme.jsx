@@ -1,17 +1,17 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { ThemeProvider } from "styled-components";
 
 const theme = {
   colors: {
-    primaryColor: '#00406A',
-    secondaryColor: '#099EFF',
-    black: '#000000',
-    white: '#fff',
-    linearGrey: 'linear-gradient(#fff, #cbcbcb)',
+    primaryColor: "#00406A",
+    secondaryColor: "#099EFF",
+    black: "#000000",
+    white: "#fff",
+    linearGrey: "linear-gradient(#fff, #cbcbcb)",
   },
 
   screenSize: {
-    desktop: '144rem',
+    desktop: "144rem",
   },
 };
 
