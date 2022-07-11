@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import { FaPhoneAlt } from "react-icons/fa";
+import React from 'react';
+import styled from 'styled-components';
+import { FaPhoneAlt } from 'react-icons/fa';
 
 const NavBar = styled.div`
-  height: 80px;
+  height: 8rem;
   background-color: ${({ theme }) => theme.colors.primaryColor};
   width: 100vw;
   display: flex;
 `;
 
 const LogoWrapper = styled.div`
-  height: 80px;
+  height: 8rem;
   width: 20%;
   display: flex;
   align-items: center;
@@ -23,15 +23,15 @@ const LogoWrapper = styled.div`
 `;
 
 const LinksWrapper = styled.div`
-  height: 80px;
+  height: 8rem;
   width: 60%;
 
   ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    height: 80px;
+    gap: 1.5rem;
+    height: 8rem;
     margin: 0;
     padding: 0;
     text-transform: uppercase;
@@ -45,27 +45,23 @@ const LinksWrapper = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  height: 80px;
+  height: 8rem;
   width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 1rem;
 
   p {
     color: white;
     font-weight: bold;
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 
   .phone-icon {
-    margin-right: 10px;
+    margin-right: 1rem;
   }
-`;
-
-const Heading = styled.h1`
-  font-size: 40px;
 `;
 
 const Header = ({ children }) => {
@@ -84,7 +80,7 @@ const Header = ({ children }) => {
       </LinksWrapper>
       <ContactWrapper>
         <p>
-          <FaPhoneAlt className="phone-icon" />
+          <FaPhoneAlt className='phone-icon' />
           22 00 22 00
         </p>
       </ContactWrapper>

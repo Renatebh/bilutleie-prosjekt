@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const HeroForm = styled.form`
+const Form = styled.form`
   background-color: ${({ theme }) => theme.colors.blackTransparent};
   width: 70.6rem;
   height: 54.5rem;
   border-radius: 2rem;
+  padding: 4.5rem 5.5rem;
 `;
 
 const HeroLabel = styled.label`
@@ -15,26 +16,33 @@ const HeroLabel = styled.label`
   padding: 2rem 4rem;
 `;
 
+const HeroSelect = styled.select`
+  padding: 2rem 4rem;
+  width: 70%;
+  text-align: center;
+`;
+
 const Select = () => {
   return (
     <>
-      <HeroLabel htmlFor='cars'>Hentested:</HeroLabel>
-      <select name='cars' id='cars'>
-        <option value='volvo'>Volvo</option>
-        <option value='saab'>Saab</option>
-        <option value='opel'>Opel</option>
-        <option value='audi'>Audi</option>
-      </select>
+      <HeroLabel htmlFor='hentested'>Hentested:</HeroLabel>
+      <HeroSelect name='hentested' id='hentested' defaultValue={'default'}>
+        <option value={'default'} disabled>
+          -- Velg hentested --
+        </option>
+        <option value='volvo'>Osloveien 22, 0022 Oslo</option>
+        <option value='saab'>Osloveien 22, 0022 Oslo</option>
+      </HeroSelect>
     </>
   );
 };
 
-const HeroSelect = () => {
+const HeroForm = () => {
   return (
-    <HeroForm>
+    <Form>
       <Select />
-    </HeroForm>
+    </Form>
   );
 };
 
-export default HeroSelect;
+export default HeroForm;
