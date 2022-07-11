@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaPhoneAlt } from 'react-icons/fa';
+import logo from '../../assets/racing (2).png';
 
 const NavBar = styled.div`
   height: 8rem;
@@ -19,6 +20,10 @@ const LogoWrapper = styled.div`
   h1 {
     color: ${({ theme }) => theme.colors.white};
     font-family: sans-serif;
+  }
+
+  img {
+    width: 3rem;
   }
 `;
 
@@ -68,6 +73,7 @@ const Header = ({ children }) => {
   return (
     <NavBar>
       <LogoWrapper>
+        <img src={logo} alt='bildet av logoen' />
         <h1>Bilutleie</h1>
       </LogoWrapper>
       <LinksWrapper>
