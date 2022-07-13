@@ -1,111 +1,38 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaPhoneAlt } from 'react-icons/fa';
-import logo from '../../assets/racing (2).png';
-
-const NavBar = styled.div`
-  height: 8rem;
-  background-color: ${({ theme }) => theme.colors.primaryColor};
-  width: 100vw;
-  display: flex;
-`;
-
-const LogoWrapper = styled.div`
-  height: 8rem;
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  h1 {
-    color: ${({ theme }) => theme.colors.white};
-    font-family: sans-serif;
-  }
-
-  img {
-    width: 3rem;
-  }
-`;
-
-const LinksWrapper = styled.div`
-  height: 8rem;
-  width: 60%;
-
-  ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    height: 8rem;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-family: sans-serif;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  li {
-    color: ${({ theme }) => theme.colors.white};
-    list-style: none;
-    text-decoration: none;
-  }
-`;
-
-const ContactWrapper = styled.div`
-  height: 8rem;
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-
-  p {
-    color: white;
-    font-weight: bold;
-    font-family: sans-serif;
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-`;
-
-const PhoneIcon = styled(FaPhoneAlt)`
-  margin-right: 1rem;
-`;
+import React, { useState } from "react";
+import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
+import logo from "../../assets/racing (2).png";
+import "./Header.css";
 
 const Header = () => {
-  return (
-    <NavBar>
-      <LogoWrapper>
-        <img src={logo} alt='bildet av logoen' />
-        <h1>Bilutleie</h1>
-      </LogoWrapper>
-      <LinksWrapper>
-        <ul>
-          <a href="/">
-            <li>Personbil</li>
-          </a>
-          <a href="/">
-            <li>Varbil</li>
-          </a>
-          <a href="/">
-            <li>Priser</li>
-          </a>
-          <a href="/">
-            <li>Kontakt oss</li>
-          </a>
-        </ul>
-      </LinksWrapper>
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
 
-      <ContactWrapper>
-        <p>
-          <PhoneIcon />
+  return (
+    <div className="navbar">
+      <div className="logo-wrapper">
+        <img src={logo} alt="bildet av logoen" />
+        <p className="logo">Bilutleie</p>
+      </div>
+
+      <ul className={click ? " nav-menu active" : "nav-menu"}>
+        <li>Personbil</li>
+        <li>Varebil</li>
+        <li>Priser</li>
+        <li>Kontakt oss</li>
+      </ul>
+
+      <div className="nav-icon" onClick={handleClick}>
+        {click ? <FaTimes size={20} /> : <FaBars size={20} />}
+      </div>
+
+      <div className="contact-wrapper">
+        <FaPhoneAlt size={25} />
+
+        <a href="tel:91774282" className="phone">
           22 00 22 00
-        </p>
-      </ContactWrapper>
-    </NavBar>
+        </a>
+      </div>
+    </div>
   );
 };
 
