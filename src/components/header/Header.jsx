@@ -21,7 +21,7 @@ const Header = () => {
             : headerStyles['nav-menu']
         }
       >
-        <li>Personbil</li>
+        <li>{/* <Link>Personbil</Link> */}</li>
         <li>Varebil</li>
         <li>Priser</li>
         <li>Kontakt oss</li>
