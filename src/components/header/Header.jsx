@@ -17,7 +17,7 @@ const Header = () => {
       <ul
         className={
           click
-            ? headerStyles["nav-menu"] + " " + headerStyles.active
+            ? `${headerStyles["nav-menu"]} ${headerStyles.active}`
             : headerStyles["nav-menu"]
         }
       >

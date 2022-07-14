@@ -1,0 +1,8 @@
+:root {
+  --primaryColor: #00406a;
+  --secondaryColor: #099eff;
+  --black: #000000;
+  --white: #fff;
+  --linearGrey: linear-gradient(#fff, #cbcbcb);
+  --blackTransparent: rgba(0, 0, 0, 0.74);
+}
