@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import GlobalStyle from "./globalStyles";
 import Theme from "./Theme";
 import Header from "./components/header/Header";
@@ -15,6 +16,18 @@ function App() {
         <HeroSection />
       </Theme>
     </Router>
+=======
+import Theme from './Theme';
+import Header from './components/header/Header';
+import HeroSection from './components/hero/HeroSection';
+
+function App() {
+  return (
+    <Theme>
+      <Header>Heading</Header>
+      <HeroSection />
+    </Theme>
+>>>>>>> 298e0a2f6dde5ea4a93fdc6c000f1046390f9576
   );
 }
 
