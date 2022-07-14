@@ -1,68 +1,6 @@
 @import "../../index.css";
 @import "../../variables/variables.module.css";
 
-/* .navbar {
-  height: 8rem;
-  background-color: blue;
-  width: 100vw;
-  display: flex;
-}
-
-.logo-wrapper {
-
-}
-
-h1 {
-  color: white;
-  font-family: sans-serif;
-}
-
-
-
-.link-wrapper {
-  height: 8rem;
-  width: 60%;
-}
-
-ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  height: 8rem;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-  font-family: sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  color: white;
-  list-style: none;
-  text-decoration: none;
-}
-
-.contact-wrapper {
-  height: 8rem;
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.contact-wrapper > p {
-  color: white;
-  font-weight: bold;
-  font-family: sans-serif;
-  font-size: 1.8rem;
-  cursor: pointer;
-} */
-
 .navbar {
   font-family: "Roboto", sans-serif;
   width: 100%;
