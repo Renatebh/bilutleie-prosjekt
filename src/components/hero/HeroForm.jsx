@@ -1,4 +1,5 @@
 import React from "react";
+import HeroText from "./HeroText";
 import { FaChevronDown } from "react-icons/fa";
 import { FaCar } from "react-icons/fa";
 import { FaTruck } from "react-icons/fa";
@@ -70,6 +71,7 @@ const HeroForm = () => {
         </div>
         <button className={styles["submit-Btn"]}>Søk</button>
       </form>
+      <HeroText />
     </div>
   );
 };

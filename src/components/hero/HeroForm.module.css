@@ -3,6 +3,9 @@
 .heroContent-container {
   max-width: 144rem;
   width: 100%;
+  display: flex;
+  gap: 8rem;
+  justify-content: center;
 }
 
 .form {
@@ -110,4 +113,15 @@
   font-size: 1.8rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1040px) {
+  .heroContent-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .form {
+    width: 85%;
+  }
 }
