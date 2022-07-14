@@ -83,7 +83,7 @@
     transition: 0.3s;
   }
 
-  .nav-menu.active {
+  .active {
     left: 0;
   }
 
