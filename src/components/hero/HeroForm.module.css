@@ -1,0 +1,113 @@
+@import "../../variables/variables.module.css";
+
+.heroContent-container {
+  max-width: 144rem;
+  width: 100%;
+}
+
+.form {
+  background-color: var(--blackTransparent);
+  max-width: 70.6rem;
+  max-height: 48.5rem;
+  width: 40%;
+  border-radius: 2rem;
+  padding: 3.5rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.hero-label {
+  color: var(--white);
+  font-size: 1.8rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.hero-label-container {
+  background-color: var(--primaryColor);
+  height: 6.5rem;
+  border-radius: 1rem 0 0 1rem;
+  width: 38%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-select {
+  padding: 2rem 4rem;
+  width: 62%;
+  border-radius: 0 1rem 1rem 0;
+  text-align: center;
+  padding: 0 2rem 0 2rem;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  cursor: pointer;
+  color: #525252;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.date {
+  width: 62%;
+  text-align: center;
+  border-radius: 0 1rem 1rem 0;
+  padding: 0 2rem 0 2rem;
+  cursor: pointer;
+  color: #525252;
+}
+
+.car-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  width: 50%;
+  background-color: var(--primaryColor);
+  border: none;
+  height: 7rem;
+  color: var(--white);
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.chevron {
+  margin: 2rem 0 0 -4rem;
+}
+
+.car-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-left: 1rem;
+}
+
+.truck-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-left: 1rem;
+}
+
+.car-type-container {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+
+.submit-Btn {
+  width: 100%;
+  height: 6rem;
+  border-radius: 1rem;
+  background-color: var(--secondaryColor);
+  color: var(--white);
+  border: none;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
