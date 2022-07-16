@@ -7,10 +7,18 @@
   background-color: var(--primaryColor);
   color: var(--white);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 3rem;
   position: sticky;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 144rem;
+  width: 100%;
 }
 
 .logo-wrapper {
