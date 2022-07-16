@@ -16,3 +16,9 @@
     height: 85rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .hero-container {
+    height: 75rem;
+  }
+}

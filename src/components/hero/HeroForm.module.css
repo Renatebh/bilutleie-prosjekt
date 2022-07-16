@@ -127,3 +127,19 @@
     width: 85%;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .form {
+    padding: 2rem;
+    width: 95%;
+  }
+
+  .chevron {
+    display: none;
+  }
+
+  .hero-select,
+  .date {
+    font-size: var(--step-0);
+  }
+}

@@ -1,11 +1,13 @@
+@import "../../variables/variables.module.css";
+
 .heading {
-  font-size: 5.2rem;
+  font-size: var(--step-5);
   font-weight: 900;
   margin-bottom: 2rem;
 }
 
 .paragraph {
-  font-size: 3.6rem;
+  font-size: var(--step-3);
   font-weight: 900;
   line-height: 1.2;
 }
