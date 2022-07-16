@@ -43,14 +43,8 @@ html:focus-within {
 /* Set core body defaults */
 body {
   min-height: 100vh;
-  text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-size: 1.6rem;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
 }
 
 /* Make images easier to work with */
@@ -86,9 +80,4 @@ select {
 
 body {
   font-family: "Lato", "Open Sans", sans-serif;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: blueviolet !important;
 }

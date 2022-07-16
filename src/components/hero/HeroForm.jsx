@@ -1,8 +1,6 @@
 import React from "react";
 import HeroText from "./HeroText";
-import { FaChevronDown } from "react-icons/fa";
-import { FaCar } from "react-icons/fa";
-import { FaTruck } from "react-icons/fa";
+import { FaChevronDown, FaCar, FaTruck } from "react-icons/fa";
 import styles from "./HeroForm.module.css";
 
 const Select = () => {
