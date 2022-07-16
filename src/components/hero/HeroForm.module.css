@@ -119,6 +119,7 @@
   .heroContent-container {
     flex-direction: column-reverse;
     align-items: center;
+    gap: 4rem;
   }
 
   .form {
