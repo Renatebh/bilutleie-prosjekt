@@ -87,3 +87,8 @@ select {
 body {
   font-family: "Lato", "Open Sans", sans-serif;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: blueviolet !important;
+}

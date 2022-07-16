@@ -3,6 +3,7 @@ import HeroSection from "./components/hero/HeroSection";
 import Cards from "./components/cards/Cards";
 import CardsSection from "./components/cards/CardsSection";
 import Footer from "./components/footer/Footer";
+import CarCarousel from "./components/CarCarousel/CarCarousel";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Header />
       <HeroSection />
       <CardsSection />
-      <Footer />
+      <CarCarousel />
     </>
   );
 }
