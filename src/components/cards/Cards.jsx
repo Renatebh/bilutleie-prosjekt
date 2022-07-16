@@ -8,7 +8,7 @@ const Cards = (props) => {
         <div className={styles.icon}>{props.imgsrc}</div>
         <div className={styles["cards-info"]}>
           <h3 className={styles["cards-header"]}>{props.title}</h3>
-          <p>{props.text}</p>
+          <p className={styles["cards-text"]}>{props.text}</p>
         </div>
       </div>
     </>
