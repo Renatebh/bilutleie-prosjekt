@@ -1,0 +1,62 @@
+@import "../../variables/variables.module.css";
+
+.carousel-container {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  position: relative;
+}
+
+.swiper {
+  width: 70%;
+  height: 100%;
+  max-width: 132rem;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-nav-prev {
+  position: absolute;
+  display: inline-block;
+  top: 40%;
+  left: 2%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.swiper-nav-next {
+  position: absolute;
+  display: inline-block;
+  top: 40%;
+  left: 95%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.arrow-left,
+.arrow-right {
+  color: var(--primaryColor);
+  border-radius: 50%;
+  width: 4.2rem;
+  height: 4.2rem;
+}
+
+@media screen and (max-width: 1510px) {
+  .swiper {
+    width: 100%;
+    max-width: 100rem;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .swiper {
+    width: 90%;
+  }
+}

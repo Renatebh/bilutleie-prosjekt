@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import styles from "./CarCarousel.module.css";
+import styles from "./Carousel.module.css";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
-const CarCarousel = () => {
+const Carousel = ({ children }) => {
   const swiperNavPrevRef = useRef(null);
   const swiperNavNextRef = useRef(null);
 
@@ -23,14 +23,7 @@ const CarCarousel = () => {
         loop
         className={styles.swiper}
       >
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 1</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 2</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 3</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 4</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 5</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 6</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 7</SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>Slide 8</SwiperSlide>
+        {children}
         <div className={styles["swiper-nav-prev"]} ref={swiperNavPrevRef}>
           <FaArrowCircleLeft className={styles["arrow-left"]} />
         </div>
@@ -42,4 +35,4 @@ const CarCarousel = () => {
   );
 };
 
-export default CarCarousel;
+export default Carousel;
