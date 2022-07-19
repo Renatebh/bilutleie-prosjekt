@@ -1,0 +1,89 @@
+.footer-container {
+  width: 100%;
+  height: auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 4rem;
+  height: 30rem;
+}
+
+.some-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  color: var(--primaryColor);
+  margin-bottom: 5rem;
+}
+
+.copyrights-container {
+  width: 100%;
+  height: 5rem;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  height: auto;
+}
+
+.company-name {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primaryColor);
+}
+
+.company-adress {
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0.2rem 0 2rem 0;
+}
+
+.email,
+.phone {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+
+.opening,
+.info {
+  font-weight: bold;
+}
+
+.opening {
+  margin-bottom: 1.5rem;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.links-list {
+  list-style: none;
+  cursor: pointer;
+}
+
+.links-list li:hover {
+  color: var(--secondaryColor);
+  transition: 0.3s;
+}
+
+.some-logo {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
