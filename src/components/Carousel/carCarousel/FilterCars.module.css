@@ -1,0 +1,37 @@
+@import "../../../variables/variables.module.css";
+
+.select {
+  width: 14rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  text-transform: uppercase;
+}
+
+.button {
+  background-color: var(--secondaryColor);
+  color: var(--white);
+  border: none;
+}
+
+.form {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1510px) {
+  .form {
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    flex-direction: column;
+    width: 95%;
+    align-items: center;
+  }
+
+  .select {
+    width: 95%;
+  }
+}

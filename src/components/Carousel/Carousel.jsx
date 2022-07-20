@@ -13,14 +13,32 @@ const Carousel = ({ children }) => {
   return (
     <div className={styles["carousel-container"]}>
       <Swiper
-        modules={[Navigation]}
         navigation={{
           prevEl: swiperNavPrevRef.current,
           nextEl: swiperNavNextRef.current,
         }}
-        slidesPerView={4}
+        slidesPerView={1}
         spaceBetween={30}
+        breakpoints={{
+          340: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          468: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          850: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1650: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+        }}
         loop
+        modules={[Navigation]}
         className={styles.swiper}
       >
         {children}
