@@ -1,13 +1,18 @@
 .footer-container {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-top {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin: auto;
   gap: 4rem;
   height: 30rem;
+  width: 100%;
+  max-width: 132rem;
 }
 
 .some-container {
@@ -70,12 +75,12 @@ a {
 .links-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .links-list {
   list-style: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .links-list li:hover {
@@ -86,4 +91,23 @@ a {
 .some-logo {
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1510px) {
+  .footer-top {
+    width: 95%;
+    max-width: 100rem;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .footer-top {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 0 2rem 0;
+  }
 }
