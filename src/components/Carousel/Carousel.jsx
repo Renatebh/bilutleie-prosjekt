@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper";
 import styles from "./Carousel.module.css";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
@@ -19,6 +20,9 @@ const Carousel = ({ children }) => {
         }}
         slidesPerView={1}
         spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
         breakpoints={{
           340: {
             slidesPerView: 1,
@@ -38,7 +42,7 @@ const Carousel = ({ children }) => {
           },
         }}
         loop
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
         className={styles.swiper}
       >
         {children}
