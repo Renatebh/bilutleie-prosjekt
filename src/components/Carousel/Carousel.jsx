@@ -35,10 +35,12 @@ const Carousel = ({ children }) => {
           850: {
             slidesPerView: 3,
             spaceBetween: 30,
+            pagination: false,
           },
           1650: {
             slidesPerView: 4,
             spaceBetween: 30,
+            pagination: false,
           },
         }}
         loop

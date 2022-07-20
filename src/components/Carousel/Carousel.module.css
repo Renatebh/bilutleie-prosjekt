@@ -23,22 +23,26 @@
   object-fit: cover;
 }
 
-.swiper-nav-prev {
+.swiper-nav-prev,
+.swiper-nav-next {
+  background-color: var(--white);
   position: absolute;
   display: inline-block;
-  top: 40%;
-  left: 2%;
   z-index: 10;
   cursor: pointer;
+  border-radius: 50%;
+  width: 4.2rem;
+  height: 4.2rem;
+}
+
+.swiper-nav-prev {
+  top: 40%;
+  left: 2%;
 }
 
 .swiper-nav-next {
-  position: absolute;
-  display: inline-block;
   top: 40%;
   left: 95%;
-  z-index: 10;
-  cursor: pointer;
 }
 
 .arrow-left,
@@ -46,6 +50,7 @@
   color: var(--primaryColor);
   width: 4.2rem;
   height: 4.2rem;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 1510px) {
