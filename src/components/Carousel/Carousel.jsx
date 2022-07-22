@@ -18,6 +18,10 @@ const Carousel = ({ children }) => {
           prevEl: swiperNavPrevRef.current,
           nextEl: swiperNavNextRef.current,
         }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = swiperNavPrevRef.current;
+          swiper.params.navigation.nextEl = swiperNavNextRef.current;
+        }}
         slidesPerView={1}
         spaceBetween={30}
         pagination={{
@@ -48,13 +52,13 @@ const Carousel = ({ children }) => {
         className={styles.swiper}
       >
         {children}
-        <div className={styles["swiper-nav-prev"]} ref={swiperNavPrevRef}>
-          <FaArrowCircleLeft className={styles["arrow-left"]} />
-        </div>
-        <div className={styles["swiper-nav-next"]} ref={swiperNavNextRef}>
-          <FaArrowCircleRight className={styles["arrow-right"]} />
-        </div>
       </Swiper>
+      <div className={styles["swiper-nav-prev"]} ref={swiperNavPrevRef}>
+        <FaArrowCircleLeft className={styles["arrow-left"]} />
+      </div>
+      <div className={styles["swiper-nav-next"]} ref={swiperNavNextRef}>
+        <FaArrowCircleRight className={styles["arrow-right"]} />
+      </div>
     </div>
   );
 };

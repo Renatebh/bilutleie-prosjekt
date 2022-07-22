@@ -25,24 +25,20 @@
 
 .swiper-nav-prev,
 .swiper-nav-next {
-  background-color: var(--white);
   position: absolute;
   display: inline-block;
   z-index: 10;
   cursor: pointer;
-  border-radius: 50%;
-  width: 4.2rem;
-  height: 4.2rem;
 }
 
 .swiper-nav-prev {
-  top: 40%;
+  top: 28%;
   left: 2%;
 }
 
 .swiper-nav-next {
-  top: 40%;
-  left: 95%;
+  top: 28%;
+  right: 2%;
 }
 
 .arrow-left,
@@ -50,7 +46,6 @@
   color: var(--primaryColor);
   width: 4.2rem;
   height: 4.2rem;
-  pointer-events: none;
 }
 
 @media screen and (max-width: 1510px) {
@@ -67,5 +62,12 @@
 @media screen and (max-width: 1050px) {
   .swiper {
     margin-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .swiper-nav-prev,
+  .swiper-nav-next {
+    display: none;
   }
 }
