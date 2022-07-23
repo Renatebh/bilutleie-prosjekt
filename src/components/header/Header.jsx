@@ -9,24 +9,26 @@ const Header = () => {
 
   return (
     <div className={headerStyles.navbar}>
-      <div className={headerStyles["header-container"]}>
+      <header className={headerStyles["header-container"]}>
         <div className={headerStyles["logo-wrapper"]}>
           <img src={logo} alt="bildet av logoen" />
           <p className={headerStyles.logo}>Bilutleie</p>
         </div>
 
-        <ul
-          className={
-            click
-              ? `${headerStyles["nav-menu"]} ${headerStyles.active}`
-              : headerStyles["nav-menu"]
-          }
-        >
-          <li>Personbil</li>
-          <li>Varebil</li>
-          <li>Priser</li>
-          <li>Kontakt oss</li>
-        </ul>
+        <nav>
+          <ul
+            className={
+              click
+                ? `${headerStyles["nav-menu"]} ${headerStyles.active}`
+                : headerStyles["nav-menu"]
+            }
+          >
+            <li>Personbil</li>
+            <li>Varebil</li>
+            <li>Priser</li>
+            <li>Kontakt oss</li>
+          </ul>
+        </nav>
 
         <div className={headerStyles["nav-icon"]} onClick={handleClick}>
           {click ? <FaTimes size={20} /> : <FaBars size={20} />}
@@ -39,7 +41,7 @@ const Header = () => {
             22 00 22 00
           </a>
         </div>
-      </div>
+      </header>
     </div>
   );
 };

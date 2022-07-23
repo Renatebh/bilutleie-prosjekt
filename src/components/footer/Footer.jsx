@@ -7,7 +7,7 @@ import SomeLogoes from "./SomeLogoes";
 
 const Footer = () => {
   return (
-    <>
+    <footer>
       <div className={styles["footer-container"]}>
         <div className={styles["footer-top"]}>
           <Contact />
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <SomeLogoes />
       </div>
-    </>
+    </footer>
   );
 };
 
