@@ -1,0 +1,23 @@
+@import "../../variables/variables.module.css";
+
+.container {
+  background-color: var(--primaryColor);
+  padding: 10rem 4rem;
+  margin-bottom: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  max-width: 132rem;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 820px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}

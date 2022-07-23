@@ -99,3 +99,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(179, 179, 179);
 }
+
+.leaflet-container {
+  width: 50%;
+  height: 50rem;
+}
+
+@media screen and (max-width: 820px) {
+  .leaflet-container {
+    width: 100%;
+  }
+}
