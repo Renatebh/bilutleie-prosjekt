@@ -1,0 +1,8 @@
+.container {
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f8f8f8 40%,
+    #c5c5c5 100%
+  );
+}

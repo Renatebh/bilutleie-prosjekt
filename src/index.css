@@ -82,12 +82,6 @@ select {
 
 body {
   font-family: "Lato", "Open Sans", sans-serif;
-  background-image: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #f8f8f8 40%,
-    #c5c5c5 100%
-  );
 }
 
 ::-webkit-scrollbar {
