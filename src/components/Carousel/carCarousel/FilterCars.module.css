@@ -19,6 +19,10 @@
   gap: 1rem;
 }
 
+select {
+  background-color: var(--white);
+}
+
 @media screen and (max-width: 1510px) {
   .form {
     max-width: 40rem;

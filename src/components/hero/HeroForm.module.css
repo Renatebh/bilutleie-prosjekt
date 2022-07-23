@@ -116,6 +116,11 @@
   cursor: pointer;
 }
 
+select {
+  background-color: var(--white);
+  border: 0.1rem solid var(--primaryColor);
+}
+
 @media screen and (max-width: 1040px) {
   .heroContent-container {
     flex-direction: column-reverse;

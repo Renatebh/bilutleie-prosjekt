@@ -27,25 +27,44 @@
 .swiper-nav-next {
   position: absolute;
   display: inline-block;
-  z-index: 10;
   cursor: pointer;
 }
 
 .swiper-nav-prev {
   top: 28%;
-  left: 2%;
+  left: 2.5%;
 }
 
 .swiper-nav-next {
   top: 28%;
-  right: 2%;
+  right: 2.5%;
 }
 
 .arrow-left,
 .arrow-right {
   color: var(--primaryColor);
-  width: 4.2rem;
-  height: 4.2rem;
+  width: 3.8rem;
+  height: 3.8rem;
+}
+
+@media screen and (max-width: 2144px) {
+  .swiper-nav-prev {
+    left: 0%;
+  }
+
+  .swiper-nav-next {
+    right: 0%;
+  }
+}
+
+@media screen and (max-width: 2000px) {
+  .swiper-nav-prev {
+    left: -4%;
+  }
+
+  .swiper-nav-next {
+    right: -4%;
+  }
 }
 
 @media screen and (max-width: 1510px) {
@@ -57,17 +76,45 @@
   .carousel-container {
     width: 100%;
   }
+
+  .swiper-nav-prev {
+    left: 10%;
+  }
+
+  .swiper-nav-next {
+    right: 10%;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .swiper-nav-prev {
+    left: 6%;
+  }
+
+  .swiper-nav-next {
+    right: 6%;
+  }
+}
+
+@media screen and (max-width: 1234px) {
+  .swiper-nav-prev {
+    left: 2%;
+  }
+
+  .swiper-nav-next {
+    right: 2%;
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .swiper-nav-prev,
+  .swiper-nav-next {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1050px) {
   .swiper {
     margin-bottom: 6rem;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .swiper-nav-prev,
-  .swiper-nav-next {
-    display: none;
   }
 }

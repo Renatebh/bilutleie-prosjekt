@@ -1,3 +1,5 @@
+@import "../src/variables/variables.module.css";
+
 /* Box sizing rules */
 *,
 *::before,
@@ -80,4 +82,26 @@ select {
 
 body {
   font-family: "Lato", "Open Sans", sans-serif;
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f8f8f8 40%,
+    #c5c5c5 100%
+  );
+}
+
+::-webkit-scrollbar {
+  z-index: 11;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(158, 158, 158);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(179, 179, 179);
 }

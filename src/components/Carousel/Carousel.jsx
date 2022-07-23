@@ -13,6 +13,9 @@ const Carousel = ({ children }) => {
 
   return (
     <div className={styles["carousel-container"]}>
+      <div className={styles["swiper-nav-prev"]} ref={swiperNavPrevRef}>
+        <FaArrowCircleLeft className={styles["arrow-left"]} />
+      </div>
       <Swiper
         navigation={{
           prevEl: swiperNavPrevRef.current,
@@ -39,6 +42,10 @@ const Carousel = ({ children }) => {
           850: {
             slidesPerView: 3,
             spaceBetween: 30,
+          },
+          1125: {
+            slidesPerView: 3,
+            spaceBetween: 30,
             pagination: false,
           },
           1650: {
@@ -53,9 +60,6 @@ const Carousel = ({ children }) => {
       >
         {children}
       </Swiper>
-      <div className={styles["swiper-nav-prev"]} ref={swiperNavPrevRef}>
-        <FaArrowCircleLeft className={styles["arrow-left"]} />
-      </div>
       <div className={styles["swiper-nav-next"]} ref={swiperNavNextRef}>
         <FaArrowCircleRight className={styles["arrow-right"]} />
       </div>
