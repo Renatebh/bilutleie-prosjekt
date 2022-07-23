@@ -4,6 +4,7 @@ import CardsSection from "./components/cards/CardsSection";
 import CarCarousel from "./components/Carousel/carCarousel/CarCarousel";
 import GradientBG from "./components/background/GradientBG";
 import FindUs from "./components/findUs/FindUs";
+import Reviews from "./components/reviews/Reviews";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <CardsSection />
           <CarCarousel />
           <FindUs />
+          <Reviews />
         </main>
         <Footer />
       </GradientBG>

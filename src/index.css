@@ -103,6 +103,7 @@ body {
 .leaflet-container {
   width: 50%;
   height: 50rem;
+  z-index: 1;
 }
 
 @media screen and (max-width: 820px) {

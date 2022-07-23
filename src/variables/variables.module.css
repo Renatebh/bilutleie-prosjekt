@@ -8,7 +8,7 @@
   /* Fluid font size steps */
   /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1140,30,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
   --step--2: clamp(0.78rem, calc(0.62rem + 0.82vw), 1.2rem);
-  --step--1: clamp(0.94rem, calc(0.72rem + 1.1vw), 1.5rem);
+  --step--1: clamp(1.8rem, calc(0.8rem + 1.39vw), 1.6rem);
   --step-0: clamp(1.13rem, calc(0.83rem + 1.46vw), 1.88rem);
   --step-1: clamp(1.35rem, calc(0.96rem + 1.94vw), 2.34rem);
   --step-2: clamp(1.62rem, calc(1.11rem + 2.56vw), 2.93rem);

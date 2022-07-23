@@ -1,0 +1,71 @@
+@import "../../variables/variables.module.css";
+
+.header-container {
+  width: 70%;
+  max-width: 132rem;
+  margin: auto;
+}
+
+.header {
+  font-size: var(--step-2);
+}
+
+.swiper-slide {
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.card-container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 4rem;
+  background-color: var(--white);
+  padding: 4rem;
+  min-height: 32rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.review,
+.name {
+  font-size: var(--step--1);
+}
+
+.name {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1510px) {
+  .header-container {
+    width: 100%;
+    max-width: 100rem;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    margin-bottom: 10rem;
+  }
+
+  .header-container {
+    width: 95%;
+    margin-top: 6rem;
+  }
+
+  .header {
+    text-align: center;
+  }
+}
