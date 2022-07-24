@@ -18,7 +18,7 @@
 
 .paragraph {
   color: var(--white);
-  font-size: var(--step-0);
+  font-size: var(--step--1);
 }
 
 .img {
@@ -35,4 +35,32 @@
 
 .img-container {
   width: 40%;
+}
+
+@media screen and (max-width: 1510px) {
+  .container {
+    width: 95%;
+  }
+
+  .text-container {
+    width: 55%;
+  }
+
+  .img-container {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .text-container {
+    width: 100%;
+  }
+
+  .img-container {
+    width: 100%;
+  }
 }
