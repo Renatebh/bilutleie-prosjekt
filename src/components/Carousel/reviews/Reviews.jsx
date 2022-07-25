@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "../Carousel/Carousel";
+import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
 import styles from "./Reviews.module.css";
 
