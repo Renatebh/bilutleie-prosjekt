@@ -9,10 +9,11 @@
 .footer-top {
   display: flex;
   justify-content: space-between;
-  gap: 4rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
   height: 30rem;
   width: 100%;
-  max-width: 90rem;
+  max-width: 100rem;
 }
 
 .some-container {
@@ -57,6 +58,14 @@
   font-size: 2rem;
 }
 
+.phone:hover {
+  color: var(--secondaryColor);
+}
+
+.email:hover {
+  color: var(--secondaryColor);
+}
+
 a {
   font-weight: 600;
   text-decoration: none;
@@ -66,6 +75,7 @@ a {
 .opening,
 .info {
   font-weight: bold;
+  margin-top: 1.5rem;
 }
 
 .opening {
@@ -87,11 +97,14 @@ a {
 .links-list li:hover {
   color: var(--secondaryColor);
   transition: 0.3s;
+  font-weight: bold;
 }
 
-.some-logo {
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+.some-logo:hover {
+  transform: scale(1.5);
+  transition: all 0.7s ease-out;
+  color: var(--secondaryColor);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1510px) {
