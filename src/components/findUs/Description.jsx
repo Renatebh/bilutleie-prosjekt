@@ -4,7 +4,7 @@ import styles from "./Description.module.css";
 const Description = () => {
   return (
     <div className={styles.container}>
-      <h4 className={styles.heading}>Hvordan finner du vårt firma?</h4>
+      <h2 className={styles.heading}>Hvordan finner du vårt firma?</h2>
       <p className={styles.text}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur

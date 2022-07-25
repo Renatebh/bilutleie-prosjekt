@@ -7,7 +7,7 @@ const Reviews = () => {
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
-        <h5 className={styles.header}>Hva sier våre kunder om oss</h5>
+        <h2 className={styles.header}>Hva sier våre kunder om oss</h2>
       </div>
       <Carousel>
         <SwiperSlide className={styles["swiper-slide"]}>

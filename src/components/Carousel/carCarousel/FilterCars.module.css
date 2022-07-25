@@ -15,6 +15,10 @@
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: var(--primaryColor);
+}
+
 .form {
   display: flex;
   gap: 1rem;

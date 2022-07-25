@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className={styles.container}>
       <div className={styles["text-container"]}>
-        <h6 className={styles.header}>Bilutleie - Om oss</h6>
+        <h2 className={styles.header}>Bilutleie - Om oss</h2>
         <p className={styles.paragraph}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi repudiandae consequuntur

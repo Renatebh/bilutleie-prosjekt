@@ -80,6 +80,10 @@
   cursor: pointer;
 }
 
+.car-type:hover {
+  background-color: var(--secondaryColor);
+}
+
 .chevron {
   margin: 2.5rem 0 0 -4rem;
   pointer-events: none;
@@ -114,6 +118,10 @@
   font-size: var(--step-0);
   font-weight: bold;
   cursor: pointer;
+}
+
+.submit-Btn:hover {
+  background-color: var(--primaryColor);
 }
 
 select {

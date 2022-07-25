@@ -1,6 +1,8 @@
 .hero-container {
   background-image: url("../../assets/tabea-schimpf-O7WzqmeYoqc-unsplash.jpg");
-  height: 65rem;
+  height: 75rem;
+  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -13,6 +15,7 @@
 @media screen and (max-width: 1040px) {
   .hero-container {
     height: 85rem;
+    background-attachment: scroll;
   }
 }
 

@@ -9,7 +9,7 @@ const CarCarousel = () => {
   return (
     <>
       <div className={styles["header-container"]}>
-        <h3 className={styles.header}>Bestill en bil som passer for deg</h3>
+        <h2 className={styles.header}>Bestill en bil som passer for deg</h2>
         <FilterCars />
       </div>
       <Carousel>
@@ -17,36 +17,60 @@ const CarCarousel = () => {
           <div className={styles["card-container"]}>
             <img src={HyondaiSuv} alt="" className={styles.image} />
             <p className={styles.brand}>Hyondai 4x4</p>
+            <div className={styles["btn-container"]}>
+              <button className={styles["btn"]}>Les mer</button>
+              <button className={styles["btn"]}>Bestill</button>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
           <div className={styles["card-container"]}>
             <img src={HyondaiSuv} alt="" className={styles.image} />
             <p className={styles.brand}>Hyondai 4x4</p>
+            <div className={styles["btn-container"]}>
+              <button className={styles["btn"]}>Les mer</button>
+              <button className={styles["btn"]}>Bestill</button>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
           <div className={styles["card-container"]}>
             <img src={HyondaiSuv} alt="" className={styles.image} />
             <p className={styles.brand}>Hyondai 4x4</p>
+            <div className={styles["btn-container"]}>
+              <button className={styles["btn"]}>Les mer</button>
+              <button className={styles["btn"]}>Bestill</button>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
           <div className={styles["card-container"]}>
             <img src={HyondaiSuv} alt="" className={styles.image} />
             <p className={styles.brand}>Hyondai 4x4</p>
+            <div className={styles["btn-container"]}>
+              <button className={styles["btn"]}>Les mer</button>
+              <button className={styles["btn"]}>Bestill</button>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
           <div className={styles["card-container"]}>
             <img src={HyondaiSuv} alt="" className={styles.image} />
             <p className={styles.brand}>Hyondai 4x4</p>
+            <div className={styles["btn-container"]}>
+              <button className={styles["btn"]}>Les mer</button>
+              <button className={styles["btn"]}>Bestill</button>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
           <div className={styles["card-container"]}>
             <img src={HyondaiSuv} alt="" className={styles.image} />
             <p className={styles.brand}>Hyondai 4x4</p>
+            <div className={styles["btn-container"]}>
+              <button className={styles["btn"]}>Les mer</button>
+              <button className={styles["btn"]}>Bestill</button>
+            </div>
           </div>
         </SwiperSlide>
       </Carousel>

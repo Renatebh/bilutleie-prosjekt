@@ -28,6 +28,7 @@
   position: absolute;
   display: inline-block;
   cursor: pointer;
+  z-index: 11;
 }
 
 .swiper-nav-prev {
