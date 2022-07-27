@@ -1,6 +1,13 @@
 .container {
   margin: 18rem auto 10rem auto;
   display: flex;
-  align-items: center;
+  justify-content: center;
   max-width: 144rem;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.radio-form {
+  display: flex;
+  justify-content: space-between;
 }
