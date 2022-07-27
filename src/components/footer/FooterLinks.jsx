@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
 const FooterLinks = () => {
@@ -7,10 +8,26 @@ const FooterLinks = () => {
       <p className={styles.info}>Info</p>
       <nav>
         <ul className={styles["links-list"]}>
-          <li>Kontakt oss</li>
-          <li>Priser</li>
-          <li>Varebil</li>
-          <li>Personbil</li>
+          <li>
+            <Link className={styles["router-links"]} to="/contact">
+              Kontakt oss
+            </Link>
+          </li>
+          <li>
+            <Link className={styles["router-links"]} to="/prices">
+              Priser
+            </Link>
+          </li>
+          <li>
+            <Link className={styles["router-links"]} to="/trucks">
+              Varebil
+            </Link>
+          </li>
+          <li>
+            <Link className={styles["router-links"]} to="/cars">
+              Personbil
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
