@@ -23,7 +23,7 @@ const Select = () => {
         defaultValue={"default"}
       >
         <option value={"default"} disabled>
-          -- Velg hentested --
+          Velg hentested
         </option>
         <option value="volvo">Osloveien 22, 0022 Oslo</option>
         <option value="saab">Osloveien 22, 0022 Oslo</option>

@@ -1,4 +1,5 @@
 import React from "react";
+import HeadingWhite from "../ui/heading/HeadingWhite";
 import styles from "./About.module.css";
 import Car from "../../assets/campbell-3ZUsNJhi_Ik-unsplash.jpg";
 
@@ -6,7 +7,7 @@ const About = () => {
   return (
     <div className={styles.container}>
       <div className={styles["text-container"]}>
-        <h2 className={styles.header}>Bilutleie - Om oss</h2>
+        <HeadingWhite>Bilutleie - Om oss</HeadingWhite>
         <p className={styles.paragraph}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi repudiandae consequuntur

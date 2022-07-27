@@ -1,0 +1,15 @@
+@import "../../../variables/variables.module.css";
+
+.heading {
+  font-size: var(--step-2);
+  font-weight: bold;
+  line-height: 1;
+}
+
+.heading-white {
+  font-size: var(--step-2);
+  font-weight: bold;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 3rem;
+}

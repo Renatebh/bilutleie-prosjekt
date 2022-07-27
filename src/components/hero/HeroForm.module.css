@@ -39,11 +39,10 @@
 }
 
 .hero-select {
-  padding: 2rem 4rem;
   width: 62%;
   border-radius: 0 1rem 1rem 0;
   text-align: center;
-  padding: 0 2rem 0 2rem;
+  padding: 0 4rem 0 0rem;
   cursor: pointer;
   color: #525252;
   -webkit-appearance: none;
@@ -145,10 +144,6 @@ select {
   .form {
     padding: 2rem;
     width: 95%;
-  }
-
-  .chevron {
-    display: none;
   }
 
   .hero-select,

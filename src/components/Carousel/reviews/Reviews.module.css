@@ -53,12 +53,14 @@
   .header-container {
     width: 100%;
     max-width: 100rem;
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media screen and (max-width: 1050px) {
   .container {
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
   }
 
   .header-container {

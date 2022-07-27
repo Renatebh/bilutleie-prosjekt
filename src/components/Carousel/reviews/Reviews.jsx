@@ -1,13 +1,14 @@
 import React from "react";
 import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
+import Heading from "../../ui/heading/Heading";
 import styles from "./Reviews.module.css";
 
 const Reviews = () => {
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
-        <h2 className={styles.header}>Hva sier våre kunder om oss</h2>
+        <Heading>Hva sier våre kunder om oss</Heading>
       </div>
       <Carousel>
         <SwiperSlide className={styles["swiper-slide"]}>

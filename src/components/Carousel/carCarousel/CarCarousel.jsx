@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
+import Heading from "../../ui/heading/Heading";
 import styles from "./CarCarousel.module.css";
 import HyondaiSuv from "../../../assets/cars/hyondai-suv.webp";
 import FilterCars from "./FilterCars";
@@ -9,7 +10,7 @@ const CarCarousel = () => {
   return (
     <>
       <div className={styles["header-container"]}>
-        <h2 className={styles.header}>Bestill en bil som passer for deg</h2>
+        <Heading>Bestill en bil som passer for deg</Heading>
         <FilterCars />
       </div>
       <Carousel>
