@@ -27,22 +27,38 @@ const Header = () => {
             }
           >
             <li>
-              <Link className={headerStyles["router-links"]} to="/cars">
+              <Link
+                onClick={handleClick}
+                className={headerStyles["router-links"]}
+                to="/cars"
+              >
                 Personbil
               </Link>
             </li>
             <li>
-              <Link className={headerStyles["router-links"]} to="/trucks">
+              <Link
+                onClick={handleClick}
+                className={headerStyles["router-links"]}
+                to="/trucks"
+              >
                 Varebil
               </Link>
             </li>
             <li>
-              <Link className={headerStyles["router-links"]} to="/prices">
+              <Link
+                onClick={handleClick}
+                className={headerStyles["router-links"]}
+                to="/prices"
+              >
                 Priser
               </Link>
             </li>
             <li>
-              <Link className={headerStyles["router-links"]} to="/contact">
+              <Link
+                onClick={handleClick}
+                className={headerStyles["router-links"]}
+                to="/contact"
+              >
                 Kontakt oss
               </Link>
             </li>
