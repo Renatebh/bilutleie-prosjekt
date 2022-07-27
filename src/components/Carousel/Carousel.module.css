@@ -12,8 +12,9 @@
 
 .swiper {
   margin-bottom: 12rem;
-  max-width: 132rem;
+  max-width: 134rem;
   height: 100%;
+  padding: 1rem;
 }
 
 .swiper-slide img {
@@ -70,8 +71,8 @@
 
 @media screen and (max-width: 1510px) {
   .swiper {
-    width: 95%;
-    max-width: 100rem;
+    width: 97%;
+    max-width: 102rem;
   }
 
   .carousel-container {
