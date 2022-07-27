@@ -1,0 +1,66 @@
+@import "../../../variables/variables.module.css";
+
+.card-container {
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 4rem;
+  background-color: var(--white);
+  overflow: hidden;
+  min-height: 37rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 42rem;
+}
+
+.image {
+  height: 32rem;
+  object-fit: cover;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 2.4rem;
+}
+
+.price {
+  color: var(--primaryColor);
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.price,
+.brand {
+  line-height: 1;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem 2rem 2rem;
+  gap: 1rem;
+  max-width: 95%;
+}
+
+.btn {
+  background-color: var(--primaryColor);
+  border: none;
+  color: var(--white);
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 1rem;
+  width: 18rem;
+}
+
+.btn:hover {
+  background-color: var(--secondaryColor);
+}
+
+@media screen and (max-width: 600px) {
+  .single {
+    max-width: 95%;
+  }
+}

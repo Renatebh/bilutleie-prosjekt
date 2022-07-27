@@ -4,10 +4,61 @@
   justify-content: center;
   max-width: 144rem;
   flex-direction: column;
-  gap: 4rem;
 }
 
 .radio-form {
   display: flex;
   justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.cars-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media screen and (max-width: 1510px) {
+  .radio-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .container {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .radio-form,
+  .cars-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cars-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cars-container {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+  .radio-form {
+    gap: 0.5rem;
+    justify-items: center;
+  }
 }

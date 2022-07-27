@@ -117,6 +117,7 @@
 
 @media screen and (max-width: 1050px) {
   .swiper {
-    margin-bottom: 6rem;
+    margin-bottom: 0rem;
+    padding: 0.2rem;
   }
 }

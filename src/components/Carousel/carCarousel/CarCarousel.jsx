@@ -5,6 +5,7 @@ import Heading from "../../ui/heading/Heading";
 import styles from "./CarCarousel.module.css";
 import HyondaiSuv from "../../../assets/cars/hyondai-suv.webp";
 import FilterCars from "./FilterCars";
+import CarsCard from "../../cards/cars/CarCard";
 
 const CarCarousel = () => {
   return (
@@ -15,64 +16,46 @@ const CarCarousel = () => {
       </div>
       <Carousel>
         <SwiperSlide className={styles["swiper-slide"]}>
-          <div className={styles["card-container"]}>
-            <img src={HyondaiSuv} alt="" className={styles.image} />
-            <p className={styles.brand}>Hyondai 4x4</p>
-            <div className={styles["btn-container"]}>
-              <button className={styles["btn"]}>Les mer</button>
-              <button className={styles["btn"]}>Bestill</button>
-            </div>
-          </div>
+          <CarsCard
+            carImg={HyondaiSuv}
+            carBrand={"Hyondai 4x4"}
+            carPrice="Fra 360 kr/per dag"
+          />
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
-          <div className={styles["card-container"]}>
-            <img src={HyondaiSuv} alt="" className={styles.image} />
-            <p className={styles.brand}>Hyondai 4x4</p>
-            <div className={styles["btn-container"]}>
-              <button className={styles["btn"]}>Les mer</button>
-              <button className={styles["btn"]}>Bestill</button>
-            </div>
-          </div>
+          <CarsCard
+            carImg={HyondaiSuv}
+            carBrand={"Hyondai 4x4"}
+            carPrice="Fra 360 kr/per dag"
+          />
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
-          <div className={styles["card-container"]}>
-            <img src={HyondaiSuv} alt="" className={styles.image} />
-            <p className={styles.brand}>Hyondai 4x4</p>
-            <div className={styles["btn-container"]}>
-              <button className={styles["btn"]}>Les mer</button>
-              <button className={styles["btn"]}>Bestill</button>
-            </div>
-          </div>
+          <CarsCard
+            carImg={HyondaiSuv}
+            carBrand={"Hyondai 4x4"}
+            carPrice="Fra 360 kr/per dag"
+          />
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
-          <div className={styles["card-container"]}>
-            <img src={HyondaiSuv} alt="" className={styles.image} />
-            <p className={styles.brand}>Hyondai 4x4</p>
-            <div className={styles["btn-container"]}>
-              <button className={styles["btn"]}>Les mer</button>
-              <button className={styles["btn"]}>Bestill</button>
-            </div>
-          </div>
+          <CarsCard
+            carImg={HyondaiSuv}
+            carBrand={"Hyondai 4x4"}
+            carPrice="Fra 360 kr/per dag"
+          />
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
-          <div className={styles["card-container"]}>
-            <img src={HyondaiSuv} alt="" className={styles.image} />
-            <p className={styles.brand}>Hyondai 4x4</p>
-            <div className={styles["btn-container"]}>
-              <button className={styles["btn"]}>Les mer</button>
-              <button className={styles["btn"]}>Bestill</button>
-            </div>
-          </div>
+          <CarsCard
+            carImg={HyondaiSuv}
+            carBrand={"Hyondai 4x4"}
+            carPrice="Fra 360 kr/per dag"
+          />
         </SwiperSlide>
         <SwiperSlide className={styles["swiper-slide"]}>
-          <div className={styles["card-container"]}>
-            <img src={HyondaiSuv} alt="" className={styles.image} />
-            <p className={styles.brand}>Hyondai 4x4</p>
-            <div className={styles["btn-container"]}>
-              <button className={styles["btn"]}>Les mer</button>
-              <button className={styles["btn"]}>Bestill</button>
-            </div>
-          </div>
+          <CarsCard
+            carImg={HyondaiSuv}
+            carBrand={"Hyondai 4x4"}
+            carPrice="Fra 360 kr/per dag"
+          />
         </SwiperSlide>
       </Carousel>
     </>

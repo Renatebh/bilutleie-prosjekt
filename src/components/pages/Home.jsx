@@ -1,5 +1,5 @@
 import React from "react";
-import CardsSection from "../cards/CardsSection";
+import CardsSection from "../cards/whyChooseUs/CardsSection";
 import CarCarousel from "../Carousel/carCarousel/CarCarousel";
 import FindUs from "../findUs/FindUs";
 import HeroSection from "../hero/HeroSection";
