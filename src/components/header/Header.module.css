@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-.logo-wrapper {
+.logo-link {
   height: 90px;
   display: flex;
   align-items: center;
@@ -39,6 +39,7 @@
   font-weight: bold;
   margin-left: 0.5rem;
   font-family: "Roboto", sans-serif;
+  color: var(--white);
 }
 
 .nav-menu {
@@ -53,6 +54,12 @@
 
 .nav-icon {
   display: none;
+}
+
+.router-links {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
 }
 
 .contact-wrapper {

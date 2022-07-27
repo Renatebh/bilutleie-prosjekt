@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
 import logo from "../../assets/racing (2).png";
 import headerStyles from "./Header.module.css";
@@ -11,8 +12,10 @@ const Header = () => {
     <div className={headerStyles.navbar}>
       <header className={headerStyles["header-container"]}>
         <div className={headerStyles["logo-wrapper"]}>
-          <img src={logo} alt="bildet av logoen" />
-          <p className={headerStyles.logo}>Bilutleie</p>
+          <a className={headerStyles["logo-link"]} href="/">
+            <img src={logo} alt="bildet av logoen" />
+            <p className={headerStyles.logo}>Bilutleie</p>
+          </a>
         </div>
 
         <nav>
@@ -23,10 +26,26 @@ const Header = () => {
                 : headerStyles["nav-menu"]
             }
           >
-            <li>Personbil</li>
-            <li>Varebil</li>
-            <li>Priser</li>
-            <li>Kontakt oss</li>
+            <li>
+              <Link className={headerStyles["router-links"]} to="/cars">
+                Personbil
+              </Link>
+            </li>
+            <li>
+              <Link className={headerStyles["router-links"]} to="/trucks">
+                Varebil
+              </Link>
+            </li>
+            <li>
+              <Link className={headerStyles["router-links"]} to="/prices">
+                Priser
+              </Link>
+            </li>
+            <li>
+              <Link className={headerStyles["router-links"]} to="/contact">
+                Kontakt oss
+              </Link>
+            </li>
           </ul>
         </nav>
 
