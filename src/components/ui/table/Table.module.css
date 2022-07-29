@@ -1,0 +1,23 @@
+@import "../../../variables/variables.module.css";
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: var(--white);
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.table-row th {
+  text-align: left;
+  background-color: var(--white);
+  border-bottom: 0.1rem solid #ddd;
+  padding: 2rem;
+}
+
+.table-row td {
+  text-align: left;
+  background-color: var(--white);
+  padding: 2rem;
+}

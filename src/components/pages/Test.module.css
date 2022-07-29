@@ -1,3 +1,6 @@
+@import "../../variables/variables.module.css";
+
+/* Cars page */
 .container {
   margin: 18rem auto 10rem auto;
   display: flex;
@@ -22,7 +25,9 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
+/* Cars page */
 
+/* Cars page */
 @media screen and (max-width: 1510px) {
   .radio-form {
     display: grid;
@@ -62,3 +67,4 @@
     justify-items: center;
   }
 }
+/* Cars page */
