@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -10,15 +10,32 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 
 import styles from "./SingleCarSlider.module.css";
 import HyondaiSuv from "../../../assets/cars/hyondai-suv.webp";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
 const SingleCarSlider = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
+  const swiperNavPrevRef = useRef(null);
+  const swiperNavNextRef = useRef(null);
+
   return (
     <div className={styles.container}>
+      <div className={styles["swiper-nav-prev"]} ref={swiperNavPrevRef}>
+        <FaArrowCircleLeft className={styles["arrow-left"]} />
+      </div>
+      <div className={styles["swiper-nav-next"]} ref={swiperNavNextRef}>
+        <FaArrowCircleRight className={styles["arrow-right"]} />
+      </div>
       <Swiper
+        navigation={{
+          prevEl: swiperNavPrevRef.current,
+          nextEl: swiperNavNextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = swiperNavPrevRef.current;
+          swiper.params.navigation.nextEl = swiperNavNextRef.current;
+        }}
         spaceBetween={10}
-        navigation={true}
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
@@ -53,22 +70,22 @@ const SingleCarSlider = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className={styles.mySwiper}
       >
-        <SwiperSlide key="1">
+        <SwiperSlide className={styles["thumb-img"]} key="1">
           <img src={HyondaiSuv} />
         </SwiperSlide>
-        <SwiperSlide key="2">
+        <SwiperSlide className={styles["thumb-img"]} key="2">
           <img src={HyondaiSuv} />
         </SwiperSlide>
-        <SwiperSlide key="3">
+        <SwiperSlide className={styles["thumb-img"]} key="3">
           <img src={HyondaiSuv} />
         </SwiperSlide>
-        <SwiperSlide key="4">
+        <SwiperSlide className={styles["thumb-img"]} key="4">
           <img src={HyondaiSuv} />
         </SwiperSlide>
-        <SwiperSlide key="5">
+        <SwiperSlide className={styles["thumb-img"]} key="5">
           <img src={HyondaiSuv} />
         </SwiperSlide>
-        <SwiperSlide key="6">
+        <SwiperSlide className={styles["thumb-img"]} key="6">
           <img src={HyondaiSuv} />
         </SwiperSlide>
       </Swiper>
