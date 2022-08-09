@@ -108,6 +108,16 @@ body {
   z-index: 1;
 }
 
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
 @media screen and (max-width: 820px) {
   .leaflet-container {
     width: 100%;

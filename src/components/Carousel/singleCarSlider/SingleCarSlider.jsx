@@ -68,7 +68,7 @@ const SingleCarSlider = () => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className={styles.mySwiper}
+        className={`${styles.mySwiper} mySwiper`}
       >
         <SwiperSlide className={styles["thumb-img"]} key="1">
           <img src={HyondaiSuv} />
