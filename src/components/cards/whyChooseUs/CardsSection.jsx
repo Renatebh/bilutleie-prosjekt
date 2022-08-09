@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./Cards.module.css";
 import Cards from "./Cards";
 import CardsData from "./CardsData";
+import Heading from "../../ui/heading/Heading";
 
 const CardsSection = () => {
   return (
     <>
       <div className={styles.header}>
-        <h2>Hvorfor velge Bilutleie?</h2>
+        <Heading mainHeading>Hvorfor velge bilutleie</Heading>
       </div>
       <div className={styles["cards-container"]}>
         {CardsData.map((val, ind) => {
