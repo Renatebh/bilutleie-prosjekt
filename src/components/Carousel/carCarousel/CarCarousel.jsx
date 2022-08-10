@@ -1,69 +1,37 @@
 import React from "react";
 import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
-import Heading from "../../ui/heading/Heading";
+import CarCarouselHeading from "./CarCarouselHeading";
 import styles from "./CarCarousel.module.css";
-import HyondaiSuv from "../../../assets/cars/hyondai-suv.webp";
 import FilterCars from "./FilterCars";
 import CarsCard from "../../cards/cars/CarCard";
 import useFetch from "../../../hooks/useFetch";
 
-const endPoint = "api/headings/2";
+const endPoint = "api/cars?populate=*";
+const url = import.meta.env.VITE_API_URL;
 
 const CarCarousel = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${url}/${endPoint}`);
 
   return (
     <>
       <div className={styles["header-container"]}>
-        {data && <Heading>{data.data.attributes.heading}</Heading>}
+        <CarCarouselHeading />
         <FilterCars />
       </div>
       <Carousel>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <CarsCard
-            carImg={HyondaiSuv}
-            carBrand={"Hyondai 4x4"}
-            carPrice="Fra 360 kr/per dag"
-          />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <CarsCard
-            carImg={HyondaiSuv}
-            carBrand={"Hyondai 4x4"}
-            carPrice="Fra 360 kr/per dag"
-          />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <CarsCard
-            carImg={HyondaiSuv}
-            carBrand={"Hyondai 4x4"}
-            carPrice="Fra 360 kr/per dag"
-          />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <CarsCard
-            carImg={HyondaiSuv}
-            carBrand={"Hyondai 4x4"}
-            carPrice="Fra 360 kr/per dag"
-          />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <CarsCard
-            carImg={HyondaiSuv}
-            carBrand={"Hyondai 4x4"}
-            carPrice="Fra 360 kr/per dag"
-          />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <CarsCard
-            carImg={HyondaiSuv}
-            carBrand={"Hyondai 4x4"}
-            carPrice="Fra 360 kr/per dag"
-          />
-        </SwiperSlide>
+        {data &&
+          data.data.map((car) => {
+            return (
+              <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
+                <CarsCard
+                  carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
+                  carBrand={car.attributes.brand + " " + car.id + "nr"}
+                  carPrice={car.attributes.price}
+                />
+              </SwiperSlide>
+            );
+          })}
       </Carousel>
     </>
   );

@@ -6,7 +6,7 @@
   margin: auto;
   max-width: 132rem;
   display: flex;
-  margin-bottom: 8rem;
+  margin-bottom: 16rem;
   box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
 
@@ -40,6 +40,7 @@
 @media screen and (max-width: 1510px) {
   .container {
     width: 95%;
+    margin-bottom: 12rem;
   }
 
   .text-container {

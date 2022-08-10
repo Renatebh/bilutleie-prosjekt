@@ -5,10 +5,6 @@ import { FaChevronDown, FaCar, FaTruck } from "react-icons/fa";
 import styles from "./HeroForm.module.css";
 
 const Select = () => {
-  const test = (e) => {
-    console.log(e);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles["hero-label-container"]}>
@@ -17,7 +13,6 @@ const Select = () => {
         </label>
       </div>
       <select
-        onClick={test}
         className={styles["hero-select"]}
         name="hentested"
         id="hentested"

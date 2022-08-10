@@ -54,7 +54,7 @@
   position: absolute;
   display: inline-block;
   cursor: pointer;
-  z-index: 11;
+  z-index: 2;
 }
 
 .swiper-nav-prev {
