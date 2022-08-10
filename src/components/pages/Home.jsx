@@ -14,8 +14,8 @@ const Home = () => {
         <CardsSection />
         <CarCarousel />
         <FindUs />
-        <About />
         <Reviews />
+        <About />
       </main>
     </div>
   );
