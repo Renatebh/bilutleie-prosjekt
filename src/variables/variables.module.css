@@ -4,6 +4,7 @@
   --black: #000000;
   --white: #fff;
   --blackTransparent: rgba(0, 0, 0, 0.74);
+  --greyColor: #525252;
 
   /* Fluid font size steps */
   /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1140,30,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */

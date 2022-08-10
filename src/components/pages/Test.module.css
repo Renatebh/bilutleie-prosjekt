@@ -96,26 +96,45 @@
 /* Cars page */
 
 /* Contact us page */
+body {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #e1e6ea;
+}
+
+.main-contact {
+  width: 100%;
+  margin: 9rem 0 0 0;
+}
 
 .contact-container {
+  background-image: url(../../assets/tabea-schimpf-O7WzqmeYoqc-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 10rem repeat(2, 1fr) 10rem;
+  grid-template-rows: 50% 50%;
+  gap: 2rem;
+  grid-template-areas:
+    ". contact-form contact-text ."
+    ". contact-form contact-info . ";
+  padding: 4rem;
 }
 
 .contact-form {
+  grid-area: contact-form;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.2rem;
   background-color: var(--blackTransparent);
-  padding: 3rem;
-  max-width: 70.6rem;
-  max-height: 50rem;
-  width: 40%;
+  width: 100%;
   border-radius: 2rem;
   padding: 3.5rem 4.5rem;
+  box-shadow: 0px 3px 8px var(--greyColor);
 }
 
 .form-input {
@@ -124,22 +143,98 @@
   padding: 1rem;
   border: none;
   cursor: text;
-  color: #525252;
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
-  /* appearance: none; */
+  color: var(--greyColor);
+}
+
+.form-input:nth-child(5) {
+  padding-bottom: 10rem;
 }
 
 .form-btn {
   width: 90%;
   border-radius: 1rem;
-  padding: 1rem;
+  border: none;
+  padding: 1.5rem;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  background-color: var(--secondaryColor);
+  color: var(--white);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form-btn:hover {
+  background-color: var(--primaryColor);
+  /* border: 1px solid var(--white); */
+  box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+
+  transition: 0.5s;
 }
 
 .contact-text {
-  width: 40%;
-  max-width: 70.6rem;
-  max-height: 48.5rem;
+  grid-area: contact-text;
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact-text > p {
+  margin-top: 2rem;
+  font-weight: 700;
+}
+
+.contact-info {
+  grid-area: contact-info;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--blackTransparent);
+  border-radius: 2rem;
+  padding: 3.5rem 4.5rem;
+  box-shadow: 10px 10px 20px var(--greyColor);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: var(--white);
+}
+
+.contact-info p,
+.contact-info a {
+  color: var(--white);
+}
+
+.phone {
+  color: var(--secondaryColor);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1040px) {
+  .contact-container {
+    grid-template-columns: 5rem 1fr 5rem;
+    grid-template-rows: 25% 45% 25%;
+    gap: 2rem;
+    grid-template-areas:
+      ". contact-text ."
+      ". contact-form ."
+      ". contact-info . ";
+    padding: 1rem;
+  }
+  .contact-form {
+    gap: 2.2rem;
+    width: 100%;
+    border-radius: 2rem;
+    padding: 2.5rem 2.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact-container {
+    grid-template-columns: 1rem 1fr 1rem;
+  }
+  .contact-form h1 {
+    margin: 10px;
+  }
 }
