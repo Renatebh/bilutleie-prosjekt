@@ -62,6 +62,15 @@ const Header = () => {
                 Kontakt oss
               </Link>
             </li>
+            <li>
+              <Link
+                onClick={handleClick}
+                className={headerStyles["router-links"]}
+                to="/about-car"
+              >
+                Om bil
+              </Link>
+            </li>
           </ul>
         </nav>
 
