@@ -3,7 +3,7 @@ import Heading from "../ui/heading/Heading";
 import RadioButtons from "../ui/radioButtons/RadioButtons";
 import CarCard from "../cards/cars/CarCard";
 import Hyondai from "../../assets/cars/hyondai-suv.webp";
-import styles from "./Test.module.css";
+import styles from "./Cars.module.css";
 
 const Trucks = () => {
   return (

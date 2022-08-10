@@ -1,106 +1,10 @@
 @import "../../variables/variables.module.css";
 
-/* Cars page */
-.container {
-  margin: 18rem auto 10rem auto;
-  display: flex;
-  justify-content: center;
-  max-width: 144rem;
-  flex-direction: column;
-}
-
-.radio-form {
-  display: flex;
-  justify-content: space-between;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.cars-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.btn {
-  background-color: var(--primaryColor);
-  border: none;
-  color: var(--white);
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  padding: 2rem;
-}
-/* Cars page */
-
-/* About car */
-.containerAbout {
-  margin: 18rem auto 10rem auto;
-  display: flex;
-  justify-content: center;
-  max-width: 144rem;
-  gap: 4rem;
-}
-/* About car */
-
-/* Cars page */
-@media screen and (max-width: 1510px) {
-  .radio-form {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  .containerAbout,
-  .container {
-    max-width: 95%;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .radio-form,
-  .cars-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .container {
-    max-width: 95%;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .cars-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .containerAbout {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .cars-container {
-    grid-template-columns: repeat(1, 1fr);
-    justify-items: center;
-  }
-  .radio-form {
-    gap: 0.5rem;
-    justify-items: center;
-  }
-}
-/* Cars page */
-
 /* Contact us page */
 body {
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
-  background-color: #e1e6ea;
 }
 
 .main-contact {
