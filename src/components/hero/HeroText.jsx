@@ -12,7 +12,6 @@ const HeroText = () => {
 
   return (
     <div>
-      {loading && ""}
       {data && (
         <>
           <h1 className={styles.heading}>{data.data.attributes.main}</h1>
