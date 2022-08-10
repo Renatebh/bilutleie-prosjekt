@@ -2,12 +2,19 @@ import React from "react";
 import HeadingWhite from "../ui/heading/HeadingWhite";
 import styles from "./About.module.css";
 import Car from "../../assets/campbell-3ZUsNJhi_Ik-unsplash.jpg";
+import useFetch from "../../hooks/useFetch";
+
+const endPoint = "api/headings/4";
 
 const About = () => {
+  const { loading, err, data } = useFetch(
+    `${import.meta.env.VITE_API_URL}/${endPoint}`
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles["text-container"]}>
-        <HeadingWhite>Bilutleie - Om oss</HeadingWhite>
+        {data && <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>}
         <p className={styles.paragraph}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi repudiandae consequuntur

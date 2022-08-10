@@ -3,12 +3,19 @@ import styles from "./Cards.module.css";
 import Cards from "./Cards";
 import CardsData from "./CardsData";
 import Heading from "../../ui/heading/Heading";
+import useFetch from "../../../hooks/useFetch";
+
+const endPoint = "api/headings/1";
 
 const CardsSection = () => {
+  const { loading, err, data } = useFetch(
+    `${import.meta.env.VITE_API_URL}/${endPoint}`
+  );
+
   return (
     <>
       <div className={styles.header}>
-        <Heading mainHeading>Hvorfor velge bilutleie</Heading>
+        {data && <Heading mainHeading>{data.data.attributes.heading}</Heading>}
       </div>
       <div className={styles["cards-container"]}>
         {CardsData.map((val, ind) => {

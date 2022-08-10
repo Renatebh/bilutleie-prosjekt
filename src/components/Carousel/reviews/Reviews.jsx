@@ -3,12 +3,19 @@ import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
 import Heading from "../../ui/heading/Heading";
 import styles from "./Reviews.module.css";
+import useFetch from "../../../hooks/useFetch";
+
+const endPoint = "api/headings/5";
 
 const Reviews = () => {
+  const { loading, err, data } = useFetch(
+    `${import.meta.env.VITE_API_URL}/${endPoint}`
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
-        <Heading>Hva sier våre kunder om oss</Heading>
+        {data && <Heading>{data.data.attributes.heading}</Heading>}
       </div>
       <Carousel>
         <SwiperSlide className={styles["swiper-slide"]}>
