@@ -1,6 +1,6 @@
 import React from "react";
 import Heading from "../ui/heading/Heading";
-import RadioButtons from "../ui/radioButtons/RadioButtons";
+import RadioButtonsCars from "../ui/radioButtons/RadioButtonsCars";
 import CarCard from "../cards/cars/CarCard";
 import styles from "./Cars.module.css";
 import useFetch from "../../hooks/useFetch";
@@ -16,55 +16,7 @@ const Cars = () => {
       <div className={styles.wrapper}>
         <Heading mainHeading>PERSONBIL</Heading>
         <form className={styles["radio-form"]} action="">
-          <RadioButtons
-            radioValue="alle-person"
-            radioName="personbil"
-            labelValue="alle-person"
-          >
-            ALLE TYPER
-          </RadioButtons>
-          <RadioButtons
-            radioValue="elbil-person"
-            radioName="personbil"
-            labelValue="elbil-person"
-          >
-            El-bil
-          </RadioButtons>
-          <RadioButtons
-            radioValue="bensin-person"
-            radioName="personbil"
-            labelValue="bensin-person"
-          >
-            Bensin
-          </RadioButtons>
-          <RadioButtons
-            radioValue="diesel-person"
-            radioName="personbil"
-            labelValue="diesel-person"
-          >
-            Diesel
-          </RadioButtons>
-          <RadioButtons
-            radioValue="manuell-person"
-            radioName="personbil"
-            labelValue="manuell-person"
-          >
-            Manuell
-          </RadioButtons>
-          <RadioButtons
-            radioValue="automat-person"
-            radioName="personbil"
-            labelValue="automat-person"
-          >
-            Automat
-          </RadioButtons>
-          <RadioButtons
-            radioValue="4x4-person"
-            radioName="personbil"
-            labelValue="4x4-person"
-          >
-            4x4
-          </RadioButtons>
+          <RadioButtonsCars />
         </form>
         <div className={styles["cars-container"]}>
           {data &&
