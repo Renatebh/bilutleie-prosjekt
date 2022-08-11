@@ -11,8 +11,14 @@ const RadioButtonsCars = () => {
   const { loading, err, data } = useFetch(`${url}/${endPoint}`);
 
   {
-    data &&
-      data.data.map((btn) => {
+    !data && <p>Data does not exist</p>;
+  }
+
+  {
+    data && <p>Data does exist</p>;
+    data && console.log(data);
+
+    /* data.data.map((btn) => {
         return (
           <RadioButtons
             key={btn.id}
@@ -23,7 +29,7 @@ const RadioButtonsCars = () => {
             {btn.attributes.radiobutton}
           </RadioButtons>
         );
-      });
+      }); */
   }
 };
 
