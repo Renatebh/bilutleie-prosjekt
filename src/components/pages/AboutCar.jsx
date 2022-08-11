@@ -2,7 +2,7 @@ import React from "react";
 import Heading from "../ui/heading/Heading";
 import Table from "../ui/table/Table";
 import SingleCarSlider from "../Carousel/singleCarSlider/SingleCarSlider";
-import styles from "./Test.module.css";
+import styles from "./Cars.module.css";
 
 const AboutCar = () => {
   return (
