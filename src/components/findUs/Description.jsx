@@ -12,20 +12,14 @@ const Description = () => {
 
   return (
     <div className={styles.container}>
-      {data && <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>}
-      <p className={styles.text}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa
-        repellendus eaque laborum excepturi non voluptas, qui impedit quia
-        quibusdam magni corporis necessitatibus soluta totam animi sequi
-        voluptatem nulla aliquid praesentium.
-      </p>
-      <br />
-      <p className={styles.text}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa
-        repellendus eaque laborum excepturi non voluptas, qui impedit quia
-        quibusdam magni corporis necessitatibus soluta totam animi sequi
-        voluptatem nulla aliquid praesentium.
-      </p>
+      {data && (
+        <>
+          <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>
+          <p className={styles.text}>{data.data.attributes.content}</p>
+          <br />
+          <p className={styles.text}>{data.data.attributes.second}</p>
+        </>
+      )}
     </div>
   );
 };
