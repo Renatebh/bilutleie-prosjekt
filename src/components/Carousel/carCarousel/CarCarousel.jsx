@@ -14,7 +14,7 @@ const CarCarousel = () => {
   const { loading, err, data } = useFetch(`${url}/${endPoint}`);
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles["header-container"]}>
         <CarCarouselHeading />
         <FilterCars />
@@ -33,7 +33,7 @@ const CarCarousel = () => {
             );
           })}
       </Carousel>
-    </>
+    </div>
   );
 };
 
