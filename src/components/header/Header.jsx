@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
 import logo from "../../assets/racing (2).png";
 import headerStyles from "./Header.module.css";
+import useFetch from "../../hooks/useFetch";
+
+const endPoint = "api/contact";
 
 const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+
+  const { loading, err, data } = useFetch(
+    `${import.meta.env.VITE_API_URL}/${endPoint}`
+  );
 
   return (
     <div className={headerStyles.navbar}>
@@ -82,7 +89,7 @@ const Header = () => {
           <FaPhoneAlt size={25} />
 
           <a href="tel:91774282" className={headerStyles.phone}>
-            22 00 22 00
+            {data && data.data.attributes.number}
           </a>
         </div>
       </header>

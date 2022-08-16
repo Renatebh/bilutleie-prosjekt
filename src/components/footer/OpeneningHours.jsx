@@ -1,40 +1,33 @@
 import React from "react";
 import styles from "./Footer.module.css";
+import useFetch from "../../hooks/useFetch";
+
+const endPoint = "api/hours";
 
 const OpeneningHours = () => {
+  const { loading, err, data } = useFetch(
+    `${import.meta.env.VITE_API_URL}/${endPoint}`
+  );
+
   return (
     <div>
       <p className={styles.opening}>Åpningstider</p>
       <table>
         <thead>
-          <tr>
-            <th>Mandag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Tirsdag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Onsdag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Torsdag</th>
-            <td>9 - 17</td>
-          </tr>
-          <tr>
-            <th>Fredag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Lørdag</th>
-            <td>9 - 15</td>
-          </tr>
-          <tr>
-            <th>Søndag</th>
-            <td>Stengt</td>
-          </tr>
+          {!data ? (
+            <tr>
+              <th>Data does not exist</th>
+            </tr>
+          ) : (
+            data.data.map((day) => {
+              return (
+                <tr key={day.id}>
+                  <th>{day.attributes.day}</th>
+                  <td>{day.attributes.hours}</td>
+                </tr>
+              );
+            })
+          )}
         </thead>
       </table>
     </div>

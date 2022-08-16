@@ -1,20 +1,27 @@
 import React from "react";
+import useFetch from "../../hooks/useFetch";
 import styles from "./Footer.module.css";
+import ReactMarkdown from "react-markdown";
+
+const endPoint = "api/contact";
 
 const Contact = () => {
+  const { loading, err, data } = useFetch(
+    `${import.meta.env.VITE_API_URL}/${endPoint}`
+  );
+
   return (
     <div className={styles["contact-container"]}>
       <p className={styles["company-name"]}>Bilutleie</p>
-      <p className={styles["company-adress"]}>
-        Osloveien 22 <br />
-        2200 Oslo
-      </p>
+      <ReactMarkdown className={styles["company-adress"]}>
+        {data && data.data.attributes.address}
+      </ReactMarkdown>
       <a href="mailto:xyz@abc.com" className={styles.email}>
-        bilutleie@email.no
+        {data && data.data.attributes.email}
       </a>
       <br />
       <a href="tel:0123456789" className={styles.phone}>
-        22 00 22 00
+        {data && data.data.attributes.number}
       </a>
     </div>
   );
