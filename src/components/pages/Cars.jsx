@@ -12,7 +12,7 @@ const Cars = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <div className={styles.wrapper}>
         <Heading mainHeading>PERSONBIL</Heading>
         <form className={styles["radio-form"]} action="">
@@ -33,7 +33,7 @@ const Cars = () => {
             })}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

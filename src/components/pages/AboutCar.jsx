@@ -7,7 +7,7 @@ import styles from "./Cars.module.css";
 const AboutCar = () => {
   return (
     <>
-      <div className={styles.containerAbout}>
+      <main className={styles.containerAbout}>
         <div className={styles.wrapper}>
           <Heading mainHeading>Car Name</Heading>
           <p>
@@ -28,7 +28,7 @@ const AboutCar = () => {
           <button className={styles.btn}>Bestill</button>
         </div>
         <SingleCarSlider />
-      </div>
+      </main>
     </>
   );
 };
