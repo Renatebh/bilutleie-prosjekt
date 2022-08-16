@@ -2,13 +2,12 @@ import React from "react";
 import useFetch from "../../hooks/useFetch";
 import styles from "./Footer.module.css";
 import ReactMarkdown from "react-markdown";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const endPoint = "api/contact";
 
 const Contact = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.contact}`);
 
   return (
     <div className={styles["contact-container"]}>

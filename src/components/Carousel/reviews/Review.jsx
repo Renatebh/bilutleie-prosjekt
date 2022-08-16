@@ -3,13 +3,12 @@ import styles from "./Reviews.module.css";
 import { SwiperSlide } from "swiper/react";
 import Carousel from "../Carousel";
 import useFetch from "../../../hooks/useFetch";
+import API_CONSTANT_MAP from "../../../api/endpoints";
 
 const endPoint = "api/reviews";
 
 const Review = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.reviews}`);
 
   return (
     <Carousel>

@@ -14,11 +14,6 @@ const FooterLinks = () => {
             </Link>
           </li>
           <li>
-            <Link className={styles["router-links"]} to="/prices">
-              Priser
-            </Link>
-          </li>
-          <li>
             <Link className={styles["router-links"]} to="/trucks">
               Varebil
             </Link>

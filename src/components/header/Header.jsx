@@ -4,16 +4,13 @@ import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
 import logo from "../../assets/racing (2).png";
 import headerStyles from "./Header.module.css";
 import useFetch from "../../hooks/useFetch";
-
-const endPoint = "api/contact";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.contact}`);
 
   return (
     <div className={headerStyles.navbar}>
@@ -49,15 +46,6 @@ const Header = () => {
                 to="/trucks"
               >
                 Varebil
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={handleClick}
-                className={headerStyles["router-links"]}
-                to="/prices"
-              >
-                Priser
               </Link>
             </li>
             <li>

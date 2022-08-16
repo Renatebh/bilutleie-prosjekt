@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import useFetch from "../../hooks/useFetch";
-
-const endPoint = "api/hours";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const OpeneningHours = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.hours}`);
 
   return (
     <div>
