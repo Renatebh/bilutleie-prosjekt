@@ -1,5 +1,5 @@
 import React from "react";
-import RadioButtons from "./RadioButtons";
+import RadioButton from "./RadioButton";
 import useFetch from "../../../hooks/useFetch";
 
 const endPoint = "api/cars-radiobuttons";
@@ -17,14 +17,15 @@ const RadioButtonsCars = () => {
       ) : (
         data.data.map((btn) => {
           return (
-            <RadioButtons
+            <RadioButton
               key={btn.id}
-              radioValue={btn.attributes.radiobutton}
-              radioName={personBil}
-              labelValue={btn.attributes.radiobutton}
+              id={btn.attributes.radiobutton}
+              name={personBil}
+              value={personBil}
+              htmlFor={btn.attributes.radiobutton}
             >
               {btn.attributes.radiobutton}
-            </RadioButtons>
+            </RadioButton>
           );
         })
       )}

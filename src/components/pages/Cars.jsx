@@ -1,6 +1,6 @@
 import React from "react";
 import Heading from "../ui/heading/Heading";
-import RadioButtonsCars from "../ui/radioButtons/RadioButtonsCars";
+import RadioButtonsCars from "../ui/radioButton/RadioButtonsCars";
 import CarCard from "../cards/cars/CarCard";
 import styles from "./Cars.module.css";
 import useFetch from "../../hooks/useFetch";
