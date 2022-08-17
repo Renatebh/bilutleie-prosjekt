@@ -1,6 +1,6 @@
 import React from "react";
 import HeroText from "./HeroText";
-import RadioButtons from "../ui/radioButtons/RadioButtons";
+import RadioButton from "../ui/radioButton/RadioButton";
 import { FaChevronDown, FaCar, FaTruck } from "react-icons/fa";
 import styles from "./HeroForm.module.css";
 
@@ -57,22 +57,24 @@ const HeroForm = () => {
         <HeroDate forLabel="start">FRA DATO KLOKKESLETT</HeroDate>
         <HeroDate forLabel="end">TIL DATO KLOKKESLETT</HeroDate>
         <div className={styles["car-type-container"]}>
-          <RadioButtons
+          <RadioButton
             carType
-            radioValue="personbil"
-            radioName="hero-form-radio"
-            labelValue="personbil"
+            id="personbil"
+            name="hero-form-radio"
+            value="personbil"
+            htmlFor="personbil"
           >
             Personbil <FaCar className={styles["car-icon"]} />
-          </RadioButtons>
-          <RadioButtons
+          </RadioButton>
+          <RadioButton
             carType
-            radioValue="varebil"
-            radioName="hero-form-radio"
-            labelValue="varebil"
+            id="varebil"
+            name="hero-form-radio"
+            value="varebil"
+            htmlFor="varebil"
           >
             Varebil <FaTruck className={styles["truck-icon"]} />
-          </RadioButtons>
+          </RadioButton>
         </div>
         <button className={styles["submit-Btn"]}>Søk</button>
       </form>

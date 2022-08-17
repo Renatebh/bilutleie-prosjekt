@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Test.module.css";
+import styles from "./Cars.module.css";
 
 const Prices = () => {
   return (

@@ -1,71 +1,22 @@
 import React from "react";
 import Heading from "../ui/heading/Heading";
-import RadioButtons from "../ui/radioButtons/RadioButtons";
+import RadioButtonsCars from "../ui/radioButton/RadioButtonsCars";
 import CarCard from "../cards/cars/CarCard";
-import Hyondai from "../../assets/cars/hyondai-suv.webp";
 import styles from "./Cars.module.css";
 import useFetch from "../../hooks/useFetch";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
-const endPoint = "api/cars?populate=*";
 const url = import.meta.env.VITE_API_URL;
 
 const Trucks = () => {
-  const { loading, err, data } = useFetch(`${url}/${endPoint}`);
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <div className={styles.wrapper}>
         <Heading mainHeading>VAREBIL</Heading>
         <form className={styles["radio-form"]} action="">
-          <RadioButtons
-            radioValue="alle-varebil"
-            radioName="varebil"
-            labelValue="alle-varebil"
-          >
-            ALLE TYPER
-          </RadioButtons>
-          <RadioButtons
-            radioValue="elbil-varebil"
-            radioName="varebil"
-            labelValue="elbil-varebil"
-          >
-            El-bil
-          </RadioButtons>
-          <RadioButtons
-            radioValue="bensin-varebil"
-            radioName="varebil"
-            labelValue="bensin-varebil"
-          >
-            Bensin
-          </RadioButtons>
-          <RadioButtons
-            radioValue="diesel-varebil"
-            radioName="varebil"
-            labelValue="diesel-varebil"
-          >
-            Diesel
-          </RadioButtons>
-          <RadioButtons
-            radioValue="manuell-varebil"
-            radioName="varebil"
-            labelValue="manuell-varebil"
-          >
-            Manuell
-          </RadioButtons>
-          <RadioButtons
-            radioValue="automat-varebil"
-            radioName="varebil"
-            labelValue="automat-varebil"
-          >
-            Automat
-          </RadioButtons>
-          <RadioButtons
-            radioValue="4x4-varebil"
-            radioName="varebil"
-            labelValue="4x4-varebil"
-          >
-            4x4
-          </RadioButtons>
+          <RadioButtonsCars />
         </form>
         <div className={styles["cars-container"]}>
           {data &&
@@ -80,9 +31,11 @@ const Trucks = () => {
                 />
               );
             })}
+          {loading && "Loading..."}
+          {err && "Error..."}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

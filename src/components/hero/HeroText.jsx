@@ -2,13 +2,10 @@ import React from "react";
 import useFetch from "../../hooks/useFetch";
 import ReactMarkdown from "react-markdown";
 import styles from "./HeroText.module.css";
-
-const endPoint = "api/hero";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const HeroText = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.hero}`);
 
   return (
     <div>
@@ -20,6 +17,8 @@ const HeroText = () => {
           </ReactMarkdown>
         </>
       )}
+      {loading && "Loading..."}
+      {err && "Error..."}
     </div>
   );
 };

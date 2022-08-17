@@ -1,23 +1,17 @@
 import React from "react";
 import styled from "./RadioButtons.module.css";
 
-const RadioButtons = ({
-  radioValue,
-  radioName,
-  children,
-  labelValue,
-  carType,
-}) => {
-  const radioValueUpperCase = radioValue.toUpperCase();
+const RadioButton = ({ id, name, value, htmlFor, children, carType }) => {
+  const valueUpperCase = value.toUpperCase();
 
   return (
     <>
       <input
         className={styled.radiobutton}
         type="radio"
-        id={radioValue}
-        name={radioName}
-        value={radioValueUpperCase}
+        id={id}
+        name={name}
+        value={valueUpperCase}
       />
       <label
         className={
@@ -25,7 +19,7 @@ const RadioButtons = ({
             ? `${styled["car-type"]} ${styled["radio-label"]}}`
             : styled["radio-label"]
         }
-        htmlFor={labelValue}
+        htmlFor={htmlFor}
       >
         {children}
       </label>
@@ -33,4 +27,4 @@ const RadioButtons = ({
   );
 };
 
-export default RadioButtons;
+export default RadioButton;

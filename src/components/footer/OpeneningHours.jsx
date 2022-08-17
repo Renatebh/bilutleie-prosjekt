@@ -1,40 +1,27 @@
 import React from "react";
 import styles from "./Footer.module.css";
+import useFetch from "../../hooks/useFetch";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const OpeneningHours = () => {
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.hours}`);
+
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div>
       <p className={styles.opening}>Åpningstider</p>
       <table>
         <thead>
-          <tr>
-            <th>Mandag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Tirsdag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Onsdag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Torsdag</th>
-            <td>9 - 17</td>
-          </tr>
-          <tr>
-            <th>Fredag</th>
-            <td>9 - 16</td>
-          </tr>
-          <tr>
-            <th>Lørdag</th>
-            <td>9 - 15</td>
-          </tr>
-          <tr>
-            <th>Søndag</th>
-            <td>Stengt</td>
-          </tr>
+          {data.data.map((day) => {
+            return (
+              <tr key={day.id}>
+                <th>{day.attributes.day}</th>
+                <td>{day.attributes.hours}</td>
+              </tr>
+            );
+          })}
         </thead>
       </table>
     </div>

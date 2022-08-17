@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Table.module.css";
 
-const Table = () => {
+const Table = ({ price, kmPerDay, extraKm }) => {
   return (
     <table className={styles.table}>
       <thead className={styles["table-head"]}>
@@ -13,9 +13,9 @@ const Table = () => {
       </thead>
       <tbody>
         <tr className={styles["table-row"]}>
-          <td>650,-</td>
-          <td>100</td>
-          <td>2,-</td>
+          <td>{price}</td>
+          <td>{kmPerDay}</td>
+          <td>{extraKm}</td>
         </tr>
       </tbody>
     </table>

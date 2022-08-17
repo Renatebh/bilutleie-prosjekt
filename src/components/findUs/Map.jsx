@@ -1,13 +1,13 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import useFetch from "../../hooks/useFetch";
-
-const endPoint = "api/find-us";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const Map = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.findUS}`);
+
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
 
   if (data) {
     const lat = data.data.attributes.lat;

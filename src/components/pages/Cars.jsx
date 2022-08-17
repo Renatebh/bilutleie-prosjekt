@@ -1,18 +1,18 @@
 import React from "react";
 import Heading from "../ui/heading/Heading";
-import RadioButtonsCars from "../ui/radioButtons/RadioButtonsCars";
+import RadioButtonsCars from "../ui/radioButton/RadioButtonsCars";
 import CarCard from "../cards/cars/CarCard";
 import styles from "./Cars.module.css";
 import useFetch from "../../hooks/useFetch";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
-const endPoint = "api/cars?populate=*";
 const url = import.meta.env.VITE_API_URL;
 
 const Cars = () => {
-  const { loading, err, data } = useFetch(`${url}/${endPoint}`);
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <div className={styles.wrapper}>
         <Heading mainHeading>PERSONBIL</Heading>
         <form className={styles["radio-form"]} action="">
@@ -31,9 +31,11 @@ const Cars = () => {
                 />
               );
             })}
+          {loading && "Loading..."}
+          {err && "Error..."}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

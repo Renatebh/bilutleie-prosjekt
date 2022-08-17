@@ -2,13 +2,10 @@ import React from "react";
 import HeadingWhite from "../ui/heading/HeadingWhite";
 import styles from "./Description.module.css";
 import useFetch from "../../hooks/useFetch";
-
-const endPoint = "api/find-us";
+import API_CONSTANT_MAP from "../../api/endpoints";
 
 const Description = () => {
-  const { loading, err, data } = useFetch(
-    `${import.meta.env.VITE_API_URL}/${endPoint}`
-  );
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.findUS}`);
 
   return (
     <div className={styles.container}>
@@ -20,6 +17,8 @@ const Description = () => {
           <p className={styles.text}>{data.data.attributes.second}</p>
         </>
       )}
+      {loading && "Loading..."}
+      {err && "Error..."}
     </div>
   );
 };
