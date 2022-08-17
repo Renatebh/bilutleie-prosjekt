@@ -5,13 +5,11 @@ import Carousel from "../Carousel";
 import useFetch from "../../../hooks/useFetch";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 
-const endPoint = "api/reviews";
-
 const Review = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.reviews}`);
 
-  if (loading) return <p>Loading...</p>;
   if (err) return <p>Error...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <Carousel>
