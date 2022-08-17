@@ -23,9 +23,11 @@ const FilterCars = () => {
         </Option>
         {data &&
           data.data.map((price) => {
-            <Option value={price.attributes.price} key={price.id}>
-              {price.attributes.price}
-            </Option>;
+            return (
+              <Option value={price.attributes.price} key={price.id}>
+                {price.attributes.price}
+              </Option>
+            );
           })}
         ;
       </Select>
