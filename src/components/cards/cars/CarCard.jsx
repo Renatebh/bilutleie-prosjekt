@@ -1,7 +1,9 @@
 import React from "react";
+import Home from "../../pages/Home";
 import styles from "./CarCard.module.css";
+import { Link } from "react-router-dom";
 
-const Cars = ({ carImg, carBrand, carPrice, single }) => {
+const Cars = ({ carImg, carBrand, carPrice, single, id }) => {
   return (
     <div
       className={
@@ -14,7 +16,9 @@ const Cars = ({ carImg, carBrand, carPrice, single }) => {
       <p className={styles.brand}>{carBrand}</p>
       <p className={styles.price}>{carPrice}</p>
       <div className={styles["btn-container"]}>
-        <button className={styles["btn"]}>Les mer</button>
+        <Link to={`/about-car/${id}`} className={styles["btn"]}>
+          Les mer
+        </Link>
         <button className={styles["btn"]}>Bestill</button>
       </div>
     </div>

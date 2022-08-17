@@ -5,6 +5,7 @@ const API_CONSTANT_MAP = {
   headings: `${BASE_API}/api/headings`,
   about: `${BASE_API}/api/about`,
   cars: `${BASE_API}/api/cars?populate=*`,
+  car: `${BASE_API}/api/cars/${id}?populate=*`,
   reviews: `${BASE_API}/api/reviews`,
   findUS: `${BASE_API}/api/find-us`,
   contact: `${BASE_API}/api/contact`,
