@@ -11,9 +11,6 @@ const url = import.meta.env.VITE_API_URL;
 const Cars = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
-  if (loading) return <p>Loading...</p>;
-  if (err) return <p>Error...</p>;
-
   return (
     <main className={styles.container}>
       <div className={styles.wrapper}>
@@ -22,18 +19,20 @@ const Cars = () => {
           <RadioButtonsCars />
         </form>
         <div className={styles["cars-container"]}>
-          {data.data.map((car) => {
-            return (
-              <CarCard
-                key={car.id}
-                single
-                carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
-                carBrand={car.attributes.brand + " " + car.id + "nr"}
-                carPrice={car.attributes.price}
-                id={car.id}
-              />
-            );
-          })}
+          {data &&
+            data.data.map((car) => {
+              return (
+                <CarCard
+                  key={car.id}
+                  single
+                  carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
+                  carBrand={car.attributes.brand + " " + car.id + "nr"}
+                  carPrice={car.attributes.price}
+                />
+              );
+            })}
+          {loading && "Loading..."}
+          {err && "Error..."}
         </div>
       </div>
     </main>

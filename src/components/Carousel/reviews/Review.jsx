@@ -8,21 +8,21 @@ import API_CONSTANT_MAP from "../../../api/endpoints";
 const Review = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.reviews}`);
 
-  if (err) return <p>Error...</p>;
-  if (loading) return <p>Loading...</p>;
-
   return (
     <Carousel>
-      {data.data.map((review) => {
-        return (
-          <SwiperSlide className={styles["swiper-slide"]} key={review.id}>
-            <div className={styles["card-container"]}>
-              <p className={styles.review}>{review.attributes.review}</p>
-              <p className={styles.name}>{review.attributes.name}</p>
-            </div>
-          </SwiperSlide>
-        );
-      })}
+      {data &&
+        data.data.map((review) => {
+          return (
+            <SwiperSlide className={styles["swiper-slide"]} key={review.id}>
+              <div className={styles["card-container"]}>
+                <p className={styles.review}>{review.attributes.review}</p>
+                <p className={styles.name}>{review.attributes.name}</p>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      {loading && "Loading..."}
+      {err && "Error..."}
     </Carousel>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import Home from "../../pages/Home";
 import styles from "./CarCard.module.css";
 import { Link } from "react-router-dom";
 
