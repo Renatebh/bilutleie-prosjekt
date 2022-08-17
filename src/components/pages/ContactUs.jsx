@@ -5,12 +5,106 @@ import styles from "./ContactUs.module.css";
 import FindUs from "../findUs/FindUs";
 import OpeningHours from "../footer/OpeneningHours";
 import Contact from "../footer/Contact";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export const ContactUs = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_1r2skax",
+        "template_riwmm92",
+        form.current,
+        "L8eMnQJI7AgUp7gP4"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent");
+          if (email == "") {
+            alert("Email is required");
+          }
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const emailValidation = () => {
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9+-]+\.[a-z]{2,8}(.[a-z{2-8}])?/g;
+    if (regEx.test(email)) {
+      setMessage("Email is valid");
+    } else if (!regEx.test(email) && email == "") {
+      setMessage("Email is not valid");
+    } else {
+      setMessage("");
+    }
+  };
+
+  const handleOnChange = (e) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <>
       <main className={styles["main-contact"]}>
         <div className={styles["contact-container"]}>
+          <form
+            className={styles["contact-form"]}
+            ref={form}
+            onSubmit={sendEmail}
+          >
+            <HeadingWhite mainHeadingWhite>Kontakt oss i dag!</HeadingWhite>
+            <input
+              type="text"
+              name="user_name"
+              placeholder="Navn"
+              className={styles["form-input"]}
+              required
+            />
+            <input
+              type="email"
+              name="user_email"
+              placeholder="Email"
+              value={email}
+              onChange={handleOnChange}
+              className={styles["form-input"]}
+              required
+            />
+
+            <input
+              type="tel"
+              name="user_phone"
+              placeholder="Telefon"
+              className={styles["form-input"]}
+              required
+            />
+            <textarea
+              type="text"
+              name="message"
+              rows={6}
+              placeholder="Melding"
+              className={styles["form-input"]}
+              required
+            />
+
+            <input
+              type="submit"
+              value="Send"
+              className={styles["form-btn"]}
+              onClick={emailValidation}
+            />
+            {message}
+          </form>
+
           <div className={styles.wrapper}>
             <form className={styles["contact-form"]}>
               <HeadingWhite mainHeadingWhite>Kontakt oss i dag!</HeadingWhite>
