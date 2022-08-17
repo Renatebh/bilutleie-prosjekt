@@ -10,22 +10,21 @@ const endPoint = "api/reviews";
 const Review = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.reviews}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <Carousel>
-      {!data ? (
-        <p>Data does not exist</p>
-      ) : (
-        data.data.map((review) => {
-          return (
-            <SwiperSlide className={styles["swiper-slide"]} key={review.id}>
-              <div className={styles["card-container"]}>
-                <p className={styles.review}>{review.attributes.review}</p>
-                <p className={styles.name}>{review.attributes.name}</p>
-              </div>
-            </SwiperSlide>
-          );
-        })
-      )}
+      {data.data.map((review) => {
+        return (
+          <SwiperSlide className={styles["swiper-slide"]} key={review.id}>
+            <div className={styles["card-container"]}>
+              <p className={styles.review}>{review.attributes.review}</p>
+              <p className={styles.name}>{review.attributes.name}</p>
+            </div>
+          </SwiperSlide>
+        );
+      })}
     </Carousel>
   );
 };

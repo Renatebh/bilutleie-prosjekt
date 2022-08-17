@@ -11,7 +11,7 @@ const Reviews = () => {
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
-        {data && <Heading>{data.data.attributes.heading}</Heading>}
+        <Heading>{data.data.attributes.heading}</Heading>
       </div>
       <Review />
     </div>

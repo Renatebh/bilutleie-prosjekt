@@ -9,18 +9,21 @@ const endPoint = "api/contact";
 const Contact = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.contact}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div className={styles["contact-container"]}>
       <p className={styles["company-name"]}>Bilutleie</p>
       <ReactMarkdown className={styles["company-adress"]}>
-        {data && data.data.attributes.address}
+        {data.data.attributes.address}
       </ReactMarkdown>
       <a href="mailto:xyz@abc.com" className={styles.email}>
-        {data && data.data.attributes.email}
+        {data.data.attributes.email}
       </a>
       <br />
       <a href="tel:0123456789" className={styles.phone}>
-        {data && data.data.attributes.number}
+        {data.data.attributes.number}
       </a>
     </div>
   );

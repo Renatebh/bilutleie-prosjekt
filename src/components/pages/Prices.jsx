@@ -1,5 +1,4 @@
 import React from "react";
-import Reviews from "../Carousel/reviews/Reviews";
 import styles from "./Cars.module.css";
 
 const Prices = () => {

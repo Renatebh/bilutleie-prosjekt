@@ -12,6 +12,9 @@ const Header = () => {
 
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.contact}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div className={headerStyles.navbar}>
       <header className={headerStyles["header-container"]}>
@@ -68,7 +71,7 @@ const Header = () => {
           <FaPhoneAlt size={25} />
 
           <a href="tel:91774282" className={headerStyles.phone}>
-            {data && data.data.attributes.number}
+            {data.data.attributes.number}
           </a>
         </div>
       </header>

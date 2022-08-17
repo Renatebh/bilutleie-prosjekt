@@ -12,10 +12,6 @@ const AboutCar = () => {
   const { id } = useParams();
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
 
-  {
-    data && console.log(data.data);
-  }
-
   if (loading) return <p>Loading...</p>;
   if (err) return <p>Error...</p>;
 
@@ -27,6 +23,12 @@ const AboutCar = () => {
             {data.data.attributes.brand} Id: {id}
           </Heading>
           <ReactMarkdown>{data.data.attributes.info}</ReactMarkdown>
+          <ReactMarkdown>{data.data.attributes.info}</ReactMarkdown>
+          <Table
+            price={data.data.attributes.price}
+            kmPerDay={data.data.attributes.kmPerDay}
+            extraKm={data.data.attributes.extraKm}
+          />
           <Table
             price={data.data.attributes.price}
             kmPerDay={data.data.attributes.kmPerDay}

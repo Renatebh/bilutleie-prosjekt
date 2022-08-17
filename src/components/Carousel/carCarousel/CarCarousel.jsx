@@ -13,6 +13,9 @@ const url = import.meta.env.VITE_API_URL;
 const CarCarousel = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
@@ -20,19 +23,18 @@ const CarCarousel = () => {
         <FilterCars />
       </div>
       <Carousel>
-        {data &&
-          data.data.map((car) => {
-            return (
-              <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
-                <CarsCard
-                  carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
-                  carBrand={car.attributes.brand + " " + car.id + "nr"}
-                  carPrice={car.attributes.price}
-                  id={car.id}
-                />
-              </SwiperSlide>
-            );
-          })}
+        {data.data.map((car) => {
+          return (
+            <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
+              <CarsCard
+                carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
+                carBrand={car.attributes.brand + " " + car.id + "nr"}
+                carPrice={car.attributes.price}
+                id={car.id}
+              />
+            </SwiperSlide>
+          );
+        })}
       </Carousel>
     </div>
   );

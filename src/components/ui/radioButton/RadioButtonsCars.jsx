@@ -10,25 +10,24 @@ const personBil = "personbil";
 const RadioButtonsCars = () => {
   const { loading, err, data } = useFetch(`${url}/${endPoint}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <>
-      {!data ? (
-        <p>Data does not exist</p>
-      ) : (
-        data.data.map((btn) => {
-          return (
-            <RadioButton
-              key={btn.id}
-              id={btn.attributes.radiobutton}
-              name={personBil}
-              value={personBil}
-              htmlFor={btn.attributes.radiobutton}
-            >
-              {btn.attributes.radiobutton}
-            </RadioButton>
-          );
-        })
-      )}
+      {data.data.map((btn) => {
+        return (
+          <RadioButton
+            key={btn.id}
+            id={btn.attributes.radiobutton}
+            name={personBil}
+            value={personBil}
+            htmlFor={btn.attributes.radiobutton}
+          >
+            {btn.attributes.radiobutton}
+          </RadioButton>
+        );
+      })}
     </>
   );
 };

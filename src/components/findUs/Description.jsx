@@ -9,16 +9,15 @@ const endPoint = "api/find-us";
 const Description = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.findUS}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div className={styles.container}>
-      {data && (
-        <>
-          <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>
-          <p className={styles.text}>{data.data.attributes.content}</p>
-          <br />
-          <p className={styles.text}>{data.data.attributes.second}</p>
-        </>
-      )}
+      <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>
+      <p className={styles.text}>{data.data.attributes.content}</p>
+      <br />
+      <p className={styles.text}>{data.data.attributes.second}</p>
     </div>
   );
 };

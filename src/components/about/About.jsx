@@ -8,17 +8,16 @@ import API_CONSTANT_MAP from "../../api/endpoints";
 const About = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.about}`);
 
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div className={styles.container}>
       <div className={styles["text-container"]}>
-        {data && (
-          <>
-            <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>
-            <p className={styles.paragraph}>{data.data.attributes.content}</p>
-            <br />
-            <p className={styles.paragraph}>{data.data.attributes.content}</p>
-          </>
-        )}
+        <HeadingWhite>{data.data.attributes.heading}</HeadingWhite>
+        <p className={styles.paragraph}>{data.data.attributes.content}</p>
+        <br />
+        <p className={styles.paragraph}>{data.data.attributes.content}</p>
       </div>
       <div className={styles["img-container"]}>
         <img src={Car} alt="" className={styles.img} />
