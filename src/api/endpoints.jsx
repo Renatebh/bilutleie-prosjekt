@@ -12,6 +12,7 @@ const API_CONSTANT_MAP = {
   findUS: `${BASE_API}/api/find-us`,
   contact: `${BASE_API}/api/contact`,
   hours: `${BASE_API}/api/hours`,
+  prices: `${BASE_API}/api/car-prices`,
 };
 
 export default API_CONSTANT_MAP;

@@ -1,0 +1,13 @@
+.select {
+  width: 14rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 700px) {
+  .select {
+    width: 95%;
+  }
+}
