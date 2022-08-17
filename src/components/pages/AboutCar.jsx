@@ -6,37 +6,32 @@ import styles from "./Cars.module.css";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import API_CONSTANT_MAP from "../../api/endpoints";
+import ReactMarkdown from "react-markdown";
 
 const AboutCar = () => {
-  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.car}`);
   const { id } = useParams();
+  const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
 
   {
-    data && console.log(data.data.attributes.brand);
+    data && console.log(data.data);
   }
+
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error...</p>;
 
   return (
     <>
       <main className={styles.containerAbout}>
         <div className={styles.wrapper}>
           <Heading mainHeading>
-            {data && data.data.attributes.brand} {id}
+            {data.data.attributes.brand} Id: {id}
           </Heading>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit
-            distinctio qui illo, asperiores nemo eos laboriosam reprehenderit
-            praesentium consectetur sapiente at similique impedit ratione, amet
-            veritatis provident magni doloribus magnam?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit
-            distinctio qui illo, asperiores nemo eos laboriosam reprehenderit
-            praesentium consectetur sapiente at similique impedit ratione, amet
-            veritatis provident magni doloribus magnam?
-          </p>
-          <Table />
-          <Table />
-          <Table />
+          <ReactMarkdown>{data.data.attributes.info}</ReactMarkdown>
+          <Table
+            price={data.data.attributes.price}
+            kmPerDay={data.data.attributes.kmPerDay}
+            extraKm={data.data.attributes.extraKm}
+          />
           <button className={styles.btn}>Bestill</button>
         </div>
         <SingleCarSlider />

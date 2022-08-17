@@ -18,7 +18,6 @@ function App() {
           <Route path="/cars" element={<Cars />} />
           <Route path="/trucks" element={<Trucks />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/about-car" element={<AboutCar />} />
           <Route path="/about-car/:id" element={<AboutCar />} />
         </Routes>
         <Footer />
