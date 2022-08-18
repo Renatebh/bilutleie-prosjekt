@@ -1,12 +1,12 @@
-import React from "react";
-import Heading from "../ui/heading/Heading";
-import Table from "../ui/table/Table";
-import SingleCarSlider from "../Carousel/singleCarSlider/SingleCarSlider";
-import styles from "./Cars.module.css";
-import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
-import API_CONSTANT_MAP from "../../api/endpoints";
-import ReactMarkdown from "react-markdown";
+import React from 'react';
+import Heading from '../ui/heading/Heading';
+import Table from '../ui/table/Table';
+import SingleCarSlider from '../Carousel/singleCarSlider/SingleCarSlider';
+import styles from './Cars.module.css';
+import { useParams } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
+import API_CONSTANT_MAP from '../../api/endpoints';
+import ReactMarkdown from 'react-markdown';
 
 const AboutCar = () => {
   const { id } = useParams();
