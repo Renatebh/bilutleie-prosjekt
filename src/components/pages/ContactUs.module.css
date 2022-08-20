@@ -109,12 +109,12 @@
 }
 
 .phone {
-  color: var(--secondaryColor);
+  color: var(--primaryColor);
   text-decoration: underline;
   cursor: pointer;
-  font-weight: bold;
   font-size: 2rem;
-  text-shadow: 1px 1px 0px #3333;
+  /* font-weight: bold; */
+  /* text-shadow: 1px 1px 0px #3333; */
 }
 
 @media screen and (max-width: 1040px) {
