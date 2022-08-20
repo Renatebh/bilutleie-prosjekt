@@ -67,7 +67,7 @@ const Header = () => {
         <div className={headerStyles["contact-wrapper"]}>
           <FaPhoneAlt size={25} />
 
-          <a href="tel:91774282" className={headerStyles.phone}>
+          <a href="tel:12345678" className={headerStyles.phone}>
             {data && data.data.attributes.number}
             {loading && "Loading..."}
             {err && "Error..."}
