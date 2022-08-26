@@ -1,12 +1,13 @@
-import React from 'react';
-import Heading from '../ui/heading/Heading';
-import Table from '../ui/table/Table';
-import SingleCarSlider from '../Carousel/singleCarSlider/SingleCarSlider';
-import styles from './Cars.module.css';
-import { useParams } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
-import API_CONSTANT_MAP from '../../api/endpoints';
-import ReactMarkdown from 'react-markdown';
+import React from "react";
+import Heading from "../ui/heading/Heading";
+import Table from "../ui/table/Table";
+import SingleCarSlider from "../Carousel/singleCarSlider/SingleCarSlider";
+import styles from "./Cars.module.css";
+import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import API_CONSTANT_MAP from "../../api/endpoints";
+import ReactMarkdown from "react-markdown";
+import ButtonLarge from "../ui/buttons/ButtonLarge";
 
 const AboutCar = () => {
   const { id } = useParams();
@@ -34,9 +35,11 @@ const AboutCar = () => {
             kmPerDay={data.data.attributes.kmPerDay}
             extraKm={data.data.attributes.extraKm}
           />
-          <button className={styles.btn}>Bestill</button>
+          <ButtonLarge>Bestill</ButtonLarge>
         </div>
-        <SingleCarSlider />
+        <div className={styles["carslider-container"]}>
+          <SingleCarSlider />
+        </div>
       </main>
     </>
   );

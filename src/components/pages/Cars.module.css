@@ -25,17 +25,6 @@
   gap: 2rem;
 }
 
-.btn {
-  background-color: var(--primaryColor);
-  border: none;
-  color: var(--white);
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  padding: 2rem;
-}
-
 /* About car */
 .containerAbout {
   margin: 18rem auto 10rem auto;
@@ -43,6 +32,10 @@
   justify-content: center;
   max-width: 144rem;
   gap: 4rem;
+}
+
+.carslider-container {
+  width: 50%;
 }
 /* About car */
 
@@ -78,6 +71,10 @@
 
   .containerAbout {
     flex-direction: column;
+  }
+
+  .carslider-container {
+    width: 100%;
   }
 }
 

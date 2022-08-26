@@ -1,12 +1,12 @@
-import React from 'react';
-import Carousel from '../Carousel';
-import { SwiperSlide } from 'swiper/react';
-import CarCarouselHeading from './CarCarouselHeading';
-import styles from './CarCarousel.module.css';
-import FilterCars from './FilterCars';
-import CarsCard from '../../cards/cars/CarCard';
-import useFetch from '../../../hooks/useFetch';
-import API_CONSTANT_MAP from '../../../api/endpoints';
+import React from "react";
+import Carousel from "../Carousel";
+import { SwiperSlide } from "swiper/react";
+import CarCarouselHeading from "./CarCarouselHeading";
+import styles from "./CarCarousel.module.css";
+import FilterCars from "./FilterCars";
+import CarsCard from "../../cards/cars/CarCard";
+import useFetch from "../../../hooks/useFetch";
+import API_CONSTANT_MAP from "../../../api/endpoints";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -15,7 +15,7 @@ const CarCarousel = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles['header-container']}>
+      <div className={styles["header-container"]}>
         <CarCarouselHeading />
         <FilterCars />
       </div>
@@ -23,18 +23,18 @@ const CarCarousel = () => {
         {data &&
           data.data.map((car) => {
             return (
-              <SwiperSlide className={styles['swiper-slide']} key={car.id}>
+              <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
                 <CarsCard
                   carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
-                  carBrand={car.attributes.brand + ' ' + car.id + 'nr'}
-                  carPrice={car.attributes.price}
+                  carBrand={car.attributes.brand + " " + car.id + "nr"}
+                  carPrice={`Fra ${car.attributes.price}kr/per dag`}
                   id={car.id}
                 />
               </SwiperSlide>
             );
           })}
-        {loading && 'Loading...'}
-        {err && 'Error...'}
+        {loading && "Loading..."}
+        {err && "Error..."}
       </Carousel>
     </div>
   );

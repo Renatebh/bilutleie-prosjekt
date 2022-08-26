@@ -58,12 +58,12 @@
 }
 
 .swiper-nav-prev {
-  top: 22%;
+  top: 35%;
   left: 2.5%;
 }
 
 .swiper-nav-next {
-  top: 22%;
+  top: 35%;
   right: 2.5%;
 }
 
@@ -85,13 +85,4 @@
 
 .container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-@media screen and (max-width: 900px) {
-  .container {
-    width: 100%;
-  }
 }

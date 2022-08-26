@@ -27,7 +27,7 @@ const Trucks = () => {
                   single
                   carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
                   carBrand={car.attributes.brand + " " + car.id + "nr"}
-                  carPrice={car.attributes.price}
+                  carPrice={`Fra ${car.attributes.price}kr/per dag`}
                 />
               );
             })}
