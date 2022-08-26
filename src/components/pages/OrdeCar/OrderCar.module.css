@@ -1,0 +1,23 @@
+.main {
+  margin-top: 18rem;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 144rem;
+}
+
+.right-side,
+.left-side {
+  width: 50%;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}

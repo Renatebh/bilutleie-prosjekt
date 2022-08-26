@@ -29,22 +29,22 @@ const Select = () => {
   );
 };
 
-const HeroDate = ({ children, forLabel }) => {
+const HeroDate = ({ children, id }) => {
   return (
     <div className={styles.container}>
       <div className={styles["hero-label-container"]}>
-        <label className={styles["hero-label"]} htmlFor={forLabel}>
+        <label className={styles["hero-label"]} htmlFor={id}>
           {children}
         </label>
       </div>
       <input
         className={styles.date}
         type="datetime-local"
-        id={forLabel}
+        id={id}
         name="trip-start"
         min="2022-07-08T07:30"
         max="2024-12-31T16:00"
-      ></input>
+      />
     </div>
   );
 };

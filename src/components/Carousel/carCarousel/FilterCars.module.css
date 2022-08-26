@@ -1,5 +1,9 @@
 @import "../../../variables/variables.module.css";
 
+.select-container {
+  width: 14rem;
+}
+
 .select {
   width: 14rem;
   text-align: center;
@@ -37,7 +41,8 @@ select {
     align-items: center;
   }
 
-  .select {
+  .select,
+  .select-container {
     width: 95%;
   }
 }

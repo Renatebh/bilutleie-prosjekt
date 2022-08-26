@@ -1,0 +1,13 @@
+@import "../../../variables/variables.module.css";
+
+.label {
+  font-weight: bold;
+  font-size: var(--step--1);
+}
+
+.input {
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.7rem;
+  border: 0.1rem solid var(--primaryColor);
+}

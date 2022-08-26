@@ -5,6 +5,7 @@ import Cars from "./components/pages/Cars";
 import Trucks from "./components/pages/Trucks";
 import ContactUs from "./components/pages/ContactUs";
 import AboutCar from "./components/pages/AboutCar";
+import OrderCar from "./components/pages/OrdeCar/OrderCar";
 import GradientBg from "./components/ui/background/GradientBG";
 import Footer from "./components/footer/Footer";
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/trucks" element={<Trucks />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about-car/:id" element={<AboutCar />} />
+          <Route path="/order-car/:id" element={<OrderCar />} />
         </Routes>
         <Footer />
       </GradientBg>

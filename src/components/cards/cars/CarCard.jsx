@@ -18,7 +18,9 @@ const Cars = ({ carImg, carBrand, carPrice, single, id }) => {
         <Link to={`/about-car/${id}`} className={styles["btn"]}>
           Les mer
         </Link>
-        <button className={styles["btn"]}>Bestill</button>
+        <Link to={`/order-car/${id}`} className={styles["btn"]}>
+          Bestill
+        </Link>
       </div>
     </div>
   );
