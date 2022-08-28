@@ -10,27 +10,31 @@ import API_CONSTANT_MAP from "../../../api/endpoints";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 
+let fromDate;
+let toDate;
+let days;
+
 const OrderCarForm = () => {
   const { id } = useParams();
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
   const [rentPrice, setRentPrice] = useState("");
 
-  let fromDate;
-  let toDate;
-  let days;
-
   const getFromDate = (date) => {
     fromDate = new Date(date);
+    calcDaysBetween();
   };
 
   const getToDate = (date) => {
     toDate = new Date(date);
+    calcDaysBetween();
   };
 
   const calcDaysBetween = () => {
-    const difference = toDate.getTime() - fromDate.getTime();
-    days = Math.ceil(difference / (1000 * 3600 * 24));
-    setRentPrice(rentPrice * days);
+    if (toDate !== undefined && fromDate !== undefined) {
+      const difference = toDate.getTime() - fromDate.getTime();
+      days = Math.ceil(difference / (1000 * 3600 * 24));
+      setRentPrice(data.data.attributes.price * days);
+    }
   };
 
   useEffect(() => {
@@ -77,7 +81,7 @@ const OrderCarForm = () => {
         </Select>
       </div>
       <OrderCarCheckbox />
-      <div onClick={calcDaysBetween} className={styles["input-container"]}>
+      <div className={styles["input-container"]}>
         <Table price={rentPrice} kmPerDay="100" extraKm="2,-" />
       </div>
       <div className={styles["input-container"]}>
