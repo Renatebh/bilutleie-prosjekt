@@ -22,3 +22,25 @@
   flex-direction: column;
   gap: 4rem;
 }
+
+@media screen and (max-width: 1510px) {
+  .content-container {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    margin-top: 13rem;
+  }
+
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-side,
+  .left-side {
+    width: 95%;
+  }
+}
