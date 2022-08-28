@@ -12,7 +12,7 @@ import useFetch from "../../../hooks/useFetch";
 
 let fromDate;
 let toDate;
-let days;
+let days = 1;
 let totalPrice;
 
 const OrderCarForm = () => {
@@ -21,7 +21,7 @@ const OrderCarForm = () => {
   const [rentPrice, setRentPrice] = useState("");
   const [dailyCarPrice, setDailyCarPrice] = useState("");
   const [dailyExtrasPrice, setDailyExtrasPrice] = useState("");
-  const [checked, setChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const getFromDate = (date) => {
     fromDate = new Date(date);
@@ -46,11 +46,14 @@ const OrderCarForm = () => {
   };
 
   const getCheckboxChecked = (checked) => {
-    setChecked(checked);
+    setIsChecked(checked);
+    console.log(checked);
+    console.log(isChecked);
+    calcTotCarPrice();
   };
 
   const calcTotCarPrice = () => {
-    if (checked === true) {
+    if (isChecked === true) {
       totalPrice =
         parseInt(dailyExtrasPrice) * parseInt(days) + parseInt(rentPrice);
       console.log(totalPrice);
@@ -70,10 +73,6 @@ const OrderCarForm = () => {
 
     getPrice();
   }, []);
-
-  useEffect(() => {
-    calcTotCarPrice();
-  }, [totalPrice]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
