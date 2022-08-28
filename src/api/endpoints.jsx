@@ -15,6 +15,7 @@ const API_CONSTANT_MAP = {
   prices: `${BASE_API}/api/car-prices`,
   brands: `${BASE_API}/api/car-brands`,
   types: `${BASE_API}/api/car-types`,
+  orderCarCheckboxes: `${BASE_API}/api/order-car-checkboxes`,
 };
 
 export default API_CONSTANT_MAP;

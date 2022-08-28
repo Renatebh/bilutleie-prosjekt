@@ -1,40 +1,39 @@
 import React from "react";
 import styles from "./OrderCarForm.module.css";
 import Checkbox from "../../ui/checkbox/Checkbox";
+import API_CONSTANT_MAP from "../../../api/endpoints";
+import useFetch from "../../../hooks/useFetch";
+
+const getFirstWord = (el) => {
+  const firstWord = el.split(" ");
+  console.log(firstWord);
+  return firstWord;
+};
 
 const OrderCarCheckbox = () => {
+  const { loading, err, data } = useFetch(
+    `${API_CONSTANT_MAP.orderCarCheckboxes}`
+  );
+
+  if (loading) return <p>Loading..</p>;
+  if (err) return <p>Error...</p>;
+
   return (
     <div className={styles["checkboxes-wrapper"]}>
-      <div className={styles["checkbox-container"]}>
-        <Checkbox id="km" name="km">
-          Ubegrenset Km
-        </Checkbox>
-      </div>
-      <div className={styles["checkbox-container"]}>
-        <Checkbox id="ekstra-fører" name="ekstra-fører">
-          Ekstra-fører
-        </Checkbox>
-      </div>
-      <div className={styles["checkbox-container"]}>
-        <Checkbox id="fører-under-24" name="fører-under-24">
-          Fører under 24 år
-        </Checkbox>
-      </div>
-      <div className={styles["checkbox-container"]}>
-        <Checkbox id="barnepute" name="barnepute">
-          Barnepute
-        </Checkbox>
-      </div>
-      <div className={styles["checkbox-container"]}>
-        <Checkbox id="barnesete" name="barnesete">
-          Barnesete
-        </Checkbox>
-      </div>
-      <div className={styles["checkbox-container"]}>
-        <Checkbox id="gps" name="gps">
-          GPS
-        </Checkbox>
-      </div>
+      {data &&
+        data.data.map((checkbox) => {
+          console.log(checkbox.attributes.name);
+          return (
+            <div className={styles["checkbox-container"]} key={checkbox.id}>
+              <Checkbox
+                id={getFirstWord(checkbox.attributes.name)}
+                name={getFirstWord(checkbox.attributes.name)}
+              >
+                {checkbox.attributes.name}
+              </Checkbox>
+            </div>
+          );
+        })}
     </div>
   );
 };
