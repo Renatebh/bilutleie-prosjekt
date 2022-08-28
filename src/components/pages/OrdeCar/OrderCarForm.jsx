@@ -18,10 +18,9 @@ let totalPrice;
 const OrderCarForm = () => {
   const { id } = useParams();
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
-  const [rentPrice, setRentPrice] = useState("");
-  const [dailyCarPrice, setDailyCarPrice] = useState("");
-  const [dailyExtrasPrice, setDailyExtrasPrice] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [rentPrice, setRentPrice] = useState(null);
+  const [dailyCarPrice, setDailyCarPrice] = useState(null);
+  const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
 
   const getFromDate = (date) => {
     fromDate = new Date(date);
@@ -37,7 +36,8 @@ const OrderCarForm = () => {
     if (toDate !== undefined && fromDate !== undefined) {
       const difference = toDate.getTime() - fromDate.getTime();
       days = Math.ceil(difference / (1000 * 3600 * 24));
-      setRentPrice(data.data.attributes.price * days);
+      setRentPrice(parseInt(data.data.attributes.price) * days);
+      console.log(rentPrice);
     }
   };
 
@@ -46,17 +46,22 @@ const OrderCarForm = () => {
   };
 
   const getCheckboxChecked = (checked) => {
-    setIsChecked(checked);
     console.log(checked);
-    console.log(isChecked);
-    calcTotCarPrice();
+    calcTotCarPrice(checked);
   };
 
-  const calcTotCarPrice = () => {
-    if (isChecked === true) {
-      totalPrice =
-        parseInt(dailyExtrasPrice) * parseInt(days) + parseInt(rentPrice);
-      console.log(totalPrice);
+  const calcTotCarPrice = (checked) => {
+    if (checked === true) {
+      dailyExtrasPrice;
+      totalPrice = dailyExtrasPrice * days + rentPrice;
+      console.log(
+        typeof dailyExtrasPrice,
+        dailyExtrasPrice,
+        typeof dailyCarPrice,
+        dailyCarPrice,
+        totalPrice,
+        typeof totalPrice
+      );
       setRentPrice(totalPrice);
     }
   };
@@ -67,7 +72,7 @@ const OrderCarForm = () => {
         .then((res) => res.json())
         .then((data) => {
           setRentPrice(data.data.attributes.price);
-          setDailyCarPrice(data.data.attributes.price);
+          setDailyCarPrice(parseInt(data.data.attributes.price));
         });
     }
 

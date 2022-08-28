@@ -14,11 +14,11 @@ const OrderCarCheckbox = ({ getCheckboxPrice, getCheckboxChecked }) => {
   );
 
   const handleCheckboxPrice = (price) => {
-    getCheckboxPrice(price);
+    getCheckboxPrice(parseInt(price));
   };
 
-  const handleCheckboxChecked = (e) => {
-    getCheckboxChecked(e);
+  const handleCheckboxChecked = (checked) => {
+    getCheckboxChecked(checked);
   };
 
   if (loading) return <p>Loading..</p>;
@@ -32,7 +32,7 @@ const OrderCarCheckbox = ({ getCheckboxPrice, getCheckboxChecked }) => {
             return (
               <div className={styles["checkbox-container"]} key={checkbox.id}>
                 <input
-                  onClick={(e) => {
+                  onChange={(e) => {
                     handleCheckboxPrice(checkbox.attributes.price);
                     handleCheckboxChecked(e.target.checked);
                   }}
