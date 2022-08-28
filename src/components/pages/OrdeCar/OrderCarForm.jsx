@@ -13,12 +13,15 @@ import useFetch from "../../../hooks/useFetch";
 let fromDate;
 let toDate;
 let days;
+let totalPrice;
 
 const OrderCarForm = () => {
   const { id } = useParams();
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
   const [rentPrice, setRentPrice] = useState("");
-  const [price, setPrice] = useState("");
+  const [dailyCarPrice, setDailyCarPrice] = useState("");
+  const [dailyExtrasPrice, setDailyExtrasPrice] = useState("");
+  const [checked, setChecked] = useState(false);
 
   const getFromDate = (date) => {
     fromDate = new Date(date);
@@ -38,18 +41,39 @@ const OrderCarForm = () => {
     }
   };
 
+  const getCheckboxPrice = (price) => {
+    setDailyExtrasPrice(price);
+  };
+
+  const getCheckboxChecked = (checked) => {
+    setChecked(checked);
+  };
+
+  const calcTotCarPrice = () => {
+    if (checked === true) {
+      totalPrice =
+        parseInt(dailyExtrasPrice) * parseInt(days) + parseInt(rentPrice);
+      console.log(totalPrice);
+      setRentPrice(totalPrice);
+    }
+  };
+
   useEffect(() => {
     async function getPrice() {
       await fetch(`${API_CONSTANT_MAP.id(id)}`)
         .then((res) => res.json())
         .then((data) => {
           setRentPrice(data.data.attributes.price);
-          setPrice(data.data.attributes.price);
+          setDailyCarPrice(data.data.attributes.price);
         });
     }
 
     getPrice();
   }, []);
+
+  useEffect(() => {
+    calcTotCarPrice();
+  }, [totalPrice]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
@@ -84,9 +108,12 @@ const OrderCarForm = () => {
           </Option>
         </Select>
       </div>
-      <OrderCarCheckbox />
+      <OrderCarCheckbox
+        getCheckboxPrice={getCheckboxPrice}
+        getCheckboxChecked={getCheckboxChecked}
+      />
       <div className={styles["input-container"]}>
-        <Table price={price} kmPerDay="100" extraKm="2,-" />
+        <Table price={dailyCarPrice} kmPerDay="100" extraKm="2,-" />
       </div>
       <div
         className={`${styles["input-container"]} ${styles["price-container"]}`}

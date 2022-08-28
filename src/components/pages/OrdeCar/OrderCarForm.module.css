@@ -39,7 +39,24 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-@media screen and (max-width: 400px) {
+.price-per-day {
+  font-weight: bold;
+  font-size: 1.6rem;
+  padding-left: 0.6rem;
+}
+
+.checkbox {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.7rem;
+  border: 0.2rem solid var(--primaryColor);
+}
+
+.label {
+  font-size: var(--step--1);
+}
+
+@media screen and (max-width: 500px) {
   .checkboxes-wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
