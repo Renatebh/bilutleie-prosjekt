@@ -72,7 +72,7 @@ const OrderCarForm = () => {
 
   useEffect(() => {
     console.log(priceCtx.price);
-  }, [priceCtx]);
+  }, [priceCtx.price]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
