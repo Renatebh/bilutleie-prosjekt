@@ -6,6 +6,7 @@ import API_CONSTANT_MAP from "../../../api/endpoints";
 import Heading from "../../ui/heading/Heading";
 import SingleCarSlider from "../../Carousel/singleCarSlider/SingleCarSlider";
 import OrderCarForm from "./OrderCarForm";
+import PriceProvider from "../../../store/PriceProvider";
 
 const OrderCar = () => {
   const { id } = useParams();
@@ -15,19 +16,21 @@ const OrderCar = () => {
   if (err) return <p>Error...</p>;
 
   return (
-    <main className={styles.main}>
-      <div className={styles["content-container"]}>
-        <div className={styles["left-side"]}>
-          <Heading>
-            Bestill {data.data.attributes.brand} Id: {id}
-          </Heading>
-          <OrderCarForm />
+    <PriceProvider>
+      <main className={styles.main}>
+        <div className={styles["content-container"]}>
+          <div className={styles["left-side"]}>
+            <Heading>
+              Bestill {data.data.attributes.brand} Id: {id}
+            </Heading>
+            <OrderCarForm />
+          </div>
+          <div className={styles["left-side"]}>
+            <SingleCarSlider />
+          </div>
         </div>
-        <div className={styles["left-side"]}>
-          <SingleCarSlider />
-        </div>
-      </div>
-    </main>
+      </main>
+    </PriceProvider>
   );
 };
 

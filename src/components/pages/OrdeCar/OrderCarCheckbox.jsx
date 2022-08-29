@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import styles from "./OrderCarForm.module.css";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 import useFetch from "../../../hooks/useFetch";
+import PriceContext from "../../../store/price-context";
 
 const getFirstWord = (el) => {
   const firstWord = el.split(" ");
   return firstWord;
 };
 
-const OrderCarCheckbox = ({ getCheckboxPrice, getCheckboxChecked }) => {
+const OrderCarCheckbox = ({ getCheckboxChecked }) => {
+  const priceCtx = useContext(PriceContext);
+  const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
   const { loading, err, data } = useFetch(
     `${API_CONSTANT_MAP.orderCarCheckboxes}`
   );
 
   const handleCheckboxPrice = (price) => {
-    getCheckboxPrice(parseInt(price));
+    setDailyExtrasPrice(parseInt(price));
+    priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
+    console.log(dailyExtrasPrice);
   };
 
   const handleCheckboxChecked = (checked) => {
