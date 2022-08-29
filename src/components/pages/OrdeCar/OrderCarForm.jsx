@@ -44,10 +44,6 @@ const OrderCarForm = () => {
     }
   };
 
-  const getCheckboxPrice = () => {
-    console.log(priceCtx.price);
-  };
-
   const getCheckboxChecked = (checked) => {
     calcTotCarPrice(checked);
   };
@@ -73,6 +69,10 @@ const OrderCarForm = () => {
 
     getPrice();
   }, []);
+
+  useEffect(() => {
+    console.log(priceCtx.price);
+  }, [priceCtx]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
@@ -115,7 +115,7 @@ const OrderCarForm = () => {
         <div
           className={`${styles["input-container"]} ${styles["price-container"]}`}
         >
-          <h2 className={styles.price}>Totalpris: {rentPrice}</h2>
+          <h2 className={styles.price}>Totalpris: {rentPrice},-</h2>
         </div>
         <div className={styles["input-container"]}>
           <ButtonLarge>Bestill nå</ButtonLarge>

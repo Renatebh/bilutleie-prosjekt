@@ -26,7 +26,7 @@ const OrderCarCheckbox = ({ getCheckboxChecked }) => {
 
   useEffect(() => {
     priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
-    console.log(dailyExtrasPrice, priceCtx.price);
+    console.log("Checkbox price:", dailyExtrasPrice, "ctx:", priceCtx.price);
   }, [dailyExtrasPrice, priceCtx.price]);
 
   if (loading) return <p>Loading..</p>;
