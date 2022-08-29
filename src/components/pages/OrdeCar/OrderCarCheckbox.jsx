@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./OrderCarForm.module.css";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 import useFetch from "../../../hooks/useFetch";
@@ -18,13 +18,16 @@ const OrderCarCheckbox = ({ getCheckboxChecked }) => {
 
   const handleCheckboxPrice = (price) => {
     setDailyExtrasPrice(parseInt(price));
-    priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
-    console.log(dailyExtrasPrice);
   };
 
   const handleCheckboxChecked = (checked) => {
     getCheckboxChecked(checked);
   };
+
+  useEffect(() => {
+    priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
+    console.log(dailyExtrasPrice, priceCtx.price);
+  }, [dailyExtrasPrice, priceCtx.price]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;

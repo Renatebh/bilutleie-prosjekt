@@ -44,12 +44,11 @@ const OrderCarForm = () => {
     }
   };
 
-  const getCheckboxPrice = (price) => {
-    priceCtx.getCheckboxPriceCtx(setDailyExtrasPrice(price));
+  const getCheckboxPrice = () => {
+    console.log(priceCtx.price);
   };
 
   const getCheckboxChecked = (checked) => {
-    console.log(checked);
     calcTotCarPrice(checked);
   };
 
