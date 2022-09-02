@@ -54,8 +54,12 @@ const HeroForm = () => {
     <div className={styles["heroContent-container"]}>
       <form className={styles.form}>
         <Select />
-        <HeroDate forLabel="start">FRA DATO KLOKKESLETT</HeroDate>
-        <HeroDate forLabel="end">TIL DATO KLOKKESLETT</HeroDate>
+        <HeroDate forLabel="start" id={"fra"}>
+          FRA DATO KLOKKESLETT
+        </HeroDate>
+        <HeroDate forLabel="end" id={"til"}>
+          TIL DATO KLOKKESLETT
+        </HeroDate>
         <div className={styles["car-type-container"]}>
           <RadioButton
             carType

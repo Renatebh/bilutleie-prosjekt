@@ -6,7 +6,7 @@ const Table = ({ price, kmPerDay, extraKm }) => {
     <table className={styles.table}>
       <thead className={styles["table-head"]}>
         <tr className={styles["table-row"]}>
-          <th>Pris</th>
+          <th>Pris per døgn</th>
           <th>km inkl. per dag</th>
           <th>Ekstra km</th>
         </tr>

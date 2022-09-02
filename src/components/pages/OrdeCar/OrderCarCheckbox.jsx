@@ -33,37 +33,35 @@ const OrderCarCheckbox = ({ getCheckboxChecked }) => {
   if (err) return <p>Error...</p>;
 
   return (
-    <>
-      <div className={styles["checkboxes-wrapper"]}>
-        {data &&
-          data.data.map((checkbox) => {
-            return (
-              <div className={styles["checkbox-container"]} key={checkbox.id}>
-                <input
-                  onChange={(e) => {
-                    handleCheckboxPrice(checkbox.attributes.price);
-                    handleCheckboxChecked(e.target.checked);
-                  }}
-                  className={styles.checkbox}
-                  type="checkbox"
-                  name={getFirstWord(checkbox.attributes.name)}
-                  id={getFirstWord(checkbox.attributes.name)}
-                />
-                <label
-                  htmlFor={getFirstWord(checkbox.attributes.name)}
-                  className={styles.label}
-                >
-                  {checkbox.attributes.name}:
-                  <span className={styles["price-per-day"]}>
-                    kr {checkbox.attributes.price},-
-                  </span>
-                </label>
-              </div>
-            );
-          })}
-        <p>Pris per døgn</p>
-      </div>
-    </>
+    <div className={styles["checkboxes-wrapper"]}>
+      {data &&
+        data.data.map((checkbox) => {
+          return (
+            <div className={styles["checkbox-container"]} key={checkbox.id}>
+              <input
+                onChange={(e) => {
+                  handleCheckboxPrice(checkbox.attributes.price);
+                  handleCheckboxChecked(e.target.checked);
+                }}
+                className={styles.checkbox}
+                type="checkbox"
+                name={getFirstWord(checkbox.attributes.name)}
+                id={getFirstWord(checkbox.attributes.name)}
+              />
+              <label
+                htmlFor={getFirstWord(checkbox.attributes.name)}
+                className={styles.label}
+              >
+                {checkbox.attributes.name}
+                <span className={styles["price-per-day"]}>
+                  {checkbox.attributes.price},-
+                </span>
+              </label>
+            </div>
+          );
+        })}
+      <p>Pris per døgn</p>
+    </div>
   );
 };
 

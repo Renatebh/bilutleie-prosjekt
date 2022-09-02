@@ -9,7 +9,6 @@ import Table from "../../ui/table/Table";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
-import PriceProvider from "../../../store/PriceProvider";
 import PriceContext from "../../../store/price-context";
 
 let fromDate;
@@ -78,50 +77,48 @@ const OrderCarForm = () => {
   if (err) return <p>Error...</p>;
 
   return (
-    <PriceProvider>
-      <form action="" className={styles["order-car-form"]}>
-        <div className={styles["input-container"]}>
-          <DatePicker
-            from
-            getFromDate={getFromDate}
-            id="hente"
-            name="bestill-bil"
-          >
-            Hente
-          </DatePicker>
-        </div>
-        <div className={styles["input-container"]}>
-          <DatePicker to getToDate={getToDate} id="levere" name="bestill-bil">
-            Levere
-          </DatePicker>
-        </div>
-        <div className={styles["input-container"]}>
-          <label htmlFor="hentested" className={styles["select-label"]}>
-            Hentested
-          </label>
-          <Select name="" id="hentested" defaultValue="hentested">
-            <Option value={"hentested"} disabled>
-              Velg hentested
-            </Option>
-            <Option value="Osloveien 22, 0022 Oslo">
-              Osloveien 22, 0022 Oslo
-            </Option>
-          </Select>
-        </div>
-        {data && <OrderCarCheckbox getCheckboxChecked={getCheckboxChecked} />}
-        <div className={styles["input-container"]}>
-          <Table price={dailyCarPrice} kmPerDay="100" extraKm="2,-" />
-        </div>
-        <div
-          className={`${styles["input-container"]} ${styles["price-container"]}`}
+    <form action="" className={styles["order-car-form"]}>
+      <div className={styles["input-container"]}>
+        <DatePicker
+          from
+          getFromDate={getFromDate}
+          id="hente"
+          name="bestill-bil"
         >
-          <h2 className={styles.price}>Totalpris: {rentPrice},-</h2>
-        </div>
-        <div className={styles["input-container"]}>
-          <ButtonLarge>Bestill nå</ButtonLarge>
-        </div>
-      </form>
-    </PriceProvider>
+          Hente
+        </DatePicker>
+      </div>
+      <div className={styles["input-container"]}>
+        <DatePicker to getToDate={getToDate} id="levere" name="bestill-bil">
+          Levere
+        </DatePicker>
+      </div>
+      <div className={styles["input-container"]}>
+        <label htmlFor="hentested" className={styles["select-label"]}>
+          Hentested
+        </label>
+        <Select name="" id="hentested" defaultValue="hentested">
+          <Option value={"hentested"} disabled>
+            Velg hentested
+          </Option>
+          <Option value="Osloveien 22, 0022 Oslo">
+            Osloveien 22, 0022 Oslo
+          </Option>
+        </Select>
+      </div>
+      <OrderCarCheckbox getCheckboxChecked={getCheckboxChecked} />
+      <div className={styles["input-container"]}>
+        <Table price={`${dailyCarPrice},-`} kmPerDay="100" extraKm="2,-" />
+      </div>
+      <div
+        className={`${styles["input-container"]} ${styles["price-container"]}`}
+      >
+        <h2 className={styles.price}>Totalpris: {rentPrice},-</h2>
+      </div>
+      <div className={styles["input-container"]}>
+        <ButtonLarge>Bestill nå</ButtonLarge>
+      </div>
+    </form>
   );
 };
 
