@@ -23,6 +23,7 @@ const OrderCarForm = () => {
   const [rentPrice, setRentPrice] = useState(null);
   const [dailyCarPrice, setDailyCarPrice] = useState(null);
   const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
+  const [checked, setChecked] = useState(false);
 
   const getFromDate = (date) => {
     fromDate = new Date(date);
@@ -43,25 +44,12 @@ const OrderCarForm = () => {
     }
   };
 
-  const getCheckboxChecked = (checked) => {
-    calcTotCarPrice(checked);
-  };
-
-  const calcTotCarPrice = (checked) => {
-    if (checked === true) {
-      dailyExtrasPrice;
-      totalPrice = dailyExtrasPrice * days + rentPrice;
-      // console.log(typeof dailyExtrasPrice, dailyExtrasPrice);
-      setRentPrice(totalPrice);
-    }
-  };
-
   useEffect(() => {
     async function getPrice() {
       await fetch(`${API_CONSTANT_MAP.id(id)}`)
         .then((res) => res.json())
         .then((data) => {
-          setRentPrice(data.data.attributes.price);
+          setRentPrice(parseInt(data.data.attributes.price));
           setDailyCarPrice(parseInt(data.data.attributes.price));
         });
     }
@@ -70,8 +58,24 @@ const OrderCarForm = () => {
   }, []);
 
   useEffect(() => {
-    console.log(priceCtx.price);
-  }, [priceCtx.price]);
+    setChecked(priceCtx.checked);
+
+    if (checked === true) {
+      setDailyExtrasPrice(priceCtx.price);
+      console.log(typeof dailyExtrasPrice, checked, typeof rentPrice, days);
+      if (dailyExtrasPrice !== null) {
+        totalPrice = dailyExtrasPrice * days + parseInt(rentPrice);
+        setRentPrice(totalPrice);
+      }
+    }
+
+    if (checked === false) {
+      console.log(checked, dailyExtrasPrice);
+      setDailyExtrasPrice(priceCtx.price);
+      totalPrice = parseInt(rentPrice) - dailyExtrasPrice * days;
+      setRentPrice(totalPrice);
+    }
+  }, [priceCtx.price, priceCtx.checked, dailyExtrasPrice, checked]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
@@ -106,7 +110,7 @@ const OrderCarForm = () => {
           </Option>
         </Select>
       </div>
-      <OrderCarCheckbox getCheckboxChecked={getCheckboxChecked} />
+      <OrderCarCheckbox />
       <div className={styles["input-container"]}>
         <Table price={`${dailyCarPrice},-`} kmPerDay="100" extraKm="2,-" />
       </div>

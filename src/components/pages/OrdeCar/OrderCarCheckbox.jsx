@@ -9,9 +9,10 @@ const getFirstWord = (el) => {
   return firstWord;
 };
 
-const OrderCarCheckbox = ({ getCheckboxChecked }) => {
+const OrderCarCheckbox = () => {
   const priceCtx = useContext(PriceContext);
   const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
+  const [checked, setChecked] = useState(false);
   const { loading, err, data } = useFetch(
     `${API_CONSTANT_MAP.orderCarCheckboxes}`
   );
@@ -21,13 +22,13 @@ const OrderCarCheckbox = ({ getCheckboxChecked }) => {
   };
 
   const handleCheckboxChecked = (checked) => {
-    getCheckboxChecked(checked);
+    setChecked(checked);
   };
 
   useEffect(() => {
+    priceCtx.getCheckboxCheckedCtx(checked);
     priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
-    console.log("Checkbox price:", dailyExtrasPrice, "ctx:", priceCtx.price);
-  }, [dailyExtrasPrice, priceCtx.price]);
+  }, [checked, dailyExtrasPrice, priceCtx.price, priceCtx.checked]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
