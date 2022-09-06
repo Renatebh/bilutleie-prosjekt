@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import DatePicker from "../../ui/datePicker/DatePicker";
 import styles from "./OrderCarForm.module.css";
 import Select from "../../ui/select/Select";
@@ -23,7 +23,9 @@ const OrderCarForm = () => {
   const [rentPrice, setRentPrice] = useState(null);
   const [dailyCarPrice, setDailyCarPrice] = useState(null);
   const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [checkedCount, setCheckedCount] = useState(0);
+
+  const prevCheckedCountRef = useRef("");
 
   const getFromDate = (date) => {
     fromDate = new Date(date);
@@ -40,7 +42,6 @@ const OrderCarForm = () => {
       const difference = toDate.getTime() - fromDate.getTime();
       days = Math.ceil(difference / (1000 * 3600 * 24));
       setRentPrice(parseInt(data.data.attributes.price) * days);
-      console.log(rentPrice);
     }
   };
 
@@ -58,24 +59,28 @@ const OrderCarForm = () => {
   }, []);
 
   useEffect(() => {
-    setChecked(priceCtx.checked);
+    setDailyExtrasPrice(priceCtx.price);
+  }, [priceCtx.price]);
 
-    if (checked === true) {
-      setDailyExtrasPrice(priceCtx.price);
-      console.log(typeof dailyExtrasPrice, checked, typeof rentPrice, days);
+  useEffect(() => {
+    prevCheckedCountRef.current = checkedCount;
+  }, [priceCtx.counter]);
+
+  useEffect(() => {
+    setCheckedCount(priceCtx.counter);
+
+    if (prevCheckedCountRef.current < checkedCount) {
       if (dailyExtrasPrice !== null) {
         totalPrice = dailyExtrasPrice * days + parseInt(rentPrice);
         setRentPrice(totalPrice);
       }
     }
 
-    if (checked === false) {
-      console.log(checked, dailyExtrasPrice);
-      setDailyExtrasPrice(priceCtx.price);
+    if (prevCheckedCountRef.current > checkedCount) {
       totalPrice = parseInt(rentPrice) - dailyExtrasPrice * days;
       setRentPrice(totalPrice);
     }
-  }, [priceCtx.price, priceCtx.checked, dailyExtrasPrice, checked]);
+  }, [checkedCount, priceCtx.counter]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;

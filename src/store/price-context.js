@@ -3,8 +3,8 @@ import React from "react";
 const PriceContext = React.createContext({
     price: null,
     getCheckboxPrice: (price) => {},
-    checked: false,
-    getCheckboxChecked: (checked) => {}
+    counter: 0,
+    CheckedCount: (count) => {}
 });
 
 export default PriceContext;

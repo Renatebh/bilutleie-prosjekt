@@ -3,21 +3,21 @@ import PriceContext from "./price-context";
 
 const PriceProvider = ({ children }) => {
   const [checkboxPrice, setCheckboxPrice] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [checkedCount, setCheckedCount] = useState(0);
 
   const checkboxPriceHandler = (price) => {
     setCheckboxPrice(price);
   };
 
-  const handleChecked = (checked) => {
-    setChecked(checked);
+  const handleCheckedCount = (count) => {
+    setCheckedCount(count);
   };
 
   const priceContext = {
     price: checkboxPrice,
     getCheckboxPriceCtx: checkboxPriceHandler,
-    checked: checked,
-    getCheckboxCheckedCtx: handleChecked,
+    counter: checkedCount,
+    getCheckedCountCtx: handleCheckedCount,
   };
 
   return (

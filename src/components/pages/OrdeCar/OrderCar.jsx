@@ -20,7 +20,7 @@ const OrderCar = () => {
       <main className={styles.main}>
         <div className={styles["content-container"]}>
           <div className={styles["left-side"]}>
-            <Heading>
+            <Heading mainHeading>
               Bestill {data.data.attributes.brand} Id: {id}
             </Heading>
             <OrderCarForm />

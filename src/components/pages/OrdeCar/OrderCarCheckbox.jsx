@@ -12,7 +12,8 @@ const getFirstWord = (el) => {
 const OrderCarCheckbox = () => {
   const priceCtx = useContext(PriceContext);
   const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [checkedCount, setCheckedCount] = useState(0);
+
   const { loading, err, data } = useFetch(
     `${API_CONSTANT_MAP.orderCarCheckboxes}`
   );
@@ -21,14 +22,23 @@ const OrderCarCheckbox = () => {
     setDailyExtrasPrice(parseInt(price));
   };
 
-  const handleCheckboxChecked = (checked) => {
-    setChecked(checked);
+  const handleCheckedCount = (e) => {
+    if (e.target.checked === true) {
+      setCheckedCount((count) => count + 1);
+    }
+
+    if (e.target.checked === false) {
+      setCheckedCount((count) => count - 1);
+    }
   };
 
   useEffect(() => {
-    priceCtx.getCheckboxCheckedCtx(checked);
     priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
-  }, [checked, dailyExtrasPrice, priceCtx.price, priceCtx.checked]);
+  }, [dailyExtrasPrice, priceCtx.price]);
+
+  useEffect(() => {
+    priceCtx.getCheckedCountCtx(checkedCount);
+  }, [checkedCount]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
@@ -42,7 +52,7 @@ const OrderCarCheckbox = () => {
               <input
                 onChange={(e) => {
                   handleCheckboxPrice(checkbox.attributes.price);
-                  handleCheckboxChecked(e.target.checked);
+                  handleCheckedCount(e, e.target.checked);
                 }}
                 className={styles.checkbox}
                 type="checkbox"
