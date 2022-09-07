@@ -15,7 +15,7 @@ let fromDate;
 let toDate;
 let days = 1;
 let totalPrice;
-let totalExtrasPrice;
+let totalExtrasPrice = 0;
 
 const OrderCarForm = () => {
   const priceCtx = useContext(PriceContext);
@@ -44,7 +44,6 @@ const OrderCarForm = () => {
       const difference = toDate.getTime() - fromDate.getTime();
       days = Math.ceil(difference / (1000 * 3600 * 24));
     }
-    console.log(`Days: ${days}`);
   };
 
   const calcRentPrice = () => {
@@ -53,7 +52,6 @@ const OrderCarForm = () => {
       alert("Velg minimum 1 dag");
       return;
     } else {
-      console.log("Rentprice");
       setRentPrice(
         parseInt(data.data.attributes.price) * days + totalExtrasPrice
       );
@@ -66,11 +64,6 @@ const OrderCarForm = () => {
         totalPrice = dailyExtrasPrice * days + parseInt(rentPrice);
         totalExtrasPrice =
           dailyExtrasPrice * days + prevDailyExtrasPriceRef.current * days;
-        console.log(
-          dailyExtrasPrice * days,
-          prevDailyExtrasPriceRef.current * days,
-          totalExtrasPrice
-        );
         setRentPrice(totalPrice);
       }
     }
@@ -78,7 +71,6 @@ const OrderCarForm = () => {
     if (prevCheckedCountRef.current > checkedCount) {
       totalPrice = parseInt(rentPrice) - dailyExtrasPrice * days;
       totalExtrasPrice = dailyExtrasPrice * days - dailyExtrasPrice * days;
-      console.log(dailyExtrasPrice * days, totalExtrasPrice);
       setRentPrice(totalPrice);
     }
   };
@@ -96,10 +88,6 @@ const OrderCarForm = () => {
     setCheckedCount(priceCtx.counter);
 
     calcDaysBetween();
-
-    console.log(
-      `Prev: ${prevCheckedCountRef.current} current count: ${checkedCount} Days: ${days}`
-    );
 
     calcDailyExtrasPrice();
   }, [checkedCount, priceCtx.counter]);
