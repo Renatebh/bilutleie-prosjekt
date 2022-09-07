@@ -5,7 +5,7 @@ import Cars from "./components/pages/Cars";
 import Trucks from "./components/pages/Trucks";
 import ContactUs from "./components/pages/ContactUs";
 import AboutCar from "./components/pages/AboutCar";
-import OrderCar from "./components/pages/OrdeCar/OrderCar";
+import OrderCar from "./components/pages/OrderCar/OrderCar";
 import GradientBg from "./components/ui/background/GradientBG";
 import Footer from "./components/footer/Footer";
 
