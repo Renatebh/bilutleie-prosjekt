@@ -8,8 +8,6 @@ import CarsCard from "../../cards/cars/CarCard";
 import useFetch from "../../../hooks/useFetch";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 
-const url = import.meta.env.VITE_API_URL;
-
 const CarCarousel = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
@@ -25,7 +23,7 @@ const CarCarousel = () => {
             return (
               <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
                 <CarsCard
-                  carImg={`${url}${car.attributes.image.data[0].attributes.url}`}
+                  carImg={car.attributes.image}
                   carBrand={car.attributes.brand + " " + car.id + "nr"}
                   carPrice={`Fra ${car.attributes.price}kr/per dag`}
                   id={car.id}
