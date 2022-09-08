@@ -52,6 +52,7 @@ const OrderCarForm = () => {
       alert("Velg minimum 1 dag");
       return;
     } else {
+      calcDailyExtrasPrice();
       setRentPrice(
         parseInt(data.data.attributes.price) * days + totalExtrasPrice
       );
