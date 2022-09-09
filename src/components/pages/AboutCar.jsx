@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import API_CONSTANT_MAP from "../../api/endpoints";
 import ReactMarkdown from "react-markdown";
-import ButtonLarge from "../ui/buttons/ButtonLarge";
+import LinkLarge from "../ui/links/LinkLarge";
 
 const AboutCar = () => {
   const { id } = useParams();
@@ -35,7 +35,7 @@ const AboutCar = () => {
             kmPerDay={data.data.attributes.kmPerDay}
             extraKm={data.data.attributes.extraKm}
           />
-          <ButtonLarge>Bestill</ButtonLarge>
+          <LinkLarge id={id}>Bestill</LinkLarge>
         </div>
         <div className={styles["carslider-container"]}>
           <SingleCarSlider />
