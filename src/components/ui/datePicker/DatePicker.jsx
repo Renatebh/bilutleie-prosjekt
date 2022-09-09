@@ -5,19 +5,19 @@ const DatePicker = ({
   children,
   id,
   name,
-  getFromDate,
-  getToDate,
+  onFromDateChange,
+  onToDateChange,
   from,
   to,
 }) => {
   const date = new Date().toISOString().slice(0, -8);
 
   const handleGetFromDate = (e) => {
-    getFromDate(e.target.value);
+    onFromDateChange(e.target.value);
   };
 
   const handleGetToDate = (e) => {
-    getToDate(e.target.value);
+    onToDateChange(e.target.value);
   };
 
   if (from) {
@@ -51,7 +51,7 @@ const DatePicker = ({
           type="datetime-local"
           id={id}
           name={name}
-          min={date}
+          min={date + 1}
           max="2024-12-31T16:00"
         />
       </>
