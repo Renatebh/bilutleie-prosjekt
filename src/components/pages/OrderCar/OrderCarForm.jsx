@@ -39,13 +39,6 @@ const OrderCarForm = () => {
     calcRentPrice();
   };
 
-  const calcDaysBetween = () => {
-    if (toDate !== undefined && fromDate !== undefined) {
-      const difference = toDate.getTime() - fromDate.getTime();
-      days = Math.ceil(difference / (1000 * 3600 * 24));
-    }
-  };
-
   const calcRentPrice = () => {
     calcDaysBetween();
     if (days < 1) {
@@ -56,6 +49,13 @@ const OrderCarForm = () => {
       setRentPrice(
         parseInt(data.data.attributes.price) * days + totalExtrasPrice
       );
+    }
+  };
+
+  const calcDaysBetween = () => {
+    if (toDate !== undefined && fromDate !== undefined) {
+      const difference = toDate.getTime() - fromDate.getTime();
+      days = Math.ceil(difference / (1000 * 3600 * 24));
     }
   };
 
