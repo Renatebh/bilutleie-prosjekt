@@ -41,7 +41,6 @@ const OrderCarForm = () => {
       return;
     } else {
       calcDailyExtrasPrice();
-      console.log(totalExtrasPrice);
       setRentPrice(
         parseInt(data.data.attributes.price) * days + totalExtrasPrice
       );
@@ -60,7 +59,6 @@ const OrderCarForm = () => {
     if (prevCheckedCountRef.current < checkedCount) {
       if (dailyExtrasPrice !== null) {
         totalPrice = dailyExtrasPrice * days + parseInt(rentPrice);
-        console.log(days);
         setTotalExtrasPrice(
           dailyExtrasPrice * days + prevDailyExtrasPriceRef.current * days
         );
@@ -71,7 +69,6 @@ const OrderCarForm = () => {
     if (prevCheckedCountRef.current > checkedCount) {
       totalPrice = parseInt(rentPrice) - dailyExtrasPrice * days;
       setTotalExtrasPrice(dailyExtrasPrice * days - dailyExtrasPrice * days);
-      console.log(totalExtrasPrice);
       setRentPrice(totalPrice);
     }
   };
