@@ -11,12 +11,6 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 import PriceContext from "../../../store/price-context";
 
-let fromDate;
-let toDate;
-let days = 1;
-let totalPrice;
-let totalExtrasPrice = 0;
-
 const OrderCarForm = () => {
   const priceCtx = useContext(PriceContext);
   const { id } = useParams();
@@ -24,28 +18,30 @@ const OrderCarForm = () => {
   const [rentPrice, setRentPrice] = useState(null);
   const [dailyCarPrice, setDailyCarPrice] = useState(null);
   const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
+  const [totalExtrasPrice, setTotalExtrasPrice] = useState(0);
   const [checkedCount, setCheckedCount] = useState(0);
+  const [fromDate, setFromDate] = useState();
+  const [toDate, setToDate] = useState();
+  const [days, setDays] = useState(1);
 
   const prevCheckedCountRef = useRef("");
   const prevDailyExtrasPriceRef = useRef(0);
 
-  const getFromDate = (date) => {
-    fromDate = new Date(date);
-    calcRentPrice();
+  const onFromDateChange = (date) => {
+    setFromDate(new Date(date));
   };
 
-  const getToDate = (date) => {
-    toDate = new Date(date);
-    calcRentPrice();
+  const onToDateChange = (date) => {
+    setToDate(new Date(date));
   };
 
   const calcRentPrice = () => {
-    calcDaysBetween();
     if (days < 1) {
       alert("Velg minimum 1 dag");
       return;
     } else {
       calcDailyExtrasPrice();
+      console.log(totalExtrasPrice);
       setRentPrice(
         parseInt(data.data.attributes.price) * days + totalExtrasPrice
       );
@@ -55,23 +51,27 @@ const OrderCarForm = () => {
   const calcDaysBetween = () => {
     if (toDate !== undefined && fromDate !== undefined) {
       const difference = toDate.getTime() - fromDate.getTime();
-      days = Math.ceil(difference / (1000 * 3600 * 24));
+      setDays(Math.ceil(difference / (1000 * 3600 * 24)));
     }
   };
 
   const calcDailyExtrasPrice = () => {
+    let totalPrice;
     if (prevCheckedCountRef.current < checkedCount) {
       if (dailyExtrasPrice !== null) {
         totalPrice = dailyExtrasPrice * days + parseInt(rentPrice);
-        totalExtrasPrice =
-          dailyExtrasPrice * days + prevDailyExtrasPriceRef.current * days;
+        console.log(days);
+        setTotalExtrasPrice(
+          dailyExtrasPrice * days + prevDailyExtrasPriceRef.current * days
+        );
         setRentPrice(totalPrice);
       }
     }
 
     if (prevCheckedCountRef.current > checkedCount) {
       totalPrice = parseInt(rentPrice) - dailyExtrasPrice * days;
-      totalExtrasPrice = dailyExtrasPrice * days - dailyExtrasPrice * days;
+      setTotalExtrasPrice(dailyExtrasPrice * days - dailyExtrasPrice * days);
+      console.log(totalExtrasPrice);
       setRentPrice(totalPrice);
     }
   };
@@ -94,6 +94,13 @@ const OrderCarForm = () => {
   }, [checkedCount, priceCtx.counter]);
 
   useEffect(() => {
+    calcDaysBetween();
+    if (data) {
+      calcRentPrice();
+    }
+  }, [fromDate, toDate, days, totalExtrasPrice]);
+
+  useEffect(() => {
     async function getPrice() {
       await fetch(`${API_CONSTANT_MAP.id(id)}`)
         .then((res) => res.json())
@@ -114,7 +121,7 @@ const OrderCarForm = () => {
       <div className={styles["input-container"]}>
         <DatePicker
           from
-          getFromDate={getFromDate}
+          onFromDateChange={onFromDateChange}
           id="hente"
           name="bestill-bil"
         >
@@ -122,7 +129,12 @@ const OrderCarForm = () => {
         </DatePicker>
       </div>
       <div className={styles["input-container"]}>
-        <DatePicker to getToDate={getToDate} id="levere" name="bestill-bil">
+        <DatePicker
+          to
+          onToDateChange={onToDateChange}
+          id="levere"
+          name="bestill-bil"
+        >
           Levere
         </DatePicker>
       </div>
