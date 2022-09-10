@@ -17,7 +17,11 @@ const HeroText = () => {
           </ReactMarkdown>
         </>
       )}
-      {loading && "Loading..."}
+      {loading && (
+        <div className={styles.loading}>
+          <p>"Loading..."</p>
+        </div>
+      )}
       {err && "Error..."}
     </div>
   );

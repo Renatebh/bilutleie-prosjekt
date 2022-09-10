@@ -26,6 +26,7 @@ const Trucks = () => {
                   carImg={car.attributes.image}
                   carBrand={car.attributes.brand + " " + car.id + "nr"}
                   carPrice={`Fra ${car.attributes.price}kr/per dag`}
+                  id={car.id}
                 />
               );
             })}
