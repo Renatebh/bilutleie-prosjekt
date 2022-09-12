@@ -32,6 +32,7 @@ const ContactUsForm = () => {
       .then(
         (result) => {
           console.log(result.text, "Email sent");
+          alert("Meldingen er sendt!");
         },
         (error) => {
           console.log(error);
@@ -66,14 +67,12 @@ const ContactUsForm = () => {
         className={styles["form-input"]}
       ></textarea>
 
-      <button
+      <input
         type="submit"
-        // value="Send Melding"
+        value="Send Melding"
         className={styles["form-btn"]}
         onSubmit={sendEmail}
-      >
-        Send melding
-      </button>
+      />
     </form>
   );
 };
