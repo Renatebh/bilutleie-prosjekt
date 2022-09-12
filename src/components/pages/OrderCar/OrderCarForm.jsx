@@ -59,13 +59,30 @@ const OrderCarForm = () => {
     if (dailyExtrasPrice === null) return;
 
     if (prevCheckedCountRef.current < checkedCount) {
-      totalExtrasPriceRef.current =
-        totalExtrasPriceRef.current + dailyExtrasPrice;
+      if (prevDaysRef.current < days) {
+        console.log(`Prev days: ${prevDaysRef.current}`);
+        console.log({ days });
+        totalExtrasPriceRef.current = totalExtrasPriceRef.current * days;
+        console.log(totalExtrasPriceRef.current);
+        console.log("Less");
+      } else {
+        totalExtrasPriceRef.current =
+          totalExtrasPriceRef.current + dailyExtrasPrice;
+      }
     }
 
     if (prevCheckedCountRef.current > checkedCount) {
-      totalExtrasPriceRef.current =
-        totalExtrasPriceRef.current - dailyExtrasPrice * days;
+      if (prevDaysRef.current > days) {
+        console.log(`Prev days: ${prevDaysRef.current}`);
+        console.log({ days });
+        totalExtrasPriceRef.current =
+          totalExtrasPriceRef.current / prevDaysRef.current;
+        console.log(totalExtrasPriceRef.current);
+        console.log("More");
+      } else {
+        totalExtrasPriceRef.current =
+          totalExtrasPriceRef.current - dailyExtrasPrice * days;
+      }
     }
   };
 
@@ -84,23 +101,8 @@ const OrderCarForm = () => {
 
   useEffect(() => {
     setCheckedCount(priceCtx.counter);
-    console.log(`Prev days: ${prevDaysRef.current}`);
-    console.log({ days });
 
     calcDailyExtrasPrice();
-
-    if (prevDaysRef.current < days) {
-      totalExtrasPriceRef.current = totalExtrasPriceRef.current * days;
-      console.log(totalExtrasPriceRef.current);
-      console.log("Less");
-    }
-
-    if (prevDaysRef.current > days) {
-      totalExtrasPriceRef.current =
-        totalExtrasPriceRef.current / prevDaysRef.current;
-      console.log(totalExtrasPriceRef.current);
-      console.log("More");
-    }
 
     if (data) {
       calcRentPrice();
