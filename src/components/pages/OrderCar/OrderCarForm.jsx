@@ -25,6 +25,7 @@ const OrderCarForm = () => {
 
   const prevCheckedCountRef = useRef("");
   const totalExtrasPriceRef = useRef(0);
+  const prevDaysRef = useRef(0);
 
   const onFromDateChange = (date) => {
     setFromDate(new Date(date));
@@ -47,6 +48,7 @@ const OrderCarForm = () => {
   };
 
   const calcDaysBetween = () => {
+    prevDaysRef.current = days;
     if (toDate !== undefined && fromDate !== undefined) {
       const difference = toDate.getTime() - fromDate.getTime();
       setDays(Math.ceil(difference / (1000 * 3600 * 24)));
@@ -58,38 +60,48 @@ const OrderCarForm = () => {
 
     if (prevCheckedCountRef.current < checkedCount) {
       totalExtrasPriceRef.current =
-        totalExtrasPriceRef.current + dailyExtrasPrice * days;
-      console.log(totalExtrasPriceRef);
+        totalExtrasPriceRef.current + dailyExtrasPrice;
     }
 
     if (prevCheckedCountRef.current > checkedCount) {
       totalExtrasPriceRef.current =
         totalExtrasPriceRef.current - dailyExtrasPrice * days;
-      console.log(totalExtrasPriceRef);
     }
   };
 
   useEffect(() => {
     setDailyExtrasPrice(priceCtx.price);
+    prevCheckedCountRef.current = checkedCount;
   }, [priceCtx.price, priceCtx.counter]);
 
   useEffect(() => {
-    prevCheckedCountRef.current = checkedCount;
-  }, [priceCtx.counter]);
-
-  useEffect(() => {
     calcDaysBetween();
-    totalExtrasPriceRef.current = totalExtrasPriceRef.current * days;
+
     if (data) {
       calcRentPrice();
     }
-    console.log(days);
-  }, [fromDate, toDate, days]);
+  }, [fromDate, toDate]);
 
   useEffect(() => {
     setCheckedCount(priceCtx.counter);
+    console.log(`Prev days: ${prevDaysRef.current}`);
+    console.log({ days });
+
     calcDailyExtrasPrice();
-    console.log(totalExtrasPriceRef.current);
+
+    if (prevDaysRef.current < days) {
+      totalExtrasPriceRef.current = totalExtrasPriceRef.current * days;
+      console.log(totalExtrasPriceRef.current);
+      console.log("Less");
+    }
+
+    if (prevDaysRef.current > days) {
+      totalExtrasPriceRef.current =
+        totalExtrasPriceRef.current / prevDaysRef.current;
+      console.log(totalExtrasPriceRef.current);
+      console.log("More");
+    }
+
     if (data) {
       calcRentPrice();
     }
