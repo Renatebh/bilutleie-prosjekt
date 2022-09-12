@@ -5,6 +5,7 @@ const inputs = [
     type: "text",
     placeholder: "Navn",
     errorMessage: "Navn må fylles ut",
+    patter: "[a-åA-Ås]",
     required: true,
   },
   {
@@ -12,7 +13,8 @@ const inputs = [
     name: "email",
     type: "email",
     placeholder: "Email",
-    errorMessage: "Should be a valid email adresss",
+    errorMessage: "Trenger en gyldig e-postadresse",
+    pattern: "[a-z0-9._-]+@[a-z.]+.[a-z]{2,3}",
     required: true,
   },
   {
@@ -20,7 +22,7 @@ const inputs = [
     name: "phone",
     type: "number",
     placeholder: "Telefon",
-    errorMessage: "Telefon nummer må inneholde 8 tall",
+    errorMessage: "Telefonnummer må inneholde åtte tall",
     max: "99999999",
     min: "9999999",
     required: true,
