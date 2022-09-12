@@ -40,10 +40,14 @@ const OrderCarForm = () => {
       alert("Velg minimum 1 dag");
       return;
     } else {
-      calcDailyExtrasPrice();
-      setRentPrice(
-        parseInt(data.data.attributes.price) * days + totalExtrasPrice
-      );
+      let x = calcDailyExtrasPrice();
+      if (x === undefined) {
+        x = 0;
+        setRentPrice(parseInt(data.data.attributes.price) * days + x);
+        return;
+      }
+
+      setRentPrice(parseInt(data.data.attributes.price) * days + x);
     }
   };
 
@@ -57,15 +61,12 @@ const OrderCarForm = () => {
   const calcDailyExtrasPrice = () => {
     if (prevCheckedCountRef.current < checkedCount) {
       if (dailyExtrasPrice !== null) {
-        console.log(
-          `Daily extras: ${dailyExtrasPrice * days} prev: ${
-            prevDailyExtrasPriceRef.current
-          }`
-        );
         setTotalExtrasPrice(
           (prevTotalExtrasPrice) =>
             prevTotalExtrasPrice + dailyExtrasPrice * days
         );
+
+        return totalExtrasPrice + dailyExtrasPrice * days;
         console.log("Total:", totalExtrasPrice);
       }
     }
@@ -74,6 +75,7 @@ const OrderCarForm = () => {
       setTotalExtrasPrice(
         (prevTotalExtrasPrice) => prevTotalExtrasPrice - dailyExtrasPrice * days
       );
+      return totalExtrasPrice - dailyExtrasPrice * days;
       console.log("Total:", totalExtrasPrice);
       console.log(
         `Daily extras: ${dailyExtrasPrice * days} prev: ${
@@ -97,7 +99,10 @@ const OrderCarForm = () => {
   }, [checkedCount, priceCtx.counter]);
 
   useEffect(() => {
-    console.log("test");
+    console.log(totalExtrasPrice);
+  }, [totalExtrasPrice]);
+
+  useEffect(() => {
     calcDaysBetween();
     if (data) {
       calcRentPrice();
