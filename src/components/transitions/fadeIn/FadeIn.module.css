@@ -1,0 +1,10 @@
+@import "../../../variables/variables.module.css";
+
+.fadeInAnimation-enter {
+  opacity: 0;
+}
+
+.fadeInAnimation-enter-active {
+  opacity: 1;
+  transition: opacity 2000ms linear;
+}

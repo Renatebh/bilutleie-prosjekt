@@ -55,28 +55,38 @@ const OrderCarForm = () => {
   };
 
   const calcDailyExtrasPrice = () => {
-    let totalPrice;
     if (prevCheckedCountRef.current < checkedCount) {
       if (dailyExtrasPrice !== null) {
-        totalPrice = dailyExtrasPrice * days + parseInt(rentPrice);
-        setTotalExtrasPrice(
-          dailyExtrasPrice * days + prevDailyExtrasPriceRef.current * days
+        console.log(
+          `Daily extras: ${dailyExtrasPrice * days} prev: ${
+            prevDailyExtrasPriceRef.current
+          }`
         );
-        setRentPrice(totalPrice);
+        setTotalExtrasPrice(
+          (prevTotalExtrasPrice) =>
+            prevTotalExtrasPrice + dailyExtrasPrice * days
+        );
+        console.log("Total:", totalExtrasPrice);
       }
     }
 
     if (prevCheckedCountRef.current > checkedCount) {
-      totalPrice = parseInt(rentPrice) - dailyExtrasPrice * days;
-      setTotalExtrasPrice(dailyExtrasPrice * days - dailyExtrasPrice * days);
-      setRentPrice(totalPrice);
+      setTotalExtrasPrice(
+        (prevTotalExtrasPrice) => prevTotalExtrasPrice - dailyExtrasPrice * days
+      );
+      console.log("Total:", totalExtrasPrice);
+      console.log(
+        `Daily extras: ${dailyExtrasPrice * days} prev: ${
+          prevDailyExtrasPriceRef.current
+        }`
+      );
     }
   };
 
   useEffect(() => {
     setDailyExtrasPrice(priceCtx.price);
     prevDailyExtrasPriceRef.current = dailyExtrasPrice;
-  }, [priceCtx.price]);
+  }, [priceCtx.price, priceCtx.counter]);
 
   useEffect(() => {
     prevCheckedCountRef.current = checkedCount;
@@ -84,18 +94,15 @@ const OrderCarForm = () => {
 
   useEffect(() => {
     setCheckedCount(priceCtx.counter);
-
-    calcDaysBetween();
-
-    calcDailyExtrasPrice();
   }, [checkedCount, priceCtx.counter]);
 
   useEffect(() => {
+    console.log("test");
     calcDaysBetween();
     if (data) {
       calcRentPrice();
     }
-  }, [fromDate, toDate, days, totalExtrasPrice]);
+  }, [fromDate, toDate, days, priceCtx.counter, checkedCount]);
 
   useEffect(() => {
     async function getPrice() {
