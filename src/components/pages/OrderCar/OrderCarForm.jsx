@@ -67,7 +67,6 @@ const OrderCarForm = () => {
         );
 
         return totalExtrasPrice + dailyExtrasPrice * days;
-        console.log("Total:", totalExtrasPrice);
       }
     }
 
@@ -76,33 +75,17 @@ const OrderCarForm = () => {
         (prevTotalExtrasPrice) => prevTotalExtrasPrice - dailyExtrasPrice * days
       );
       return totalExtrasPrice - dailyExtrasPrice * days;
-      console.log("Total:", totalExtrasPrice);
-      console.log(
-        `Daily extras: ${dailyExtrasPrice * days} prev: ${
-          prevDailyExtrasPriceRef.current
-        }`
-      );
     }
   };
 
   useEffect(() => {
     setDailyExtrasPrice(priceCtx.price);
     prevDailyExtrasPriceRef.current = dailyExtrasPrice;
+    prevCheckedCountRef.current = checkedCount;
   }, [priceCtx.price, priceCtx.counter]);
 
   useEffect(() => {
-    prevCheckedCountRef.current = checkedCount;
-  }, [priceCtx.counter]);
-
-  useEffect(() => {
     setCheckedCount(priceCtx.counter);
-  }, [checkedCount, priceCtx.counter]);
-
-  useEffect(() => {
-    console.log(totalExtrasPrice);
-  }, [totalExtrasPrice]);
-
-  useEffect(() => {
     calcDaysBetween();
     if (data) {
       calcRentPrice();
