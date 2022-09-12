@@ -17,7 +17,11 @@ const Description = () => {
           <p className={styles.text}>{data.data.attributes.second}</p>
         </>
       )}
-      {loading && "Loading..."}
+      {loading && (
+        <div className={styles.container}>
+          <p>"Loading..."</p>
+        </div>
+      )}
       {err && "Error..."}
     </div>
   );
