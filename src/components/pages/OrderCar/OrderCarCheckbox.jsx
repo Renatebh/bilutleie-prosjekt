@@ -61,10 +61,13 @@ const OrderCarCheckbox = () => {
 
   useEffect(() => {
     handleCeckboxes();
+  }, [data]);
+
+  useEffect(() => {
     if (checkbox !== null) {
       updateIsChecked();
     }
-  }, [data, checkbox]);
+  }, [checkbox]);
 
   useEffect(() => {
     checkboxesRef.current = checkboxes;
