@@ -17,15 +17,9 @@ const OrderCarForm = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
   const [rentPrice, setRentPrice] = useState(null);
   const [dailyCarPrice, setDailyCarPrice] = useState(null);
-  const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
-  const [checkedCount, setCheckedCount] = useState(0);
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
   const [days, setDays] = useState(1);
-
-  const prevCheckedCountRef = useRef("");
-  const totalExtrasPriceRef = useRef(0);
-  const prevDaysRef = useRef(0);
 
   const onFromDateChange = (date) => {
     setFromDate(new Date(date));
@@ -40,75 +34,27 @@ const OrderCarForm = () => {
       alert("Velg minimum 1 dag");
       return;
     } else {
-      setRentPrice(
-        parseInt(data.data.attributes.price) * days +
-          totalExtrasPriceRef.current
-      );
+      setRentPrice(parseInt(data.data.attributes.price) * days);
     }
   };
 
   const calcDaysBetween = () => {
-    prevDaysRef.current = days;
     if (toDate !== undefined && fromDate !== undefined) {
       const difference = toDate.getTime() - fromDate.getTime();
       setDays(Math.ceil(difference / (1000 * 3600 * 24)));
     }
   };
 
-  const calcDailyExtrasPrice = () => {
-    if (dailyExtrasPrice === null) return;
-
-    if (prevCheckedCountRef.current < checkedCount) {
-      if (prevDaysRef.current < days) {
-        console.log(`Prev days: ${prevDaysRef.current}`);
-        console.log({ days });
-        totalExtrasPriceRef.current = totalExtrasPriceRef.current * days;
-        console.log(totalExtrasPriceRef.current);
-        console.log("Less");
-      } else {
-        totalExtrasPriceRef.current =
-          totalExtrasPriceRef.current + dailyExtrasPrice;
-      }
-    }
-
-    if (prevCheckedCountRef.current > checkedCount) {
-      if (prevDaysRef.current > days) {
-        console.log(`Prev days: ${prevDaysRef.current}`);
-        console.log({ days });
-        totalExtrasPriceRef.current =
-          totalExtrasPriceRef.current / prevDaysRef.current;
-        console.log(totalExtrasPriceRef.current);
-        console.log("More");
-      } else {
-        totalExtrasPriceRef.current =
-          totalExtrasPriceRef.current - dailyExtrasPrice * days;
-      }
-    }
-  };
-
-  useEffect(() => {
-    setDailyExtrasPrice(priceCtx.price);
-    prevCheckedCountRef.current = checkedCount;
-  }, [priceCtx.price, priceCtx.counter]);
+  const calcDailyExtrasPrice = () => {};
 
   useEffect(() => {
     calcDaysBetween();
+    console.log(days);
 
     if (data) {
       calcRentPrice();
     }
-  }, [fromDate, toDate]);
-
-  useEffect(() => {
-    setCheckedCount(priceCtx.counter);
-
-    calcDailyExtrasPrice();
-
-    if (data) {
-      calcRentPrice();
-    }
-    prevCheckedCountRef.current = checkedCount;
-  }, [checkedCount, priceCtx.counter, days]);
+  }, [fromDate, toDate, days]);
 
   useEffect(() => {
     async function getPrice() {
