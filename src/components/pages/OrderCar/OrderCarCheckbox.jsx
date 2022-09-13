@@ -33,19 +33,16 @@ const OrderCarCheckbox = () => {
       });
 
       setCheckboxes([...arr]);
-      console.log(checkboxes);
     }
   };
 
   const getCheckbox = (parentId) => {
     const objId = checkboxes.find((key) => key.id === parseInt(parentId));
     setCheckbox(objId);
-    console.log(checkbox);
   };
 
   const updateIsChecked = () => {
     setCheckboxes((prevState) => {
-      console.log(checkbox);
       const newState = prevState.map((obj) => {
         if (obj.id === checkbox.id) {
           if (obj.isChecked === false) {
@@ -65,10 +62,14 @@ const OrderCarCheckbox = () => {
   useEffect(() => {
     handleCeckboxes();
     if (checkbox !== null) {
-      checkboxesRef.current = checkboxes;
       updateIsChecked();
     }
   }, [data, checkbox]);
+
+  useEffect(() => {
+    checkboxesRef.current = checkboxes;
+    console.log(checkboxesRef.current);
+  }, [checkboxes]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
