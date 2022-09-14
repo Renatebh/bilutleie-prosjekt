@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DatePicker from "../../ui/datePicker/DatePicker";
 import styles from "./OrderCarForm.module.css";
 import Select from "../../ui/select/Select";
@@ -9,10 +9,8 @@ import Table from "../../ui/table/Table";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
-import PriceContext from "../../../store/price-context";
 
 const OrderCarForm = () => {
-  const priceCtx = useContext(PriceContext);
   const { id } = useParams();
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.id(id)}`);
   const [rentPrice, setRentPrice] = useState(null);
@@ -20,6 +18,12 @@ const OrderCarForm = () => {
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
   const [days, setDays] = useState(1);
+  const [checkboxes, setCheckboxes] = useState([]);
+  const [checkedChecboxes, setCheckedChecboxes] = useState([]);
+  const [totalExtrasPrice, setTotalExtrasPrice] = useState(0);
+
+  const checkboxesRef = useRef(checkboxes);
+  const checkedChecboxesRef = useRef(checkedChecboxes);
 
   const onFromDateChange = (date) => {
     setFromDate(new Date(date));
@@ -29,12 +33,18 @@ const OrderCarForm = () => {
     setToDate(new Date(date));
   };
 
+  const onCheckboxChecked = (checkboxesArr) => {
+    setCheckboxes(checkboxesArr);
+  };
+
   const calcRentPrice = () => {
     if (days < 1) {
       alert("Velg minimum 1 dag");
       return;
     } else {
-      setRentPrice(parseInt(data.data.attributes.price) * days);
+      setRentPrice(
+        parseInt(data.data.attributes.price) * days + totalExtrasPrice * days
+      );
     }
   };
 
@@ -45,16 +55,46 @@ const OrderCarForm = () => {
     }
   };
 
-  const calcDailyExtrasPrice = () => {};
+  const filterCheckedCheckboxes = () => {
+    setCheckedChecboxes(
+      checkboxes.filter((checkbox) => checkbox.isChecked === true)
+    );
+  };
+
+  const calcTotalExtrasPrice = () => {
+    const checkedPriceArr = checkedChecboxes.map(
+      (checkedChecbox) => checkedChecbox.price
+    );
+
+    const reduceToalExtras = checkedPriceArr.reduce(
+      (previousValue, currentValue) => {
+        return previousValue + currentValue;
+      },
+      0
+    );
+
+    setTotalExtrasPrice(reduceToalExtras);
+
+    console.log(totalExtrasPrice);
+  };
 
   useEffect(() => {
     calcDaysBetween();
-    console.log(days);
 
     if (data) {
       calcRentPrice();
     }
-  }, [fromDate, toDate, days]);
+  }, [fromDate, toDate, days, totalExtrasPrice]);
+
+  useEffect(() => {
+    checkboxesRef.current = checkboxes;
+    checkedChecboxesRef.current = checkedChecboxes;
+    filterCheckedCheckboxes();
+  }, [checkboxes]);
+
+  useEffect(() => {
+    calcTotalExtrasPrice();
+  }, [checkedChecboxes]);
 
   useEffect(() => {
     async function getPrice() {
@@ -107,7 +147,7 @@ const OrderCarForm = () => {
           </Option>
         </Select>
       </div>
-      <OrderCarCheckbox />
+      <OrderCarCheckbox onCheckboxChecked={onCheckboxChecked} />
       <div className={styles["input-container"]}>
         <Table price={`${dailyCarPrice},-`} kmPerDay="100" extraKm="2,-" />
       </div>

@@ -1,16 +1,14 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./OrderCarForm.module.css";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 import useFetch from "../../../hooks/useFetch";
-import PriceContext from "../../../store/price-context";
 
 const getFirstWord = (el) => {
   const firstWord = el.split(" ");
   return firstWord;
 };
 
-const OrderCarCheckbox = () => {
-  const priceCtx = useContext(PriceContext);
+const OrderCarCheckbox = ({ onCheckboxChecked }) => {
   const [checkboxes, setCheckboxes] = useState([]);
   const [checkbox, setCheckbox] = useState(null);
 
@@ -63,6 +61,10 @@ const OrderCarCheckbox = () => {
     handleCeckboxes();
   }, [data]);
 
+  const onCheckboxCheckedHandler = (checkboxesArr) => {
+    onCheckboxChecked(checkboxesArr);
+  };
+
   useEffect(() => {
     if (checkbox !== null) {
       updateIsChecked();
@@ -71,7 +73,7 @@ const OrderCarCheckbox = () => {
 
   useEffect(() => {
     checkboxesRef.current = checkboxes;
-    console.log(checkboxesRef.current);
+    onCheckboxCheckedHandler(checkboxesRef.current);
   }, [checkboxes]);
 
   if (loading) return <p>Loading..</p>;
