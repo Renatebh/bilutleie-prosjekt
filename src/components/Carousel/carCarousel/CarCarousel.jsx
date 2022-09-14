@@ -14,6 +14,7 @@ const CarCarousel = () => {
   const [typeOptionVal, setTypeOptionVal] = useState("");
   const [cars, setCars] = useState([]);
 
+  const priceOptionValRef = useRef(priceOptionVal);
   const carsRef = useRef(cars);
 
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
@@ -36,7 +37,7 @@ const CarCarousel = () => {
         const newState = prevState.sort(
           (a, b) => parseInt(a.attributes.price) - parseInt(b.attributes.price)
         );
-        return newState;
+        return [...newState];
       });
     }
 
@@ -45,11 +46,11 @@ const CarCarousel = () => {
         const newState = prevState.sort(
           (a, b) => parseInt(b.attributes.price) - parseInt(a.attributes.price)
         );
-        return newState;
+        return [...newState];
       });
     }
 
-    console.log(carsRef.current);
+    console.log(cars);
   };
 
   useEffect(() => {
@@ -59,9 +60,8 @@ const CarCarousel = () => {
   }, [data]);
 
   useEffect(() => {
-    carsRef.current = cars;
     sortCarsByPrice();
-  }, [priceOptionVal, carsRef.current]);
+  }, [priceOptionVal]);
 
   return (
     <div className={styles.container}>
