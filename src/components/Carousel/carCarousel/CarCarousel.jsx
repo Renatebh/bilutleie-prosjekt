@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
 import CarCarouselHeading from "./CarCarouselHeading";
@@ -9,17 +9,73 @@ import useFetch from "../../../hooks/useFetch";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 
 const CarCarousel = () => {
+  const [priceOptionVal, setPriceOptionVal] = useState("");
+  const [brandOptionVal, setBrandOptionVal] = useState("");
+  const [typeOptionVal, setTypeOptionVal] = useState("");
+  const [cars, setCars] = useState([]);
+
+  const carsRef = useRef(cars);
+
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
+
+  const priceOptionChange = (val) => {
+    setPriceOptionVal(val);
+  };
+
+  const brandOptionChange = (val) => {
+    setBrandOptionVal(val);
+  };
+
+  const typeOptionChange = (val) => {
+    setTypeOptionVal(val);
+  };
+
+  const sortCarsByPrice = () => {
+    if (priceOptionVal.toLowerCase() === "stigende") {
+      setCars((prevState) => {
+        const newState = prevState.sort(
+          (a, b) => parseInt(a.attributes.price) - parseInt(b.attributes.price)
+        );
+        return newState;
+      });
+    }
+
+    if (priceOptionVal.toLowerCase() === "synkende") {
+      setCars((prevState) => {
+        const newState = prevState.sort(
+          (a, b) => parseInt(b.attributes.price) - parseInt(a.attributes.price)
+        );
+        return newState;
+      });
+    }
+
+    console.log(carsRef.current);
+  };
+
+  useEffect(() => {
+    if (data) {
+      setCars([...data.data]);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    carsRef.current = cars;
+    sortCarsByPrice();
+  }, [priceOptionVal, carsRef.current]);
 
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
         <CarCarouselHeading />
-        <FilterCars />
+        <FilterCars
+          onPriceOptionChange={priceOptionChange}
+          onBrandOptionChange={brandOptionChange}
+          onTypeOptionChange={typeOptionChange}
+        />
       </div>
       <Carousel>
         {data &&
-          data.data.map((car) => {
+          cars.map((car) => {
             return (
               <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
                 <CarsCard
