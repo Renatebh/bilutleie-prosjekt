@@ -1,44 +1,80 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./OrderCarForm.module.css";
 import API_CONSTANT_MAP from "../../../api/endpoints";
 import useFetch from "../../../hooks/useFetch";
-import PriceContext from "../../../store/price-context";
 
 const getFirstWord = (el) => {
   const firstWord = el.split(" ");
   return firstWord;
 };
 
-const OrderCarCheckbox = () => {
-  const priceCtx = useContext(PriceContext);
-  const [dailyExtrasPrice, setDailyExtrasPrice] = useState(null);
-  const [checkedCount, setCheckedCount] = useState(0);
+const OrderCarCheckbox = ({ onCheckboxChecked }) => {
+  const [checkboxes, setCheckboxes] = useState([]);
+  const [checkbox, setCheckbox] = useState(null);
+
+  const checkboxesRef = useRef(checkboxes);
 
   const { loading, err, data } = useFetch(
     `${API_CONSTANT_MAP.orderCarCheckboxes}`
   );
 
-  const handleCheckboxPrice = (price) => {
-    setDailyExtrasPrice(parseInt(price));
+  const handleCeckboxes = () => {
+    let arr = [];
+
+    if (data) {
+      data.data.map((checkbox) => {
+        arr.push({
+          id: checkbox.id,
+          price: checkbox.attributes.price,
+          isChecked: false,
+        });
+      });
+
+      setCheckboxes([...arr]);
+    }
   };
 
-  const handleCheckedCount = (e) => {
-    if (e.target.checked === true) {
-      setCheckedCount((count) => count + 1);
-    }
+  const getCheckbox = (parentId) => {
+    const objId = checkboxes.find((key) => key.id === parseInt(parentId));
+    setCheckbox(objId);
+  };
 
-    if (e.target.checked === false) {
-      setCheckedCount((count) => count - 1);
-    }
+  const updateIsChecked = () => {
+    setCheckboxes((prevState) => {
+      const newState = prevState.map((obj) => {
+        if (obj.id === checkbox.id) {
+          if (obj.isChecked === false) {
+            return { ...obj, isChecked: true };
+          } else {
+            return { ...obj, isChecked: false };
+          }
+        }
+
+        return obj;
+      });
+
+      return newState;
+    });
   };
 
   useEffect(() => {
-    priceCtx.getCheckboxPriceCtx(dailyExtrasPrice);
-  }, [dailyExtrasPrice, priceCtx.price]);
+    handleCeckboxes();
+  }, [data]);
+
+  const onCheckboxCheckedHandler = (checkboxesArr) => {
+    onCheckboxChecked(checkboxesArr);
+  };
 
   useEffect(() => {
-    priceCtx.getCheckedCountCtx(checkedCount);
-  }, [checkedCount]);
+    if (checkbox !== null) {
+      updateIsChecked();
+    }
+  }, [checkbox]);
+
+  useEffect(() => {
+    checkboxesRef.current = checkboxes;
+    onCheckboxCheckedHandler(checkboxesRef.current);
+  }, [checkboxes]);
 
   if (loading) return <p>Loading..</p>;
   if (err) return <p>Error...</p>;
@@ -48,12 +84,13 @@ const OrderCarCheckbox = () => {
       {data &&
         data.data.map((checkbox) => {
           return (
-            <div className={styles["checkbox-container"]} key={checkbox.id}>
+            <div
+              className={styles["checkbox-container"]}
+              key={checkbox.id}
+              id={checkbox.id}
+            >
               <input
-                onChange={(e) => {
-                  handleCheckboxPrice(checkbox.attributes.price);
-                  handleCheckedCount(e, e.target.checked);
-                }}
+                onChange={(e) => getCheckbox(e.target.parentElement.id)}
                 className={styles.checkbox}
                 type="checkbox"
                 name={getFirstWord(checkbox.attributes.name)}
