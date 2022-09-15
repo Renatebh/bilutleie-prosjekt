@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./FilterCars.module.css";
 import PriceOption from "./filterOptions/PriceOption";
 import BrandOption from "./filterOptions/BrandOption";
-import TypeOption from "./filterOptions/TypeOption";
 
 const FilterCars = ({
   onPriceOptionChange,
@@ -16,9 +15,6 @@ const FilterCars = ({
       </div>
       <div className={styles["select-container"]}>
         <BrandOption onBrandOptionChange={onBrandOptionChange} />
-      </div>
-      <div className={styles["select-container"]}>
-        <TypeOption onTypeOptionChange={onTypeOptionChange} />
       </div>
     </form>
   );

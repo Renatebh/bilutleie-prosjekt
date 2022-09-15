@@ -10,7 +10,6 @@ import API_CONSTANT_MAP from "../../../api/endpoints";
 
 const CarCarousel = () => {
   const [priceOptionVal, setPriceOptionVal] = useState("");
-  const [typeOptionVal, setTypeOptionVal] = useState("");
   const [cars, setCars] = useState([]);
 
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
@@ -21,10 +20,6 @@ const CarCarousel = () => {
 
   const brandOptionChange = (val) => {
     sortCarsByBrand(val);
-  };
-
-  const typeOptionChange = (val) => {
-    setTypeOptionVal(val);
   };
 
   const sortCarsByPrice = () => {
@@ -102,7 +97,6 @@ const CarCarousel = () => {
         <FilterCars
           onPriceOptionChange={priceOptionChange}
           onBrandOptionChange={brandOptionChange}
-          onTypeOptionChange={typeOptionChange}
         />
       </div>
       <Carousel>
