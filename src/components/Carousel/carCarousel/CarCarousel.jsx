@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "../Carousel";
 import { SwiperSlide } from "swiper/react";
 import CarCarouselHeading from "./CarCarouselHeading";
@@ -13,9 +13,6 @@ const CarCarousel = () => {
   const [brandOptionVal, setBrandOptionVal] = useState("");
   const [typeOptionVal, setTypeOptionVal] = useState("");
   const [cars, setCars] = useState([]);
-
-  const priceOptionValRef = useRef(priceOptionVal);
-  const carsRef = useRef(cars);
 
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.cars}`);
 
@@ -49,8 +46,31 @@ const CarCarousel = () => {
         return [...newState];
       });
     }
+  };
 
-    console.log(cars);
+  const sortCarsByBrand = () => {
+    /* if (brandOptionVal.toLowerCase() === "alle") {
+      let arr = [];
+
+      data.data.map((car) => arr.push(car));
+      setCars([...arr]);
+      console.log(cars);
+    } */
+
+    setCars((prevState) => {
+      return prevState.filter(
+        (car) =>
+          car.attributes.brand.toLowerCase() === brandOptionVal.toLowerCase()
+      );
+    });
+
+    if (data) {
+      console.log(cars);
+      console.log(
+        brandOptionVal.toLowerCase(),
+        cars[0].attributes.brand.toLowerCase()
+      );
+    }
   };
 
   useEffect(() => {
@@ -62,6 +82,11 @@ const CarCarousel = () => {
   useEffect(() => {
     sortCarsByPrice();
   }, [priceOptionVal]);
+
+  useEffect(() => {
+    sortCarsByBrand();
+    console.log(cars);
+  }, [brandOptionVal]);
 
   return (
     <div className={styles.container}>

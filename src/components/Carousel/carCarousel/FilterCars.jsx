@@ -20,7 +20,6 @@ const FilterCars = ({
       <div className={styles["select-container"]}>
         <TypeOption onTypeOptionChange={onTypeOptionChange} />
       </div>
-      <button className={`${styles.select} ${styles.button}`}>Søk</button>
     </form>
   );
 };

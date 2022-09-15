@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Option from "../../../ui/select/Option";
 import useFetch from "../../../../hooks/useFetch";
 import API_CONSTANT_MAP from "../../../../api/endpoints";
@@ -6,10 +6,38 @@ import styles from "../../../ui/select/Select.module.css";
 
 const BrandOption = ({ onBrandOptionChange }) => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.brands}`);
+  const [sortedBrands, setSortedBrands] = useState([]);
 
   const onOptionChangeHandler = (e) => {
     onBrandOptionChange(e.target.value);
+    console.log(e.target.value);
   };
+
+  const sortBrands = () => {
+    let arr = [];
+
+    data.data
+      /* .sort((a, b) => {
+        if (a.attributes.brand < b.attributes.brand) {
+          return -1;
+        }
+
+        if (a.attributes.brand > b.attributes.brand) {
+          return 1;
+        }
+      }) */
+      .map((brand) => {
+        arr.push(brand);
+      });
+
+    setSortedBrands([...arr]);
+  };
+
+  useEffect(() => {
+    if (data) {
+      sortBrands();
+    }
+  }, [data]);
 
   if (loading) return <p>Loading...</p>;
   if (err) return <p>Error...</p>;
@@ -26,7 +54,7 @@ const BrandOption = ({ onBrandOptionChange }) => {
         merke
       </Option>
       {data &&
-        data.data.map((brand) => {
+        sortedBrands.map((brand) => {
           return (
             <Option value={brand.attributes.brand} key={brand.id}>
               {brand.attributes.brand}
