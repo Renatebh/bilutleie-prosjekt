@@ -48,16 +48,41 @@ const CarCarousel = () => {
   };
 
   const sortCarsByBrand = (val) => {
+    if (
+      priceOptionVal.toLowerCase() !== "stigende" &&
+      priceOptionVal.toLowerCase() !== "synkende" &&
+      val.toLowerCase() === "alle"
+    ) {
+      const filteredCars = data.data.map((car) => car);
+      setCars(filteredCars);
+      return;
+    }
+
+    if (
+      priceOptionVal.toLowerCase() !== "stigende" &&
+      priceOptionVal.toLowerCase() !== "synkende"
+    ) {
+      const filteredCars = data.data.filter(
+        (car) => car.attributes.brand.trim().toLowerCase() === val.toLowerCase()
+      );
+      setCars(filteredCars);
+      return;
+    }
+
+    sortCarsByPrice();
+
     if (val.toLowerCase() === "alle") {
       const filteredCars = data.data.map((car) => car);
       setCars(filteredCars);
-      return filteredCars;
+      sortCarsByPrice();
+      return;
     }
 
-    const filteredCars = data.data.filter(
-      (car) => car.attributes.brand.trim().toLowerCase() === val.toLowerCase()
+    setCars((prevState) =>
+      prevState.filter((car) => {
+        return car.attributes.brand.trim().toLowerCase() === val.toLowerCase();
+      })
     );
-    setCars(filteredCars);
   };
 
   useEffect(() => {

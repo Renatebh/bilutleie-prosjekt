@@ -10,14 +10,13 @@ const BrandOption = ({ onBrandOptionChange }) => {
 
   const onOptionChangeHandler = (e) => {
     onBrandOptionChange(e.target.value);
-    console.log(e.target.value);
   };
 
   const sortBrands = () => {
     let arr = [];
 
     data.data
-      /* .sort((a, b) => {
+      .sort((a, b) => {
         if (a.attributes.brand < b.attributes.brand) {
           return -1;
         }
@@ -25,7 +24,7 @@ const BrandOption = ({ onBrandOptionChange }) => {
         if (a.attributes.brand > b.attributes.brand) {
           return 1;
         }
-      }) */
+      })
       .map((brand) => {
         arr.push(brand);
       });
