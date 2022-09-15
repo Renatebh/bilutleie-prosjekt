@@ -10,7 +10,6 @@ import API_CONSTANT_MAP from "../../../api/endpoints";
 
 const CarCarousel = () => {
   const [priceOptionVal, setPriceOptionVal] = useState("");
-  const [brandOptionVal, setBrandOptionVal] = useState("");
   const [typeOptionVal, setTypeOptionVal] = useState("");
   const [cars, setCars] = useState([]);
 
@@ -21,7 +20,7 @@ const CarCarousel = () => {
   };
 
   const brandOptionChange = (val) => {
-    setBrandOptionVal(val);
+    sortCarsByBrand(val);
   };
 
   const typeOptionChange = (val) => {
@@ -48,29 +47,17 @@ const CarCarousel = () => {
     }
   };
 
-  const sortCarsByBrand = () => {
-    /* if (brandOptionVal.toLowerCase() === "alle") {
-      let arr = [];
-
-      data.data.map((car) => arr.push(car));
-      setCars([...arr]);
-      console.log(cars);
-    } */
-
-    setCars((prevState) => {
-      return prevState.filter(
-        (car) =>
-          car.attributes.brand.toLowerCase() === brandOptionVal.toLowerCase()
-      );
-    });
-
-    if (data) {
-      console.log(cars);
-      console.log(
-        brandOptionVal.toLowerCase(),
-        cars[0].attributes.brand.toLowerCase()
-      );
+  const sortCarsByBrand = (val) => {
+    if (val.toLowerCase() === "alle") {
+      const filteredCars = data.data.map((car) => car);
+      setCars(filteredCars);
+      return filteredCars;
     }
+
+    const filteredCars = data.data.filter(
+      (car) => car.attributes.brand.trim().toLowerCase() === val.toLowerCase()
+    );
+    setCars(filteredCars);
   };
 
   useEffect(() => {
@@ -83,11 +70,6 @@ const CarCarousel = () => {
     sortCarsByPrice();
   }, [priceOptionVal]);
 
-  useEffect(() => {
-    sortCarsByBrand();
-    console.log(cars);
-  }, [brandOptionVal]);
-
   return (
     <div className={styles.container}>
       <div className={styles["header-container"]}>
@@ -99,7 +81,7 @@ const CarCarousel = () => {
         />
       </div>
       <Carousel>
-        {data &&
+        {cars &&
           cars.map((car) => {
             return (
               <SwiperSlide className={styles["swiper-slide"]} key={car.id}>
