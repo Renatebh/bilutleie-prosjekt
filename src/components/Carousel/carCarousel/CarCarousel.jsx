@@ -100,7 +100,7 @@ const CarCarousel = () => {
         />
       </div>
       <Carousel>
-        {cars &&
+        {data &&
           cars.map((car) => {
             return (
               <SwiperSlide className={styles["swiper-slide"]} key={car.id}>

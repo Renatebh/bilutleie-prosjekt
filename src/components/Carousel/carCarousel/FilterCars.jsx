@@ -3,11 +3,7 @@ import styles from "./FilterCars.module.css";
 import PriceOption from "./filterOptions/PriceOption";
 import BrandOption from "./filterOptions/BrandOption";
 
-const FilterCars = ({
-  onPriceOptionChange,
-  onBrandOptionChange,
-  onTypeOptionChange,
-}) => {
+const FilterCars = ({ onPriceOptionChange, onBrandOptionChange }) => {
   return (
     <form className={styles.form}>
       <div className={styles["select-container"]}>
