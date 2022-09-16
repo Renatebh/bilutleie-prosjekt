@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "../../ui/datePicker/DatePicker";
 import styles from "./OrderCarForm.module.css";
 import Select from "../../ui/select/Select";
@@ -21,9 +21,6 @@ const OrderCarForm = () => {
   const [checkboxes, setCheckboxes] = useState([]);
   const [checkedChecboxes, setCheckedChecboxes] = useState([]);
   const [totalExtrasPrice, setTotalExtrasPrice] = useState(0);
-
-  const checkboxesRef = useRef(checkboxes);
-  const checkedChecboxesRef = useRef(checkedChecboxes);
 
   const onFromDateChange = (date) => {
     setFromDate(new Date(date));
@@ -83,8 +80,6 @@ const OrderCarForm = () => {
   }, [fromDate, toDate, days, totalExtrasPrice]);
 
   useEffect(() => {
-    checkboxesRef.current = checkboxes;
-    checkedChecboxesRef.current = checkedChecboxes;
     filterCheckedCheckboxes();
   }, [checkboxes]);
 
