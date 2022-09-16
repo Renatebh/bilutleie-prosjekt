@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CarCard.module.css";
 import { Link } from "react-router-dom";
 
-const Cars = ({ carImg, carBrand, carPrice, single, id }) => {
+const CarCard = ({ carImg, carBrand, carPrice, single, id }) => {
   return (
     <div
       className={
@@ -26,4 +26,4 @@ const Cars = ({ carImg, carBrand, carPrice, single, id }) => {
   );
 };
 
-export default Cars;
+export default CarCard;

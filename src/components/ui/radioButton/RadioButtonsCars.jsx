@@ -7,7 +7,7 @@ const url = import.meta.env.VITE_API_URL;
 
 const personBil = "personbil";
 
-const RadioButtonsCars = () => {
+const RadioButtonsCars = ({ onRadioBtnClick }) => {
   const { loading, err, data } = useFetch(`${url}/${endPoint}`);
 
   return (
@@ -16,10 +16,11 @@ const RadioButtonsCars = () => {
         data.data.map((btn) => {
           return (
             <RadioButton
+              onRadioBtnClick={onRadioBtnClick}
               key={btn.id}
               id={btn.attributes.radiobutton}
               name={personBil}
-              value={personBil}
+              value={btn.attributes.radiobutton}
               htmlFor={btn.attributes.radiobutton}
             >
               {btn.attributes.radiobutton}
