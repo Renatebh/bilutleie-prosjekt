@@ -62,13 +62,9 @@ const OrderCarForm = () => {
   };
 
   const calcTotalExtrasPrice = () => {
-    const checkedPriceArr = checkedChecboxes.map(
-      (checkedChecbox) => checkedChecbox.price
-    );
-
-    const reduceToalExtras = checkedPriceArr.reduce(
+    const reduceToalExtras = checkedChecboxes.reduce(
       (previousValue, currentValue) => {
-        return previousValue + currentValue;
+        return previousValue + currentValue.price;
       },
       0
     );
