@@ -13,21 +13,15 @@ const BrandOption = ({ onBrandOptionChange }) => {
   };
 
   const sortBrands = () => {
-    let arr = [];
+    let arr = data.data.sort((a, b) => {
+      if (a.attributes.brand < b.attributes.brand) {
+        return -1;
+      }
 
-    data.data
-      .sort((a, b) => {
-        if (a.attributes.brand < b.attributes.brand) {
-          return -1;
-        }
-
-        if (a.attributes.brand > b.attributes.brand) {
-          return 1;
-        }
-      })
-      .map((brand) => {
-        arr.push(brand);
-      });
+      if (a.attributes.brand > b.attributes.brand) {
+        return 1;
+      }
+    });
 
     setSortedBrands([...arr]);
   };
