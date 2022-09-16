@@ -60,7 +60,8 @@ const HeroForm = () => {
     SetRadioBtnVal(val);
   };
 
-  const handleUndefinedCarType = () => {
+  const handleUndefinedCarType = (e) => {
+    e.preventDefault();
     alert("Venligst velg biltype");
   };
 
