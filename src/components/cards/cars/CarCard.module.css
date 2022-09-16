@@ -43,20 +43,26 @@
   max-width: 95%;
 }
 
-.btn {
+.link {
   background-color: var(--primaryColor);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 18rem;
+}
+
+.btn {
+  background-color: transparent;
   border: none;
   color: var(--white);
   text-transform: uppercase;
   font-weight: bold;
-  border-radius: 0.5rem;
   cursor: pointer;
-  padding: 1rem;
-  width: 18rem;
+  width: 100%;
   text-align: center;
 }
 
-.btn:hover {
+.link:hover {
   background-color: var(--secondaryColor);
 }
 

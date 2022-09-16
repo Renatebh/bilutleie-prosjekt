@@ -8,7 +8,7 @@ const HeroText = () => {
   const { loading, err, data } = useFetch(`${API_CONSTANT_MAP.hero}`);
 
   return (
-    <div>
+    <div className={styles["hero-text-wrapper"]}>
       {data && (
         <>
           <h1 className={styles.heading}>{data.data.attributes.main}</h1>

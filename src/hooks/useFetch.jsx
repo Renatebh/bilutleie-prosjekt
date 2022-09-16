@@ -6,22 +6,30 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     const fetchData = async () => {
       setLoading(true);
 
       try {
-        const res = await fetch(url);
+        const res = await fetch(url, { signal: abortController.signal });
         const json = await res.json();
 
         setData(json);
         setLoading(false);
       } catch (error) {
-        setError(error);
-        setLoading(false);
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          setLoading(false);
+          setError(error);
+        }
       }
     };
 
     fetchData();
+
+    return () => abortController.abort();
   }, [url]);
 
   return { loading, error, data };

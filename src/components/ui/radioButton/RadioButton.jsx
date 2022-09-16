@@ -1,17 +1,28 @@
 import React from "react";
 import styled from "./RadioButtons.module.css";
 
-const RadioButton = ({ id, name, value, htmlFor, children, carType }) => {
-  const valueUpperCase = value.toUpperCase();
+const RadioButton = ({
+  id,
+  name,
+  value,
+  htmlFor,
+  children,
+  carType,
+  onRadioBtnClick,
+}) => {
+  const onRadioBtnClickHandler = (e) => {
+    onRadioBtnClick(e.target.value);
+  };
 
   return (
     <>
       <input
+        onClick={onRadioBtnClickHandler}
         className={styled.radiobutton}
         type="radio"
         id={id}
         name={name}
-        value={valueUpperCase}
+        value={value}
       />
       <label
         className={
