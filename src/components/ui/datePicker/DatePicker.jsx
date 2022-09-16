@@ -1,4 +1,5 @@
 import React from "react";
+import createTodaysDate from "../../../helpers/creatTodaysDate";
 import styles from "./DatePicker.module.css";
 
 const DatePicker = ({
@@ -10,7 +11,7 @@ const DatePicker = ({
   from,
   to,
 }) => {
-  const date = new Date().toISOString().slice(0, -8);
+  const date = createTodaysDate();
 
   const handleGetFromDate = (e) => {
     onFromDateChange(e.target.value);

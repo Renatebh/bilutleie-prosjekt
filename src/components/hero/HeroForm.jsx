@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import HeroText from "./HeroText";
 import RadioButton from "../ui/radioButton/RadioButton";
 import { FaChevronDown, FaCar, FaTruck } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import createTodaysDate from "../../helpers/creatTodaysDate";
 import styles from "./HeroForm.module.css";
 
 const Select = () => {
@@ -30,6 +32,8 @@ const Select = () => {
 };
 
 const HeroDate = ({ children, id }) => {
+  const date = createTodaysDate();
+
   return (
     <div className={styles.container}>
       <div className={styles["hero-label-container"]}>
@@ -42,7 +46,7 @@ const HeroDate = ({ children, id }) => {
         type="datetime-local"
         id={id}
         name="trip-start"
-        min="2022-07-08T07:30"
+        min={date}
         max="2024-12-31T16:00"
       />
     </div>
@@ -50,6 +54,16 @@ const HeroDate = ({ children, id }) => {
 };
 
 const HeroForm = () => {
+  const [radioBtnVal, SetRadioBtnVal] = useState("");
+
+  const onRadioBtnClick = (val) => {
+    SetRadioBtnVal(val);
+  };
+
+  const handleUndefinedCarType = () => {
+    alert("Venligst velg biltype");
+  };
+
   return (
     <div className={styles["heroContent-container"]}>
       <form className={styles.form}>
@@ -62,25 +76,39 @@ const HeroForm = () => {
         </HeroDate>
         <div className={styles["car-type-container"]}>
           <RadioButton
+            onRadioBtnClick={onRadioBtnClick}
             carType
             id="personbil"
             name="hero-form-radio"
-            value="personbil"
+            value="cars"
             htmlFor="personbil"
           >
             Personbil <FaCar className={styles["car-icon"]} />
           </RadioButton>
           <RadioButton
+            onRadioBtnClick={onRadioBtnClick}
             carType
             id="varebil"
             name="hero-form-radio"
-            value="varebil"
+            value="trucks"
             htmlFor="varebil"
           >
             Varebil <FaTruck className={styles["truck-icon"]} />
           </RadioButton>
         </div>
-        <button className={styles["submit-Btn"]}>Søk</button>
+        {radioBtnVal !== "" && (
+          <Link className={styles["submit-link"]} to={`/${radioBtnVal}`}>
+            <button className={styles["submit-btn"]}>Søk</button>
+          </Link>
+        )}
+        {radioBtnVal === "" && (
+          <button
+            onClick={handleUndefinedCarType}
+            className={styles["submit-btn-error"]}
+          >
+            Søk
+          </button>
+        )}
       </form>
       <HeroText />
     </div>

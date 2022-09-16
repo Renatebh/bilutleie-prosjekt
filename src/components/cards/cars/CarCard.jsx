@@ -15,11 +15,11 @@ const Cars = ({ carImg, carBrand, carPrice, single, id }) => {
       <p className={styles.brand}>{carBrand}</p>
       <p className={styles.price}>{carPrice}</p>
       <div className={styles["btn-container"]}>
-        <Link to={`/about-car/${id}`} className={styles["btn"]}>
-          Les mer
+        <Link to={`/about-car/${id}`} className={styles["link"]}>
+          <button className={styles["btn"]}>Les mer</button>
         </Link>
-        <Link to={`/order-car/${id}`} className={styles["btn"]}>
-          Bestill
+        <Link to={`/order-car/${id}`} className={styles["link"]}>
+          <button className={styles["btn"]}>Bestill</button>
         </Link>
       </div>
     </div>

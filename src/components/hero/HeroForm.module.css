@@ -88,11 +88,20 @@
   gap: 2rem;
 }
 
-.submit-Btn {
+.submit-link {
   width: 100%;
   height: 6rem;
   border-radius: 1rem;
   background-color: var(--secondaryColor);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: transparent;
   color: var(--white);
   border: none;
   text-transform: uppercase;
@@ -101,7 +110,21 @@
   cursor: pointer;
 }
 
-.submit-Btn:hover {
+.submit-btn-error {
+  width: 100%;
+  height: 6rem;
+  border-radius: 1rem;
+  background-color: var(--secondaryColor);
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: var(--step-0);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn-error:hover,
+.submit-link:hover {
   background-color: var(--primaryColor);
 }
 
