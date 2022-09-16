@@ -64,6 +64,7 @@ const CarCarousel = () => {
       return;
     }
 
+    setCars([...data.data]);
     sortCarsByPrice();
 
     if (val.toLowerCase() === "alle") {
